@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'apps.agroclima',
     'apps.recomendaciones',
     'rest_framework',
-    'django_extensions',
 ]
 
 MIDDLEWARE = [
