@@ -1,0 +1,66 @@
+# =========================
+# Python / Django
+# =========================
+# Archivos compilados
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*~
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+.env_python/
+
+# Base de datos SQLite
+db.sqlite3
+db.sqlite3-journal
+*.sqlite3
+
+# Archivos estáticos y multimedia
+media/
+staticfiles/
+
+# =========================
+# React / Vite / Node.js
+# =========================
+# Dependencias
+node_modules/
+
+# Archivos de construcción (Build) generados por Vite
+dist/
+dist-ssr/
+build/
+
+# Logs de gestores de paquetes
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Variables de Entorno
+# =========================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+
+# =========================
+# Sistema Operativo / IDEs
+# =========================
+# Mac / Windows
+.DS_Store
+Thumbs.db
+
+# VS Code / WebStorm / PyCharm
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
