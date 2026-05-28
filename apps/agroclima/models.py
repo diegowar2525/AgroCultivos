@@ -10,9 +10,7 @@ class Provincia(models.Model):
 
 class Canton(models.Model):
     provincia = models.ForeignKey(
-        Provincia,
-        on_delete=models.CASCADE,
-        related_name='cantones'
+        Provincia, on_delete=models.CASCADE, related_name="cantones"
     )
     nombre = models.CharField(max_length=100)
 
@@ -22,9 +20,7 @@ class Canton(models.Model):
 
 class Parroquia(models.Model):
     canton = models.ForeignKey(
-        Canton,
-        on_delete=models.CASCADE,
-        related_name='parroquias'
+        Canton, on_delete=models.CASCADE, related_name="parroquias"
     )
     nombre = models.CharField(max_length=100)
 
@@ -33,10 +29,7 @@ class Parroquia(models.Model):
 
 
 class Ubicacion(models.Model):
-    parroquia = models.ForeignKey(
-        Parroquia,
-        on_delete=models.CASCADE
-    )
+    parroquia = models.ForeignKey(Parroquia, on_delete=models.CASCADE)
     latitud = models.DecimalField(max_digits=10, decimal_places=6)
     longitud = models.DecimalField(max_digits=10, decimal_places=6)
     altitud = models.FloatField()
@@ -47,9 +40,7 @@ class Ubicacion(models.Model):
 
 class CondicionClimatica(models.Model):
     ubicacion = models.ForeignKey(
-        Ubicacion,
-        on_delete=models.CASCADE,
-        related_name='condiciones'
+        Ubicacion, on_delete=models.CASCADE, related_name="condiciones"
     )
 
     temperatura_promedio = models.FloatField()

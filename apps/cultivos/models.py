@@ -29,27 +29,15 @@ class Requerimiento(models.Model):
 
 
 class Cultivo(models.Model):
-    categoria = models.ForeignKey(
-        Categoria,
-        on_delete=models.CASCADE
-    )
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
 
-    requerimiento = models.OneToOneField(
-        Requerimiento,
-        on_delete=models.CASCADE
-    )
+    requerimiento = models.OneToOneField(Requerimiento, on_delete=models.CASCADE)
 
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
-    imagen = models.ImageField(
-        upload_to='cultivos/',
-        blank=True,
-        null=True
-    )
+    imagen = models.ImageField(upload_to="cultivos/", blank=True, null=True)
 
-    tiempo_cosecha = models.PositiveIntegerField(
-        help_text="Días"
-    )
+    tiempo_cosecha = models.PositiveIntegerField(help_text="Días")
 
     activo = models.BooleanField(default=True)
 

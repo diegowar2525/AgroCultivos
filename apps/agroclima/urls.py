@@ -1,10 +1,12 @@
-# from django.urls import include, path
-# from rest_framework.routers import DefaultRouter
-# from .views import RegistroClimaticoViewSet
+from rest_framework.routers import DefaultRouter
 
-# router = DefaultRouter()
-# router.register(r'agroclima', RegistroClimaticoViewSet)
+from .views import ProvinciaViewSet, CantonViewSet, ParroquiaViewSet, UbicacionViewSet
 
-# urlpatterns = [
-#     path('api/', include(router.urls)),
-# ]
+router = DefaultRouter()
+
+router.register("provincias", ProvinciaViewSet)
+router.register("cantones", CantonViewSet)
+router.register("parroquias", ParroquiaViewSet)
+router.register("ubicaciones", UbicacionViewSet)
+
+urlpatterns = router.urls
