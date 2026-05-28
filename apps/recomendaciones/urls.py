@@ -9,8 +9,8 @@ router.register("consultas", ConsultaViewSet)
 
 urlpatterns = router.urls + [
     path(
-        "resultados/",
+        "consultar/",
         ResultadoConsultaView.as_view(),
-        name="resultados-recomendaciones",
+        name="resultados-consultas",
     ),
 ]

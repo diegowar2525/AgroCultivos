@@ -1,12 +1,13 @@
 from rest_framework import viewsets
 
-from .models import Provincia, Canton, Parroquia, Ubicacion
+from .models import CondicionClimatica, Provincia, Canton, Parroquia, Ubicacion
 
 from .serializers import (
     ProvinciaSerializer,
     CantonSerializer,
     ParroquiaSerializer,
     UbicacionSerializer,
+    CondicionClimaticaSerializer,
 )
 
 
@@ -28,3 +29,8 @@ class ParroquiaViewSet(viewsets.ModelViewSet):
 class UbicacionViewSet(viewsets.ModelViewSet):
     queryset = Ubicacion.objects.all()
     serializer_class = UbicacionSerializer
+
+
+class CondicionClimaticaViewSet(viewsets.ModelViewSet):
+    queryset = CondicionClimatica.objects.all()
+    serializer_class = CondicionClimaticaSerializer

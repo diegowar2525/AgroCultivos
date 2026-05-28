@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models import Cultivo, Categoria
-# from .models import Requerimiento
+from .models import Cultivo, Categoria, Requerimiento
 
 
 class CultivoSerializer(serializers.ModelSerializer):
@@ -15,5 +14,7 @@ class CategoriaSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-# No se crea un serializer para Requerimiento porque no se va a exponer directamente
-# a través de la API, sino que se manejará como parte de la lógica interna del cultivo.
+class RequerimientoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Requerimiento
+        fields = "__all__"

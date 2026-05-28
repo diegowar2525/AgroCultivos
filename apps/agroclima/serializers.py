@@ -1,10 +1,14 @@
 from rest_framework import serializers
-from .models import Ubicacion, Provincia, Canton, Parroquia
-#from .models import CondicionClimatica
+from .models import Ubicacion, Provincia, Canton, Parroquia, CondicionClimatica
 
 class ProvinciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Provincia
+        fields = "__all__"
+
+class CondicionClimaticaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CondicionClimatica
         fields = "__all__"
 
 

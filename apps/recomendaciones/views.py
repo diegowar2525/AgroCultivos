@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from apps.agroclima.models import CondicionClimatica
+from apps.usuarios.models import Usuario
 
 from .models import Consulta
 from .serializers import ConsultaSerializer
@@ -26,14 +27,25 @@ class ResultadoConsultaView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
+        usuario = Usuario.objects.first()
+
+        consulta = Consulta.objects.create(usuario=usuario, ubicacion_id=ubicacion_id)
+
         condicion = CondicionClimatica.objects.filter(ubicacion_id=ubicacion_id).latest(
             "fecha_registro"
         )
 
-        resultados = recomendar_cultivos(condicion)
+        resultados = recomendar_cultivos(consulta, condicion)
 
         data = [
-            {"cultivo": r["cultivo"].nombre, "score": r["score"]} for r in resultados
+            {
+                "cultivo": r["resultado"].cultivo.nombre,
+                "score": r["resultado"].puntaje_compatibilidad,
+                "nivel": r["nivel"],
+                "justificacion": r["resultado"].justificacion,
+                "recomendado": r["resultado"].recomendado,
+            }
+            for r in resultados
         ]
 
         return Response(data)

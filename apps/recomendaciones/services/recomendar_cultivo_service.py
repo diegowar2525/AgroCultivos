@@ -1,5 +1,6 @@
 from apps.cultivos.models import Cultivo
 from apps.recomendaciones.models import ResultadoConsulta
+
 from .calcular_score_service import calcular_score
 
 
@@ -7,20 +8,53 @@ def recomendar_cultivos(consulta, condicion):
 
     resultados = []
 
-    cultivos = Cultivo.objects.select_related("requerimiento")
+    cultivos = Cultivo.objects.select_related(
+        "requerimiento"
+    )
 
     for cultivo in cultivos:
-        score = calcular_score(condicion, cultivo.requerimiento)
+
+        evaluacion = calcular_score(
+            condicion,
+            cultivo.requerimiento
+        )
+
+        score = evaluacion["score"]
+
+        justificaciones = evaluacion["justificaciones"]
+
+        # NIVEL DE COMPATIBILIDAD
+        if score >= 75:
+            nivel = "ALTO"
+
+        elif score >= 50:
+            nivel = "MEDIO"
+
+        else:
+            nivel = "BAJO"
 
         resultado = ResultadoConsulta.objects.create(
             consulta=consulta,
             cultivo=cultivo,
+
             puntaje_compatibilidad=score,
+
             nivel_confianza=score,
-            recomendado=score >= 70,
-            justificacion=f"El cultivo es factible para su siembra con un {score}% de compatibilidad",
+
+            recomendado=score >= 75,
+
+            justificacion=", ".join(justificaciones)
         )
 
-        resultados.append(resultado)
+        resultados.append({
+            "resultado": resultado,
+            "nivel": nivel
+        })
+
+    # ordenar por score descendente
+    resultados.sort(
+        key=lambda r: r["resultado"].puntaje_compatibilidad,
+        reverse=True
+    )
 
     return resultados
