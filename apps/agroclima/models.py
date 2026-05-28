@@ -35,7 +35,7 @@ class Ubicacion(models.Model):
     altitud = models.FloatField()
 
     def __str__(self):
-        return f"{self.parroquia.nombre}"
+        return f"Ubicación ({self.latitud}, {self.longitud}) - {self.parroquia.nombre}"
 
 
 class CondicionClimatica(models.Model):
@@ -51,4 +51,4 @@ class CondicionClimatica(models.Model):
     fecha_registro = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Clima {self.ubicacion}"
+        return f"{self.temperatura_promedio}°C, {self.humedad}%, {self.precipitacion}mm, {self.radiacion_solar} W/m² - {self.fecha_registro}"
