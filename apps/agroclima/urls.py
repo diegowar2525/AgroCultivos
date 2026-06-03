@@ -1,6 +1,12 @@
 from rest_framework.routers import DefaultRouter
 
-from .views import CondicionClimaticaViewSet, ProvinciaViewSet, CantonViewSet, ParroquiaViewSet, UbicacionViewSet
+from .views import (
+    CondicionClimaticaViewSet,
+    ProvinciaViewSet,
+    CantonViewSet,
+    ParroquiaViewSet,
+    UbicacionViewSet,
+)
 
 router = DefaultRouter()
 
