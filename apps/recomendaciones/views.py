@@ -8,7 +8,7 @@ from apps.usuarios.models import Usuario
 
 from .models import Consulta, ResultadoConsulta
 from .serializers import ConsultaSerializer, ResultadoConsultaSerializer
-from .services.recomendar_cultivo_service import recomendar_cultivos
+from .services.crop_recommendation_service import recomendar_cultivos
 
 
 class ConsultaViewSet(viewsets.ModelViewSet):

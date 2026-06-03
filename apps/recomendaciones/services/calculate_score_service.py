@@ -10,25 +10,15 @@ def calcular_score(condicion, requerimiento):
         <= condicion.temperatura_promedio
         <= requerimiento.temperatura_max
     ):
-
         score += 40
 
-        justificaciones.append(
-            "Temperatura adecuada"
-        )
+        justificaciones.append("Temperatura adecuada")
 
     # HUMEDAD
-    if (
-        requerimiento.humedad_min
-        <= condicion.humedad
-        <= requerimiento.humedad_max
-    ):
-
+    if requerimiento.humedad_min <= condicion.humedad <= requerimiento.humedad_max:
         score += 30
 
-        justificaciones.append(
-            "Humedad compatible"
-        )
+        justificaciones.append("Humedad compatible")
 
     # PRECIPITACIÓN
     if (
@@ -36,12 +26,9 @@ def calcular_score(condicion, requerimiento):
         <= condicion.precipitacion
         <= requerimiento.precipitacion_max
     ):
-
         score += 20
 
-        justificaciones.append(
-            "Precipitación favorable"
-        )
+        justificaciones.append("Precipitación favorable")
 
     # ALTITUD
     if (
@@ -49,14 +36,8 @@ def calcular_score(condicion, requerimiento):
         <= condicion.ubicacion.altitud
         <= requerimiento.altitud_max
     ):
-
         score += 10
 
-        justificaciones.append(
-            "Altitud adecuada"
-        )
+        justificaciones.append("Altitud adecuada")
 
-    return {
-        "score": score,
-        "justificaciones": justificaciones
-    }
+    return {"score": score, "justificaciones": justificaciones}
