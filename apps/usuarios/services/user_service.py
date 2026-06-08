@@ -6,10 +6,7 @@ def crear_usuario(data):
 
     password = data.pop("password")
 
-    username = generar_username(
-        data["nombres"],
-        data["apellidos"]
-    )
+    username = generar_username(data["nombres"], data["apellidos"])
 
     rol_agricultor = Rol.objects.get(nombre="Agricultor")
 
@@ -18,7 +15,7 @@ def crear_usuario(data):
         first_name=data["nombres"],
         last_name=data["apellidos"],
         rol=rol_agricultor,
-        **data
+        **data,
     )
 
     usuario.set_password(password)

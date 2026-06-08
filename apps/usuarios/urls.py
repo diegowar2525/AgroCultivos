@@ -13,9 +13,9 @@ router = DefaultRouter()
 router.register("roles", RolViewSet)
 
 urlpatterns = [
-    path("register/", RegistroView.as_view()),
-    path("login/", LoginView.as_view()),
-    path("profile/", PerfilView.as_view()),
+    path("register/", RegistroView.as_view(), name="register"),
+    path("login/", LoginView.as_view(), name="login"),
+    path("profile/", PerfilView.as_view(), name="profile"),
     path("", include(router.urls)),
 ]
 

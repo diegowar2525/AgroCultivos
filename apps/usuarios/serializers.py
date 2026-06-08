@@ -13,8 +13,8 @@ class RegistroSerializer(serializers.ModelSerializer):
 
         fields = (
             "cedula",
-            "nombres",
-            "apellidos",
+            "first_name",
+            "last_name",
             "email",
             "genero",
             "fecha_nacimiento",
