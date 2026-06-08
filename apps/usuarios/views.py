@@ -69,7 +69,6 @@ class PerfilView(APIView):
                 "email": usuario.email,
                 "genero": usuario.genero,
                 "fecha_nacimiento": usuario.fecha_nacimiento,
-                "es_agronomo": usuario.es_agronomo,
                 "profesion": usuario.profesion,
             }
         )

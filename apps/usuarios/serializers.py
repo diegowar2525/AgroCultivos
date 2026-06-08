@@ -18,7 +18,6 @@ class RegistroSerializer(serializers.ModelSerializer):
             "email",
             "genero",
             "fecha_nacimiento",
-            "es_agronomo",
             "profesion",
             "password",
             "confirmar_password",

@@ -1,4 +1,4 @@
-from ..models import Usuario
+from ..models import Usuario, Rol
 from ..utils import generar_username
 
 
@@ -11,10 +11,13 @@ def crear_usuario(data):
         data["apellidos"]
     )
 
+    rol_agricultor = Rol.objects.get(nombre="Agricultor")
+
     usuario = Usuario.objects.create(
         username=username,
         first_name=data["nombres"],
         last_name=data["apellidos"],
+        rol=rol_agricultor,
         **data
     )
 
