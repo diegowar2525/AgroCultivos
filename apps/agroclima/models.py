@@ -29,7 +29,11 @@ class Parroquia(models.Model):
 
 
 class Ubicacion(models.Model):
-    parroquia = models.ForeignKey(Parroquia, on_delete=models.CASCADE)
+    parroquia = models.ForeignKey(
+        Parroquia,
+        on_delete=models.CASCADE,
+        related_name="ubicaciones"
+    )
     latitud = models.DecimalField(max_digits=10, decimal_places=6)
     longitud = models.DecimalField(max_digits=10, decimal_places=6)
     altitud = models.FloatField()
@@ -41,6 +45,7 @@ class Ubicacion(models.Model):
 class CondicionClimatica(models.Model):
     ubicacion = models.ForeignKey(
         Ubicacion, on_delete=models.CASCADE, related_name="condiciones"
+        
     )
 
     temperatura_promedio = models.FloatField()
