@@ -3,7 +3,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.models import Token
-from .serializers import RegistroSerializer, LoginSerializer
+from rest_framework import viewsets
+
+from apps.usuarios.models import Rol
+from .serializers import RegistroSerializer, LoginSerializer, RolSerializer
 from .services.auth_service import autenticar_usuario
 from .services.user_service import crear_usuario
 
@@ -70,3 +73,8 @@ class PerfilView(APIView):
                 "profesion": usuario.profesion,
             }
         )
+
+
+class RolViewSet(viewsets.ModelViewSet):
+    queryset = Rol.objects.all()
+    serializer_class = RolSerializer
