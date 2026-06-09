@@ -1,46 +1,55 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import {
+    BrowserRouter,
+    Routes,
+    Route
+} from 'react-router-dom';
+
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Navbar from './components/Navbar';
-import './App.css';
+import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 
-// Componente para proteger las rutas privadas
-function PrivateRoute({ children }) {
-    const token = localStorage.getItem('token');
-    return token ? children : <Navigate to="/login" replace />;
-}
+import PrivateRoute from './routes/PrivateRoute';
 
-export default function App() {
+function App() {
+
     return (
         <BrowserRouter>
+
             <Routes>
-                {/* Rutas Públicas */}
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
 
-                {/* Rutas Privadas */}
-                <Route path="/" element={
-                    <PrivateRoute>
-                        <div className="app-container">
-                            {/* Navbar se mostrará solo cuando estés logueado */}
-                            <Navbar />
-                            {/*<Dashboard />*/}
-                        </div>
-                    </PrivateRoute>
-                } />
+                <Route
+                    path="/login"
+                    element={<Login />}
+                />
 
-                <Route path="/historial" element={
-                    <PrivateRoute>
-                        <div className="app-container">
-                            <Navbar />
-                            {/*<Historial />*/}
-                        </div>
-                    </PrivateRoute>
-                } />
+                <Route
+                    path="/register"
+                    element={<Register />}
+                />
 
-                {/* Redirección por defecto si la URL no existe */}
-                <Route path="*" element={<Navigate to="/" replace />} />
+                <Route
+                    path="/"
+                    element={
+                        <PrivateRoute>
+                            <Dashboard />
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/profile"
+                    element={
+                        <PrivateRoute>
+                            <Profile />
+                        </PrivateRoute>
+                    }
+                />
+
             </Routes>
+
         </BrowserRouter>
     );
 }
+
+export default App;
