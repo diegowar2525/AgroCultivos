@@ -38,27 +38,33 @@ def generar_username(nombres, apellidos):
     return username
 
 
-def validar_cedula_ec(cedula: str) -> bool:
-    if not cedula or len(cedula) != 10 or not cedula.isdigit():
-        return False
+def validar_cedula_ec(cedula: str) -> tuple[bool, str]:
+    if not cedula or cedula.strip() == "":
+        return False, "El campo de cédula no puede estar vacío."
+
+    if not cedula.isdigit():
+        return False, "La cédula solo debe contener números."
+
+    if len(cedula) != 10:
+        return False, "La cédula debe tener exactamente 10 dígitos."
 
     provincia = int(cedula[:2])
 
     if provincia < 1 or (provincia > 24 and provincia != 30):
-        return False
+        return False, "El código de provincia (los dos primeros dígitos) es inválido."
 
     coeficientes = [2, 1, 2, 1, 2, 1, 2, 1, 2]
-
     total = 0
 
     for i, coef in enumerate(coeficientes):
         valor = int(cedula[i]) * coef
-
         if valor >= 10:
             valor -= 9
-
         total += valor
 
     verificador = (10 - (total % 10)) % 10
 
-    return verificador == int(cedula[9])
+    if verificador != int(cedula[9]):
+        return False, "El dígito verificador es incorrecto. Cédula no válida."
+
+    return True, ""

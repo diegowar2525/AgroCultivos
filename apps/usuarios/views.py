@@ -5,7 +5,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 
-from .serializers import RegistroSerializer, LoginSerializer
+from .serializers import RegistroSerializer, LoginSerializer, PerfilSerializer
 from .services.auth_service import autenticar_usuario
 from .services.user_service import crear_usuario
 
@@ -55,20 +55,26 @@ class LoginView(APIView):
         return Response({"token": token.key, "usuario": usuario.username})
 
 
+
 class PerfilView(APIView):
 
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
 
-        usuario = request.user
+        serializer = PerfilSerializer(request.user)
 
-        return Response({
-            "cedula": usuario.cedula,
-            "first_name": usuario.first_name,
-            "last_name": usuario.last_name,
-            "email": usuario.email,
-            "genero": usuario.genero,
-            "fecha_nacimiento": usuario.fecha_nacimiento,
-            "profesion": usuario.profesion,
-        })
+        return Response(serializer.data)
+
+    def put(self, request):
+
+        serializer = PerfilSerializer(
+            request.user,
+            data=request.data
+        )
+
+        serializer.is_valid(raise_exception=True)
+
+        serializer.save()
+
+        return Response(serializer.data)
