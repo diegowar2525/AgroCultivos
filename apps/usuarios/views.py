@@ -3,10 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.models import Token
-from rest_framework import viewsets
 
-from apps.usuarios.models import Rol
-from .serializers import RegistroSerializer, LoginSerializer, RolSerializer
+from .serializers import RegistroSerializer, LoginSerializer
 from .services.auth_service import autenticar_usuario
 from .services.user_service import crear_usuario
 
@@ -54,7 +52,7 @@ class LoginView(APIView):
         token, _ = Token.objects.get_or_create(user=usuario)
 
         return Response(
-            {"token": token.key, "usuario": usuario.username, "rol": usuario.rol}
+            {"token": token.key, "usuario": usuario.username}
         )
 
 
@@ -72,8 +70,3 @@ class PerfilView(APIView):
                 "profesion": usuario.profesion,
             }
         )
-
-
-class RolViewSet(viewsets.ModelViewSet):
-    queryset = Rol.objects.all()
-    serializer_class = RolSerializer

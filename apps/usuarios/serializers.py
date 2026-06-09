@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.usuarios.models import Usuario, Rol
+from apps.usuarios.models import Usuario
 from .utils import validar_cedula_ec
 
 
@@ -42,9 +42,3 @@ class LoginSerializer(serializers.Serializer):
     identificador = serializers.CharField()
 
     password = serializers.CharField()
-
-
-class RolSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Rol
-        fields = "__all__"
