@@ -8,7 +8,10 @@ const authService = {
         api.post('/api/usuarios/register/', data),
 
     profile: () =>
-        api.get('/api/usuarios/profile/')
+        api.get('/api/usuarios/profile/'),
+
+    updateProfile: (data) =>
+        api.put('/api/usuarios/profile/', data),
 };
 
 export default authService;

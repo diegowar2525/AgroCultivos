@@ -70,6 +70,16 @@ export function AuthProvider({ children }) {
         setUser(null);
     };
 
+    const updateProfile = async (data) => {
+
+        const response =
+            await authService.updateProfile(data);
+
+        setUser(response.data);
+
+        return response;
+    };
+
     return (
         <AuthContext.Provider
             value={{
@@ -78,6 +88,7 @@ export function AuthProvider({ children }) {
                 login,
                 register,
                 logout,
+                updateProfile,
                 isAuthenticated: !!user
             }}
         >
