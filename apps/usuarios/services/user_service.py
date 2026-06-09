@@ -1,4 +1,4 @@
-from ..models import Usuario, Rol
+from ..models import Usuario
 from ..utils import generar_username
 
 
@@ -6,17 +6,11 @@ def crear_usuario(data):
 
     password = data.pop("password")
 
-    username = generar_username(data["nombres"], data["apellidos"])
+    print("Data recibida en crear_usuario:", data)
 
-    rol_agricultor = Rol.objects.get(nombre="Agricultor")
+    username = generar_username(data["first_name"], data["last_name"])
 
-    usuario = Usuario.objects.create(
-        username=username,
-        first_name=data["nombres"],
-        last_name=data["apellidos"],
-        rol=rol_agricultor,
-        **data,
-    )
+    usuario = Usuario.objects.create(username=username, **data)
 
     usuario.set_password(password)
     usuario.save()
