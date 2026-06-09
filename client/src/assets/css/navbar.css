@@ -50,9 +50,10 @@
 }
 
 .logo-text {
-    font-weight: 700;
-    font-size: 1.125rem;
-    letter-spacing: -0.025em;
+    font-weight: 800;
+    font-size: 1.35rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .logo-text-green {
@@ -94,6 +95,7 @@
     gap: 0.75rem;
 }
 
+/* Base del badge convertible en link */
 .user-badge {
     display: flex;
     align-items: center;
@@ -102,6 +104,10 @@
     border-radius: 0.5rem;
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    /* Asegura que no se subraye el texto */
 }
 
 .user-avatar {
