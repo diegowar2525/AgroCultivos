@@ -8,10 +8,12 @@ def autenticar_usuario(identificador, password):
 
     if identificador.isdigit() and len(identificador) == 10:
         try:
-            obj = Usuario.objects.get(email=identificador)
+            obj = Usuario.objects.get(cedula=identificador)
 
-        except (Usuario.DoesNotExist, Usuario.MultipleObjectsReturned):
-            return None
+            usuario = authenticate(username=obj.username, password=password)
+
+        except Usuario.DoesNotExist:
+            pass
 
     elif "@" in identificador:
         try:
@@ -26,3 +28,4 @@ def autenticar_usuario(identificador, password):
         usuario = authenticate(username=identificador, password=password)
 
     return usuario
+

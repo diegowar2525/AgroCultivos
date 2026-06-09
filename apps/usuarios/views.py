@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
 
 from .serializers import RegistroSerializer, LoginSerializer
 from .services.auth_service import autenticar_usuario
@@ -51,22 +52,23 @@ class LoginView(APIView):
 
         token, _ = Token.objects.get_or_create(user=usuario)
 
-        return Response(
-            {"token": token.key, "usuario": usuario.username}
-        )
+        return Response({"token": token.key, "usuario": usuario.username})
 
 
 class PerfilView(APIView):
+
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
+
         usuario = request.user
-        return Response(
-            {
-                "cedula": usuario.cedula,
-                "nombres": usuario.nombres,
-                "apellidos": usuario.apellidos,
-                "email": usuario.email,
-                "genero": usuario.genero,
-                "fecha_nacimiento": usuario.fecha_nacimiento,
-                "profesion": usuario.profesion,
-            }
-        )
+
+        return Response({
+            "cedula": usuario.cedula,
+            "first_name": usuario.first_name,
+            "last_name": usuario.last_name,
+            "email": usuario.email,
+            "genero": usuario.genero,
+            "fecha_nacimiento": usuario.fecha_nacimiento,
+            "profesion": usuario.profesion,
+        })
