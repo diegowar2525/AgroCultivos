@@ -21,7 +21,9 @@ const Hero = () => {
             </div>
 
             <div className="image-frame" style={{ animation: 'float 6s ease-in-out infinite' }}>
-                <img src={heroImage} alt="SIGRA Dashboard Preview" />
+                <div className="image-placeholder" style={{ aspectRatio: '1/1' }}>
+                    <img src={heroImage} alt="SIGRA Dashboard Preview" />
+                </div>
             </div>
         </section>
     );

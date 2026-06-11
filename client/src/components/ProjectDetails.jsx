@@ -1,13 +1,12 @@
 import React from 'react';
+import shortCycleCrops from '../assets/short-cycle-crops.jpg';
 
 const ProjectDetails = () => {
     return (
         <section className="details-section">
             <div className="image-frame">
-                {/* <img src="/assets/images/short-cycle-crops.jpg" alt="Cultivos de ciclo corto" /> */}
                 <div className="image-placeholder" style={{ aspectRatio: '1/1' }}>
-                    <span style={{ fontSize: '3rem' }}>🌱</span>
-                    <p>Espacio para foto de Cultivos de Ciclo Corto</p>
+                    <img src={shortCycleCrops} alt="SIGRA Dashboard Preview" />
                 </div>
             </div>
 

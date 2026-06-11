@@ -32,43 +32,70 @@ export default function Navbar() {
                         Inicio
                     </NavLink>
 
-                    <NavLink
-                        to="/AdminDashboard"
-                        className={({ isActive }) =>
-                            isActive ? 'nav-item active' : 'nav-item'
-                        }
-                    >
-                        Panel de Administración
-                    </NavLink>
-
+                    {/* Renderizado Condicional: Solo muestra el panel si el usuario es STAFF */}
+                    {user?.is_staff && (
+                        <NavLink
+                            to="/AdminDashboard"
+                            className={({ isActive }) =>
+                                isActive ? 'nav-item active' : 'nav-item'
+                            }
+                        >
+                            Panel de Administración
+                        </NavLink>
+                    )}
                 </div>
 
                 {/* Sección derecha de usuario */}
                 <div className="navbar-user-section">
 
-                    {/* Se cambió de <div> a <NavLink> */}
-                    <NavLink
-                        to="/Perfil"
-                        className={({ isActive }) =>
-                            isActive ? 'user-badge active' : 'user-badge'
-                        }
-                    >
-                        <div className="user-avatar">
-                            {user?.first_name?.charAt(0)}
-                        </div>
-                        <span className="user-name">
-                            {user?.first_name}
-                        </span>
-                    </NavLink>
+                    {user ? (
+                        /* === VISTA PARA USUARIOS LOGUEADOS === */
+                        <>
+                            <NavLink
+                                to="/Perfil"
+                                className={({ isActive }) =>
+                                    isActive ? 'user-badge active' : 'user-badge'
+                                }
+                            >
+                                <div className="user-avatar">
+                                    {user.first_name?.charAt(0) || 'U'}
+                                </div>
+                                <span className="user-name">
+                                    {user.username || 'Usuario'}
+                                </span>
+                            </NavLink>
 
-                    <button
-                        className="btn-logout"
-                        onClick={logout}
-                    >
-                        Salir
-                    </button>
+                            <button
+                                className="btn-logout"
+                                onClick={logout}
+                            >
+                                Salir
+                            </button>
+                        </>
+                    ) : (
+                        /* === VISTA PARA VISITANTES (NO LOGUEADOS) === */
+                        <>
+                            <NavLink
+                                to="/login"
+                                className={({ isActive }) =>
+                                    isActive ? 'nav-item active' : 'nav-item'
+                                }
+                            >
+                                Iniciar Sesión
+                            </NavLink>
+
+                            {/* Reutilizamos el estilo de user-badge para que el botón de registro destaque sutilmente */}
+                            <NavLink
+                                to="/register"
+                                className="user-badge"
+                                style={{ backgroundColor: 'rgba(34, 197, 94, 0.1)', color: 'var(--green-hover)' }}
+                            >
+                                Registrarse
+                            </NavLink>
+                        </>
+                    )}
+
                 </div>
-
             </div>
         </nav>
     );
