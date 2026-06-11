@@ -13,24 +13,10 @@ class UsuarioBaseSerializer(serializers.ModelSerializer):
         return value
 
     def validate_email(self, value):
-
-        if not value or value.strip() == "":
-            raise serializers.ValidationError(
-                "El campo de correo no puede estar en blanco."
-            )
-
         if not value.lower().endswith("@gmail.com"):
             raise serializers.ValidationError(
                 "El correo debe ser del dominio @gmail.com."
             )
-
-        queryset = Usuario.objects.filter(email=value)
-
-        if self.instance:
-            queryset = queryset.exclude(pk=self.instance.pk)
-
-        if queryset.exists():
-            raise serializers.ValidationError("Este correo ya está registrado.")
 
         return value
 
@@ -54,13 +40,6 @@ class RegistroSerializer(UsuarioBaseSerializer):
             "password",
             "confirmar_password",
         )
-
-    def validate_cedula(self, value):
-
-        if not validar_cedula_ec(value):
-            raise serializers.ValidationError("Cédula inválida.")
-
-        return value
 
     def validate(self, attrs):
 
@@ -90,4 +69,5 @@ class PerfilSerializer(UsuarioBaseSerializer):
             "genero",
             "fecha_nacimiento",
             "profesion",
+            "is_staff",
         )

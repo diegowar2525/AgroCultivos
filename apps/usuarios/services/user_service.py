@@ -6,8 +6,6 @@ def crear_usuario(data):
 
     password = data.pop("password")
 
-    print("Data recibida en crear_usuario:", data)
-
     username = generar_username(data["first_name"], data["last_name"])
 
     usuario = Usuario.objects.create(username=username, **data)

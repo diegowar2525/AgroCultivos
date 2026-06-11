@@ -21,12 +21,19 @@ def limpiar_texto(texto):
 
 
 def generar_username(nombres, apellidos):
-
     primer_nombre = limpiar_texto(nombres.split()[0]) if nombres else ""
 
-    primer_apellido = limpiar_texto(apellidos.split()[0]) if apellidos else ""
+    apellidos_lista = apellidos.split() if apellidos else []
 
-    base = f"{primer_nombre[:1]}{primer_apellido}"
+    primer_apellido = (
+        limpiar_texto(apellidos_lista[0]) if len(apellidos_lista) > 0 else ""
+    )
+
+    inicial_segundo_apellido = (
+        limpiar_texto(apellidos_lista[1])[0] if len(apellidos_lista) > 1 else ""
+    )
+
+    base = f"{primer_nombre[:1]}{primer_apellido}{inicial_segundo_apellido}"
 
     username = base
     contador = 1
