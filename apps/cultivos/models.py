@@ -86,7 +86,7 @@ class Especificacion(models.Model):
     radiacion_max = models.FloatField()
 
     def __str__(self):
-        return f"Especificacion para cultivo {self.cultivo.nombre}"
+        return f"Especificacion de {self.cultivo.nombre}"
 
 
 class AmenazaCultivo(models.Model):
