@@ -3,17 +3,32 @@ import {
     Routes,
     Route
 } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AdminDashboard from './pages/AdminDashboard';
 import Profile from './pages/Profile';
 import Home from './pages/Home';
+import LoadingScreen from './components/LoadingScreen';
 
 import PrivateRoute from './routes/PrivateRoute';
 
 function App() {
+    const [appReady, setAppReady] = useState(false);
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setAppReady(true);
+        }, 600);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (!appReady) {
+        return <LoadingScreen />;
+    }
     return (
         <BrowserRouter>
 
@@ -37,7 +52,7 @@ function App() {
                 <Route
                     path="/AdminDashboard"
                     element={
-                        <PrivateRoute>
+                        <PrivateRoute adminOnly>
                             <AdminDashboard />
                         </PrivateRoute>
                     }

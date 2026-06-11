@@ -12,6 +12,7 @@
 
 /* 3. Components (Elementos UI reutilizables) */
 @import './styles/components/buttons.css';
+@import './styles/components/loading-screen.css';
 @import './styles/components/forms.css';
 @import './styles/components/cards.css';
 @import './styles/components/badges.css';

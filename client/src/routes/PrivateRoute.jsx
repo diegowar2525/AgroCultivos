@@ -1,18 +1,24 @@
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import LoadingScreen from '../components/LoadingScreen';
 
-export default function PrivateRoute({ children }) {
-
+export default function PrivateRoute({
+    children,
+    adminOnly = false
+}) {
     const {
         isAuthenticated,
-        loading
+        user
     } = useAuth();
 
-    if (loading) {
-        return <div>Cargando...</div>;
+
+    if (!isAuthenticated) {
+        return <Navigate to="/login" replace />;
     }
 
-    return isAuthenticated
-        ? children
-        : <Navigate to="/login" />;
+    if (adminOnly && !user?.is_staff) {
+        return <Navigate to="/" replace />;
+    }
+
+    return children;
 }

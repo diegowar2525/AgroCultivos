@@ -1,7 +1,4 @@
-// src/pages/AdminDashboard.jsx
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
 import CrudView from '../components/CrudView';
 
@@ -17,20 +14,8 @@ const modelsConfig = {
 };
 
 const AdminDashboard = () => {
-    // 1. Traemos al usuario actual del contexto
-    const { user, loading } = useAuth(); 
+
     const [activeModel, setActiveModel] = useState('Cultivo');
-
-    // 2. Si el contexto aún está cargando los datos del token, mostramos algo temporal
-    if (loading) {
-        return <div className="app-container"><p>Cargando panel...</p></div>;
-    }
-
-    // 3. LA VALIDACIÓN: Si no hay usuario, o si lo hay pero NO es staff, lo sacamos de aquí
-    if (!user || !user.is_staff) {
-        // Redirigimos al inicio. 'replace' borra el historial para que no puedan volver atrás
-        return <Navigate to="/" replace />; 
-    }
 
     return (
         <div className="app-container">
