@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import (
     Cultivo,
     Categoria,
-    Requerimiento,
+    Especificacion,
     SeguimientoCultivo,
     Amenaza,
     TipoAmenaza,
@@ -26,9 +26,9 @@ class CategoriaSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class RequerimientoSerializer(serializers.ModelSerializer):
+class EspecificacionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Requerimiento
+        model = Especificacion
         fields = "__all__"
 
 

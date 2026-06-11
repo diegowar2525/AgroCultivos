@@ -6,11 +6,10 @@ from rest_framework import status
 from apps.agroclima.models import CondicionClimatica
 from apps.usuarios.models import Usuario
 
-from .models import Consulta, ResultadoConsulta, TipoConsulta
+from .models import Consulta, ResultadoConsulta
 from .serializers import (
     ConsultaSerializer,
     ResultadoConsultaSerializer,
-    TipoConsultaSerializer,
 )
 from .services.crop_recommendation_service import recomendar_cultivos
 
@@ -58,8 +57,3 @@ class ResultadoConsultaView(APIView):
         ]
 
         return Response(data)
-
-
-class TipoConsultaViewSet(viewsets.ModelViewSet):
-    queryset = TipoConsulta.objects.all()
-    serializer_class = TipoConsultaSerializer

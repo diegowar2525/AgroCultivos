@@ -8,7 +8,7 @@ from .models import (
     CultivoTipoSuelo,
     CultivoUsuario,
     Estado,
-    Requerimiento,
+    Especificacion,
     SeguimientoCultivo,
     TipoAmenaza,
     TipoSuelo,
@@ -16,7 +16,7 @@ from .models import (
 from .serializers import (
     CultivoSerializer,
     CategoriaSerializer,
-    RequerimientoSerializer,
+    EspecificacionSerializer,
     SeguimientoCultivoSerializer,
     AmenazaSerializer,
     TipoAmenazaSerializer,
@@ -38,9 +38,9 @@ class CultivoViewSet(viewsets.ModelViewSet):
     serializer_class = CultivoSerializer
 
 
-class RequerimientoViewSet(viewsets.ModelViewSet):
-    queryset = Requerimiento.objects.all()
-    serializer_class = RequerimientoSerializer
+class EspecificacionViewSet(viewsets.ModelViewSet):
+    queryset = Especificacion.objects.all()
+    serializer_class = EspecificacionSerializer
 
 
 class SeguimientoCultivoViewSet(viewsets.ModelViewSet):

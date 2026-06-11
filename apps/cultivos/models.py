@@ -32,7 +32,39 @@ class Estado(models.Model):
         return self.nombre
 
 
-class Requerimiento(models.Model):
+class Amenaza(models.Model):
+    tipo_amenaza = models.ForeignKey(TipoAmenaza, on_delete=models.CASCADE)
+
+    nombre = models.CharField(max_length=100)
+
+    descripcion = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.nombre
+
+
+class Cultivo(models.Model):
+    categoria = models.ForeignKey(
+        Categoria, on_delete=models.CASCADE, related_name="cultivos"
+    )
+
+    nombre = models.CharField(max_length=100)
+
+    descripcion = models.TextField()
+
+    imagen = models.ImageField(upload_to="cultivos/", blank=True, null=True)
+
+    tiempo_cosecha = models.PositiveIntegerField(help_text="Días")
+
+    activo = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.nombre
+
+
+class Especificacion(models.Model):
+    cultivo = models.ForeignKey(Cultivo, on_delete=models.CASCADE)
+
     altitud_min = models.FloatField()
     altitud_max = models.FloatField()
 
@@ -54,39 +86,7 @@ class Requerimiento(models.Model):
     radiacion_max = models.FloatField()
 
     def __str__(self):
-        return f"Requerimiento {self.pk}"
-
-
-class Amenaza(models.Model):
-    tipo_amenaza = models.ForeignKey(TipoAmenaza, on_delete=models.CASCADE)
-
-    nombre = models.CharField(max_length=100)
-
-    descripcion = models.TextField(blank=True)
-
-    def __str__(self):
-        return self.nombre
-
-
-class Cultivo(models.Model):
-    categoria = models.ForeignKey(
-        Categoria, on_delete=models.CASCADE, related_name="cultivos"
-    )
-
-    requerimiento = models.OneToOneField(Requerimiento, on_delete=models.CASCADE)
-
-    nombre = models.CharField(max_length=100)
-
-    descripcion = models.TextField()
-
-    imagen = models.ImageField(upload_to="cultivos/", blank=True, null=True)
-
-    tiempo_cosecha = models.PositiveIntegerField(help_text="Días")
-
-    activo = models.BooleanField(default=True)
-
-    def __str__(self):
-        return self.nombre
+        return f"Especificacion para cultivo {self.cultivo.nombre}"
 
 
 class AmenazaCultivo(models.Model):

@@ -2,7 +2,7 @@ from rest_framework.routers import DefaultRouter
 from .views import (
     CultivoViewSet,
     CategoriaViewSet,
-    RequerimientoViewSet,
+    EspecificacionViewSet,
     SeguimientoCultivoViewSet,
     AmenazaViewSet,
     TipoAmenazaViewSet,
@@ -19,7 +19,7 @@ router.register("cultivos", CultivoViewSet)
 
 router.register("categorias", CategoriaViewSet)
 
-router.register("requerimientos", RequerimientoViewSet)
+router.register("especificaciones", EspecificacionViewSet)
 
 router.register("seguimientos", SeguimientoCultivoViewSet)
 

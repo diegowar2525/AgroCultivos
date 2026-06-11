@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (
     Categoria,
-    Requerimiento,
+    Especificacion,
     Cultivo,
     Estado,
     CultivoUsuario,
@@ -15,7 +15,7 @@ from .models import (
 
 # Register your models here.
 admin.site.register(Categoria)
-admin.site.register(Requerimiento)
+admin.site.register(Especificacion)
 admin.site.register(Cultivo)
 admin.site.register(Estado)
 admin.site.register(CultivoUsuario)

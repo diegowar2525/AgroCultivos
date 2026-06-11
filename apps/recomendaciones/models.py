@@ -1,23 +1,16 @@
 from django.db import models
 from django.conf import settings
 
-from apps.agroclima.models import Ubicacion
+from apps.agroclima.models import CondicionClimatica
 from apps.cultivos.models import Cultivo
-
-
-class TipoConsulta(models.Model):
-    nombre = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.nombre
 
 
 class Consulta(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-    ubicacion = models.ForeignKey(Ubicacion, on_delete=models.CASCADE)
-
-    tipo_consulta = models.ForeignKey(TipoConsulta, on_delete=models.PROTECT)
+    condicion_climatica = models.ForeignKey(
+        CondicionClimatica, on_delete=models.CASCADE
+    )
 
     observaciones = models.TextField(blank=True)
 

@@ -5,14 +5,12 @@ from .views import (
     ConsultaViewSet,
     ResultadoConsultaView,
     ResultadoConsultaViewSet,
-    TipoConsultaViewSet,
 )
 
 router = DefaultRouter()
 
 router.register("consultas", ConsultaViewSet)
 router.register("resultados", ResultadoConsultaViewSet)
-router.register("tipo-consultas", TipoConsultaViewSet)
 
 urlpatterns = router.urls + [
     path(
