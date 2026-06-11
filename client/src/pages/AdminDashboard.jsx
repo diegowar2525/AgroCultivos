@@ -1,6 +1,5 @@
 // src/pages/AdminDashboard.jsx
 import React, { useState } from 'react';
-import '../assets/css/dashboard.css';
 import Navbar from '../components/Navbar';
 import CrudView from '../components/CrudView';
 

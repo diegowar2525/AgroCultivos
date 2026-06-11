@@ -1,5 +1,3 @@
-import '../assets/css/auth.css';
-
 export default function AuthLayout({
     children,
     subtitle

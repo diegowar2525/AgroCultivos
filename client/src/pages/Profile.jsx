@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import { useAuth } from '../contexts/AuthContext';
-import '../App.css';
 import { toast } from 'react-toastify';
 
 export default function Profile() {

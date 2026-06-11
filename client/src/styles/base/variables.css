@@ -1,0 +1,9 @@
+:root {
+    --bg-dark: #0d1f0f;
+    --text-light: #f0f7f0;
+    --green-main: #22c55e;
+    --green-hover: #4ade80;
+    --green-light: #86efac;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
