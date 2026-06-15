@@ -4,10 +4,13 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import viewsets
+from rest_framework.permissions import IsAdminUser
 
-from .serializers import RegistroSerializer, LoginSerializer, PerfilSerializer
+from .serializers import RegistroSerializer, LoginSerializer, PerfilSerializer, UsuarioAdminSerializer
 from .services.auth_service import autenticar_usuario
 from .services.user_service import crear_usuario
+from .models import Usuario
 
 
 class RegistroView(APIView):
@@ -55,9 +58,7 @@ class LoginView(APIView):
         return Response({"token": token.key, "usuario": usuario.username})
 
 
-
 class PerfilView(APIView):
-
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
@@ -68,13 +69,16 @@ class PerfilView(APIView):
 
     def put(self, request):
 
-        serializer = PerfilSerializer(
-            request.user,
-            data=request.data
-        )
+        serializer = PerfilSerializer(request.user, data=request.data)
 
         serializer.is_valid(raise_exception=True)
 
         serializer.save()
 
         return Response(serializer.data)
+
+
+class UsuarioAdminViewSet(viewsets.ModelViewSet):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioAdminSerializer
+    permission_classes = [IsAdminUser]

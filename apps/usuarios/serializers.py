@@ -71,3 +71,21 @@ class PerfilSerializer(UsuarioBaseSerializer):
             "profesion",
             "is_staff",
         )
+
+
+class UsuarioAdminSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = (
+            "id",
+            "username",
+            "cedula",
+            "first_name",
+            "last_name",
+            "email",
+            "genero",
+            "fecha_nacimiento",
+            "profesion",
+            "is_staff",
+            'is_active'
+        )

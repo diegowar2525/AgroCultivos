@@ -79,9 +79,6 @@ class Especificacion(models.Model):
     temperatura_min = models.FloatField()
     temperatura_max = models.FloatField()
 
-    ph_min = models.FloatField()
-    ph_max = models.FloatField()
-
     radiacion_min = models.FloatField()
     radiacion_max = models.FloatField()
 
