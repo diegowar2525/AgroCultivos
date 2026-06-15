@@ -1,9 +1,9 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import Features from '../components/Features';
-import ProjectDetails from '../components/ProjectDetails';
-import Footer from '../components/Footer';
+import Hero from '../components/Landing/Hero';
+import Features from '../components/Landing/Features';
+import ProjectDetails from '../components/Landing/ProjectDetails';
+import Footer from '../components/Landing/Footer';
 
 export default function Home() {
     return (

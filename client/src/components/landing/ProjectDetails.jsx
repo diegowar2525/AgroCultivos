@@ -1,5 +1,5 @@
 import React from 'react';
-import shortCycleCrops from '../assets/short-cycle-crops.jpg';
+import shortCycleCrops from '../../assets/short-cycle-crops.jpg';
 
 const ProjectDetails = () => {
     return (
