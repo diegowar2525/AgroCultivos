@@ -40,6 +40,88 @@ const modelsConfig = {
         ]
     },
 
+    Especificacion: {
+        title: 'Especificaciones',
+        endpoint: '/api/cultivos/especificaciones/',
+
+        columns: [
+            { key: 'id', label: 'ID' },
+            { key: 'cultivo', label: 'Cultivo' },
+            { key: 'altitud_min', label: 'Altitud mínima (msnm)' },
+            { key: 'altitud_max', label: 'Altitud máxima (msnm)' },
+            { key: 'horas_sol', label: 'Horas de sol' }
+        ],
+
+        fields: [
+            {
+                name: 'cultivo',
+                label: 'Cultivo',
+                type: 'select',
+                endpoint: '/api/cultivos/cultivos/'
+            },
+
+            {
+                name: 'altitud_min',
+                label: 'Altitud mínima (msnm)',
+                type: 'number'
+            },
+            {
+                name: 'altitud_max',
+                label: 'Altitud máxima (msnm)',
+                type: 'number'
+            },
+            {
+                name: 'horas_sol',
+                label: 'Horas de sol',
+                type: 'number'
+            },
+
+            {
+                name: 'humedad_min',
+                label: 'Humedad mínima (%)',
+                type: 'number'
+            },
+            {
+                name: 'humedad_max',
+                label: 'Humedad máxima (%)',
+                type: 'number'
+            },
+
+            {
+                name: 'precipitacion_min',
+                label: 'Precipitación mínima (mm/año)',
+                type: 'number'
+            },
+            {
+                name: 'precipitacion_max',
+                label: 'Precipitación máxima (mm/año)',
+                type: 'number'
+            },
+
+            {
+                name: 'temperatura_min',
+                label: 'Temperatura mínima (°C)',
+                type: 'number'
+            },
+            {
+                name: 'temperatura_max',
+                label: 'Temperatura máxima (°C)',
+                type: 'number'
+            },
+
+            {
+                name: 'radiacion_min',
+                label: 'Radiación mínima (MJ/m²/día)',
+                type: 'number'
+            },
+            {
+                name: 'radiacion_max',
+                label: 'Radiación máxima (MJ/m²/día)',
+                type: 'number'
+            }
+        ]
+    },
+
     Categoria: {
         title: 'Categorías',
         endpoint: '/api/cultivos/categorias/',
