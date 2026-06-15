@@ -4,6 +4,7 @@
 @import './styles/base/variables.css';
 @import './styles/base/reset.css';
 @import './styles/base/animations.css';
+@import './styles/base/alerts.css';
 
 /* 2. Layout (Estructuras contenedoras principales) */
 @import './styles/layout/app-layout.css';

@@ -1,17 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import CrudView from '../components/CrudView';
-
-const modelsConfig = {
-    Cultivo: { title: 'Cultivos', columns: ['id', 'nombre', 'nombre_cientifico', 'temporada'] },
-    Categoria: { title: 'Categorías', columns: ['id', 'nombre', 'descripcion'] },
-    Requerimiento: { title: 'Requerimientos', columns: ['id', 'cultivo_id', 'agua_mm', 'luz_horas'] },
-    SeguimientoCultivo: { title: 'Seguimientos', columns: ['id', 'cultivo_id', 'usuario_id', 'fecha_registro'] },
-    Amenaza: { title: 'Amenazas', columns: ['id', 'nombre', 'tipo_amenaza_id', 'severidad'] },
-    TipoAmenaza: { title: 'Tipos de Amenaza', columns: ['id', 'nombre'] },
-    TipoSuelo: { title: 'Tipos de Suelo', columns: ['id', 'nombre', 'ph_ideal'] },
-    Usuario: { title: 'Usuarios', columns: ['id', 'username', 'email', 'is_staff'] }
-};
+import CrudView from '../components/AdminCrudView';
+import modelsConfig from '../config/modelsConfig';
 
 const AdminDashboard = () => {
 
