@@ -1,10 +1,10 @@
 import React from 'react';
-import shortCycleCrops from '../../assets/short-cycle-crops.jpg';
+import shortCycleCrops from '@/assets/short-cycle-crops.jpg';
 
 const ProjectDetails = () => {
     return (
         <section className="details-section">
-            <div className="image-frame">
+            <div className="image-frame" style={{ animation: 'float 6s ease-in-out infinite' }}>
                 <div className="image-placeholder" style={{ aspectRatio: '1/1' }}>
                     <img src={shortCycleCrops} alt="SIGRA Dashboard Preview" />
                 </div>

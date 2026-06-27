@@ -1,8 +1,9 @@
+import { useCrud } from '@/hooks/useCrud';
+import { toast } from 'react-toastify';
 import CrudForm from './CrudForm';
 import CrudTable from './CrudTable';
-import { useCrud } from '../../hooks/useCrud';
-import DeleteConfirmation from '../DeleteConfirmation';
-import { toast } from 'react-toastify';
+
+import DeleteConfirmation from '@/components/common/DeleteConfirmation';
 
 const CrudView = ({ modelName, config }) => {
 

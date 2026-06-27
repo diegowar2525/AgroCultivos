@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 export default function Navbar() {
     const { user, logout } = useAuth();
@@ -8,7 +8,6 @@ export default function Navbar() {
         <nav className="navbar">
             <div className="navbar-container">
 
-                {/* Logo SIGRA */}
                 <div className="navbar-logo">
                     <div className="logo-icon">
                         🌱
@@ -21,7 +20,6 @@ export default function Navbar() {
                     </span>
                 </div>
 
-                {/* Links de Navegación */}
                 <div className="navbar-links">
                     <NavLink
                         to="/"
@@ -32,27 +30,34 @@ export default function Navbar() {
                         Inicio
                     </NavLink>
 
-                    {/* Renderizado Condicional: Solo muestra el panel si el usuario es STAFF */}
                     {user?.is_staff && (
                         <NavLink
-                            to="/AdminDashboard"
+                            to="/dashboard"
                             className={({ isActive }) =>
                                 isActive ? 'nav-item active' : 'nav-item'
                             }
                         >
-                            Panel de Administración
+                            Resumen del sistema
+                        </NavLink>
+                    )}
+                    {user?.is_staff && (
+                        <NavLink
+                            to="/dashboard/panel"
+                            className={({ isActive }) =>
+                                isActive ? 'nav-item active' : 'nav-item'
+                            }
+                        >
+                            Panel de administración
                         </NavLink>
                     )}
                 </div>
 
-                {/* Sección derecha de usuario */}
                 <div className="navbar-user-section">
 
                     {user ? (
-                        /* === VISTA PARA USUARIOS LOGUEADOS === */
                         <>
                             <NavLink
-                                to="/Perfil"
+                                to="/profile"
                                 className={({ isActive }) =>
                                     isActive ? 'user-badge active' : 'user-badge'
                                 }
@@ -73,7 +78,6 @@ export default function Navbar() {
                             </button>
                         </>
                     ) : (
-                        /* === VISTA PARA VISITANTES (NO LOGUEADOS) === */
                         <>
                             <NavLink
                                 to="/login"
@@ -84,7 +88,6 @@ export default function Navbar() {
                                 Iniciar Sesión
                             </NavLink>
 
-                            {/* Reutilizamos el estilo de user-badge para que el botón de registro destaque sutilmente */}
                             <NavLink
                                 to="/register"
                                 className="user-badge"

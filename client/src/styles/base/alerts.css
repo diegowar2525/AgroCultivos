@@ -1,37 +1,40 @@
-/* Estilos para la confirmación de borrado en el Toast */
 .toast-confirm-container {
-    padding: 5px;
+    padding: 6px;
 }
 
 .toast-confirm-title {
-    margin: 0 0 10px 0;
+    margin: 0 0 12px 0;
+    font-size: 0.95rem;
     font-weight: bold;
     color: #fff;
+    line-height: 1.4;
 }
 
 .toast-confirm-actions {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
+    align-items: center;
 }
 
-/* Modificadores específicos para los botones dentro del toast */
-.btn-toast-cancel {
-    padding: 4px 10px;
-    font-size: 0.85rem;
-    background-color: rgba(255, 255, 255, 0.15);
-    border: none;
-    color: #fff;
-    cursor: pointer;
+
+.toast-error-list-container {
+    text-align: left;
 }
 
-.btn-toast-delete {
-    padding: 4px 10px;
+.toast-error-list-title {
+    margin: 0 0 6px 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.toast-error-list {
+    margin: 0;
+    padding-left: 18px;
     font-size: 0.85rem;
-    width: auto;
-    margin-top: 0;
-    background-color: #ff4d4d;
-    border: none;
-    color: #fff;
-    cursor: pointer;
+    list-style-type: disc;
+}
+
+.toast-error-list li {
+    margin-bottom: 4px;
 }

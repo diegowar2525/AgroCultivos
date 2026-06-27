@@ -6,4 +6,10 @@
     --green-light: #86efac;
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
+    --background: #0b1f0e;
+    --card: #132a17;
+    --card-light: #1a3820;
+    --green: #6fc844;
+    --text: #f0f5ee;
+    --text-muted: #8aad7a;
 }

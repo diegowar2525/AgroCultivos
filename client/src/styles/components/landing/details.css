@@ -1,0 +1,36 @@
+.details-section {
+    padding: 4rem 1.5rem;
+    max-width: 72rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .details-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+.details-list {
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+.details-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+}
+
+.details-list li::before {
+    content: "✓";
+    color: var(--green-hover);
+    font-weight: bold;
+}

@@ -11,8 +11,9 @@ import Register from './pages/Register';
 import AdminDashboard from './pages/AdminDashboard';
 import Profile from './pages/Profile';
 import Home from './pages/Home';
-import LoadingScreen from './components/LoadingScreen';
-
+import LoadingScreen from './components/common/LoadingScreen';
+import DashboardView from "./components/dashboard/overview/DashboardView";
+import CrudPanel from "./components/dashboard/crud/CrudPanel";
 import PrivateRoute from './routes/PrivateRoute';
 
 function App() {
@@ -50,16 +51,26 @@ function App() {
                 />
 
                 <Route
-                    path="/AdminDashboard"
+                    path="/dashboard"
                     element={
                         <PrivateRoute adminOnly>
                             <AdminDashboard />
                         </PrivateRoute>
                     }
-                />
+                >
+                    <Route
+                        index
+                        element={<DashboardView />}
+                    />
+
+                    <Route
+                        path="panel"
+                        element={<CrudPanel />}
+                    />
+                </Route>
 
                 <Route
-                    path="/Perfil"
+                    path="/profile"
                     element={
                         <PrivateRoute>
                             <Profile />
