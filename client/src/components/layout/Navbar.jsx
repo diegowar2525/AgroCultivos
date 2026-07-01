@@ -30,6 +30,17 @@ export default function Navbar() {
                         Inicio
                     </NavLink>
 
+                    {user && (
+                        <NavLink
+                            to="/recommendations"
+                            className={({ isActive }) =>
+                                isActive ? 'nav-item active' : 'nav-item'
+                            }
+                        >
+                            Recomendaciones
+                        </NavLink>
+                    )}
+
                     {user?.is_staff && (
                         <NavLink
                             to="/dashboard"

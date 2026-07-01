@@ -15,6 +15,7 @@ import LoadingScreen from './components/common/LoadingScreen';
 import DashboardView from "./components/dashboard/overview/DashboardView";
 import CrudPanel from "./components/dashboard/crud/CrudPanel";
 import PrivateRoute from './routes/PrivateRoute';
+import Recomendaciones from './pages/Recommendation';
 
 function App() {
     const [appReady, setAppReady] = useState(false);
@@ -74,6 +75,15 @@ function App() {
                     element={
                         <PrivateRoute>
                             <Profile />
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/recommendations"
+                    element={
+                        <PrivateRoute>
+                            <Recomendaciones />
                         </PrivateRoute>
                     }
                 />
