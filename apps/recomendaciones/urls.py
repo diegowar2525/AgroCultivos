@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 
 from .views import (
     ConsultaViewSet,
-    ResultadoConsultaView,
+    RecomendarGeoView,
     ResultadoConsultaViewSet,
 )
 
@@ -13,9 +13,5 @@ router.register("consultas", ConsultaViewSet)
 router.register("resultados", ResultadoConsultaViewSet)
 
 urlpatterns = router.urls + [
-    path(
-        "consultar/",
-        ResultadoConsultaView.as_view(),
-        name="resultados-consultas",
-    ),
+    path("recomendar-geo/", RecomendarGeoView.as_view(), name="recomendar-geo"),
 ]

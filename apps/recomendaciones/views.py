@@ -2,16 +2,15 @@ from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
-from apps.agroclima.models import CondicionClimatica
-from apps.usuarios.models import Usuario
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Consulta, ResultadoConsulta
 from .serializers import (
     ConsultaSerializer,
     ResultadoConsultaSerializer,
 )
-from .services.crop_recommendation_service import recomendar_cultivos
+
+from .services.recommendation_service import generar_recomendacion_geo
 
 
 class ConsultaViewSet(viewsets.ModelViewSet):
@@ -24,36 +23,48 @@ class ResultadoConsultaViewSet(viewsets.ModelViewSet):
     serializer_class = ResultadoConsultaSerializer
 
 
-class ResultadoConsultaView(APIView):
+class RecomendarGeoView(APIView):
+    """
+    POST /api/recomendaciones/recomendar-geo/
+
+    Body:
+    {
+        "latitud": -2.1333,
+        "longitud": -79.5833,
+        "top_n": 10,
+        "espacio": "Ambos",
+        "ciclo": "corto"
+    }
+    """
+
+    permission_classes = [IsAuthenticated]
+
     def post(self, request):
+        try:
+            respuesta = generar_recomendacion_geo(
+                usuario=request.user,
+                latitud=request.data.get("latitud"),
+                longitud=request.data.get("longitud"),
+                top_n=request.data.get("top_n", 10),
+                espacio=request.data.get("espacio"),
+                ciclo=request.data.get("ciclo"),
+            )
+            return Response(respuesta, status=status.HTTP_200_OK)
 
-        ubicacion_id = request.data.get("ubicacion_id")
-
-        if not ubicacion_id:
+        except ValueError as error:
             return Response(
-                {"error": "ubicacion_id es requerido"},
+                {"error": str(error)},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        usuario = Usuario.objects.first()
+        except LookupError as error:
+            return Response(
+                {"error": str(error)},
+                status=status.HTTP_404_NOT_FOUND,
+            )
 
-        consulta = Consulta.objects.create(usuario=usuario, ubicacion_id=ubicacion_id)
-
-        condicion = CondicionClimatica.objects.filter(ubicacion_id=ubicacion_id).latest(
-            "fecha_registro"
-        )
-
-        resultados = recomendar_cultivos(consulta, condicion)
-
-        data = [
-            {
-                "cultivo": r["resultado"].cultivo.nombre,
-                "score": r["resultado"].puntaje_compatibilidad,
-                "nivel": r["nivel"],
-                "justificacion": r["resultado"].justificacion,
-                "recomendado": r["resultado"].recomendado,
-            }
-            for r in resultados
-        ]
-
-        return Response(data)
+        except RuntimeError as error:
+            return Response(
+                {"error": str(error)},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
+            )
