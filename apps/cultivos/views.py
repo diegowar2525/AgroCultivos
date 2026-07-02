@@ -1,0 +1,114 @@
+from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+
+from .models import (
+    Amenaza,
+    AmenazaCultivo,
+    Cultivo,
+    Categoria,
+    CultivoTipoSuelo,
+    CultivoUsuario,
+    Estado,
+    Especificacion,
+    SeguimientoCultivo,
+    TipoAmenaza,
+    TipoSuelo,
+)
+from .serializers import (
+    CultivoSerializer,
+    CategoriaSerializer,
+    EspecificacionSerializer,
+    SeguimientoCultivoSerializer,
+    AmenazaSerializer,
+    TipoAmenazaSerializer,
+    EstadoSerializer,
+    CultivoUsuarioSerializer,
+    CultivoTipoSueloSerializer,
+    TipoSueloSerializer,
+    AmenazaCultivoSerializer,
+)
+
+
+class CategoriaViewSet(viewsets.ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+
+
+class CultivoViewSet(viewsets.ModelViewSet):
+    queryset = Cultivo.objects.all()
+    serializer_class = CultivoSerializer
+
+
+class EspecificacionViewSet(viewsets.ModelViewSet):
+    queryset = Especificacion.objects.all()
+    serializer_class = EspecificacionSerializer
+
+
+class SeguimientoCultivoViewSet(viewsets.ModelViewSet):
+    queryset = SeguimientoCultivo.objects.all()
+    serializer_class = SeguimientoCultivoSerializer
+
+
+class AmenazaViewSet(viewsets.ModelViewSet):
+    queryset = Amenaza.objects.all()
+    serializer_class = AmenazaSerializer
+
+
+class TipoAmenazaViewSet(viewsets.ModelViewSet):
+    queryset = TipoAmenaza.objects.all()
+    serializer_class = TipoAmenazaSerializer
+
+
+class EstadoViewSet(viewsets.ModelViewSet):
+    queryset = Estado.objects.all()
+    serializer_class = EstadoSerializer
+
+
+class CultivoUsuarioViewSet(viewsets.ModelViewSet):
+    queryset = CultivoUsuario.objects.all()  # usado por el router para el basename; el filtro real está en get_queryset()
+    serializer_class = CultivoUsuarioSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        # Cada usuario solo debe ver sus propios cultivos, no los de todos.
+        queryset = CultivoUsuario.objects.filter(usuario=self.request.user)
+
+        iniciado = self.request.query_params.get("iniciado")
+        if iniciado is not None:
+            queryset = queryset.filter(iniciado=iniciado.lower() == "true")
+
+        return queryset
+
+    def perform_create(self, serializer):
+        # Si el cliente no mandó un estado (ej. al guardar una recomendación
+        # desde /recommendations), se le asigna un estado inicial por defecto.
+        if "estado" not in serializer.validated_data:
+            estado_inicial, _ = Estado.objects.get_or_create(nombre="Sembrado")
+            serializer.save(usuario=self.request.user, estado=estado_inicial)
+        else:
+            serializer.save(usuario=self.request.user)
+
+    @action(detail=True, methods=["post"])
+    def iniciar(self, request, pk=None):
+        """POST /api/cultivos/cultivo-usuario/{id}/iniciar/ — pasa el cultivo a seguimiento activo."""
+        cultivo_usuario = self.get_object()
+        cultivo_usuario.iniciado = True
+        cultivo_usuario.save()
+        return Response(self.get_serializer(cultivo_usuario).data)
+
+
+class CultivoTipoSueloViewSet(viewsets.ModelViewSet):
+    queryset = CultivoTipoSuelo.objects.all()
+    serializer_class = CultivoTipoSueloSerializer
+
+
+class TipoSueloViewSet(viewsets.ModelViewSet):
+    queryset = TipoSuelo.objects.all()
+    serializer_class = TipoSueloSerializer
+
+
+class AmenazaCultivoViewSet(viewsets.ModelViewSet):
+    queryset = AmenazaCultivo.objects.all()
+    serializer_class = AmenazaCultivoSerializer
