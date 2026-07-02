@@ -1,0 +1,16 @@
+Hola {{ usuario.first_name }},
+
+¡Gracias por registrarte en SIGRA, tu sistema inteligente de recomendación agroclimática!
+
+Aquí están tus credenciales de acceso:
+
+  Usuario:      {{ usuario.username }}
+  Contraseña:   {{ password_plano }}
+  Cédula:       {{ usuario.cedula }}
+
+Puedes iniciar sesión en: {{ login_url }}
+
+Recuerda mantener tus credenciales seguras. No compartas tu contraseña con nadie.
+
+El equipo de SIGRA
+Universidad Estatal de Milagro — UNEMI

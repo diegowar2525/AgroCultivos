@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background-color:#0b1f0e;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#0b1f0e;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="520" cellpadding="0" cellspacing="0" style="background-color:#132a17;border-radius:16px;border:1px solid rgba(111,200,68,0.25);overflow:hidden;max-width:520px;width:100%;">
+
+          <!-- Header -->
+          <tr>
+            <td style="background:linear-gradient(135deg,#132a17,#1a3820);padding:30px 36px;text-align:center;border-bottom:1px solid rgba(111,200,68,0.2);">
+              <span style="color:#6fc844;font-size:26px;font-weight:700;letter-spacing:2px;">🌱 SIGRA</span>
+              <p style="color:#8aad7a;font-size:12px;margin:6px 0 0;letter-spacing:1px;">SISTEMA INTELIGENTE DE RECOMENDACIÓN AGROCLIMÁTICA</p>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding:32px 36px;">
+              <h2 style="color:#f0f5ee;font-size:20px;font-weight:600;margin:0 0 8px;">Hola, {{ usuario.first_name }} 👋</h2>
+              <p style="color:#8aad7a;font-size:14px;margin:0 0 24px;line-height:1.6;">
+                Recibimos una solicitud para restablecer la contraseña de tu cuenta. Usa el siguiente código:
+              </p>
+
+              <!-- Código -->
+              <div style="background-color:#0b1f0e;border:2px solid rgba(111,200,68,0.4);border-radius:14px;padding:28px;text-align:center;margin-bottom:24px;">
+                <p style="color:#8aad7a;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin:0 0 12px;">Código de verificación</p>
+                <span style="color:#6fc844;font-size:42px;font-weight:700;letter-spacing:10px;font-family:monospace;">{{ codigo }}</span>
+                <p style="color:#8aad7a;font-size:12px;margin:14px 0 0;">⏱ Válido por <strong style="color:#fbbf24;">{{ minutos_vigencia }} minutos</strong></p>
+              </div>
+
+              <!-- Aviso -->
+              <div style="background-color:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:10px;padding:14px 18px;margin-bottom:20px;">
+                <p style="color:#fbbf24;font-size:13px;margin:0;line-height:1.6;">
+                  ⚠️ Si no solicitaste este cambio, ignora este correo. Tu contraseña no será modificada.
+                </p>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color:#0b1f0e;padding:18px 36px;text-align:center;border-top:1px solid rgba(111,200,68,0.15);">
+              <p style="color:#8aad7a;font-size:12px;margin:0;line-height:1.6;">
+                Universidad Estatal de Milagro — UNEMI<br>
+                Este correo fue enviado automáticamente. No responder.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
