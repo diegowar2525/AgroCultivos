@@ -1,0 +1,25 @@
+@import '../components/landing/badges.css';
+@import '../components/landing/cards.css';
+@import '../components/landing/details.css';
+@import '../components/landing/features.css';
+@import '../components/landing/footer.css';
+@import '../components/landing/hero.css';
+
+.home-page {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Línea divisoria en degradado entre secciones de la landing */
+.section-divider {
+    height: 3px;
+    width: 100%;
+}
+
+.section-divider--to-light {
+    background: linear-gradient(to right, var(--bg-dark), var(--green-main), var(--bg-dark));
+}
+
+.section-divider--to-dark {
+    background: linear-gradient(to right, #f7faf5, var(--green-main), var(--bg-dark));
+}
