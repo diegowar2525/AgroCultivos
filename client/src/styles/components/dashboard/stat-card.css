@@ -1,0 +1,65 @@
+.stat-card{
+
+    background:var(--card);
+
+    border-radius:14px;
+
+    padding:22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.stat-card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.stat-card-icon{
+
+    width:40px;
+
+    height:40px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:10px;
+
+    background:rgba(111,200,68,.12);
+
+}
+
+.stat-card-label{
+
+    color:var(--text-muted);
+
+}
+
+.stat-card-value{
+
+    color:var(--text);
+
+    font-size:2rem;
+
+}
+
+.stat-card-sub{
+
+    color:var(--green);
+
+    font-size:.8rem;
+
+}

@@ -1,0 +1,40 @@
+.toast-confirm-container {
+    padding: 6px;
+}
+
+.toast-confirm-title {
+    margin: 0 0 12px 0;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.4;
+}
+
+.toast-confirm-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.toast-error-list-container {
+    text-align: left;
+}
+
+.toast-error-list-title {
+    margin: 0 0 6px 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.toast-error-list {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 0.85rem;
+    list-style-type: disc;
+}
+
+.toast-error-list li {
+    margin-bottom: 4px;
+}
