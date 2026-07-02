@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* 1. Base (Variables, resets, animaciones) */
+@import './styles/base/variables.css';
+@import './styles/base/reset.css';
+@import './styles/base/animations.css';
+@import './styles/base/alerts.css';
+
+/* 2. Layout (Estructuras contenedoras principales) */
+@import './styles/layout/app-layout.css';
+@import './styles/layout/auth-layout.css';
+@import './styles/layout/dashboard-layout.css';
+
+/* 3. Components (Elementos UI reutilizables) */
+@import './styles/components/buttons.css';
+@import './styles/components/loading-screen.css';
+@import './styles/components/forms.css';
+@import './styles/components/table.css';
+@import './styles/components/navbar.css';
+@import './styles/components/mis-cultivos/mis-cultivos.css';
+
+/* 4. Pages (Estilos específicos de cada vista) */
+@import './styles/pages/home.css';
+@import './styles/pages/auth.css';
+@import './styles/pages/dashboard.css';
+@import './styles/pages/profile.css';
+
+
+
