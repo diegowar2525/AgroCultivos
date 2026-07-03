@@ -32,7 +32,7 @@ export function useMisCultivos() {
             setYaIniciadoIds((prev) => [...prev, cultivoUsuarioId]);
             setTimeout(() => {
                 setCultivos((prev) => prev.filter((c) => c.id !== cultivoUsuarioId));
-                navigate('/mis-cosechas');
+                navigate('/my-harvests');
             }, 800);
         } catch {
             toast.error('Error al iniciar el cultivo. Intenta de nuevo.');
