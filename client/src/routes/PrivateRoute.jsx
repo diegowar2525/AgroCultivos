@@ -4,13 +4,13 @@ import LoadingScreen from '../components/common/LoadingScreen';
 
 export default function PrivateRoute({
     children,
-    adminOnly = false
+    adminOnly = false,
+    userOnly = false
 }) {
     const {
         isAuthenticated,
         user
     } = useAuth();
-
 
     if (!isAuthenticated) {
         return <Navigate to="/login" replace />;
@@ -18,6 +18,10 @@ export default function PrivateRoute({
 
     if (adminOnly && !user?.is_staff) {
         return <Navigate to="/" replace />;
+    }
+
+    if (userOnly && user?.is_staff) {
+        return <Navigate to="/dashboard" replace />;
     }
 
     return children;
