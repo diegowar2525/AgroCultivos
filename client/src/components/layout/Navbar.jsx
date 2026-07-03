@@ -1,98 +1,90 @@
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
+const navClass = ({ isActive }) =>
+    isActive ? 'nav-item active' : 'nav-item';
+
+const userBadgeClass = ({ isActive }) =>
+    isActive ? 'user-badge active' : 'user-badge';
+
+const publicLinks = [
+    { to: '/', label: 'Inicio' },
+];
+
+const userLinks = [
+    { to: '/recommendations', label: 'Recomendaciones' },
+    { to: '/my-crops', label: 'Mis Cultivos' },
+    { to: '/my-harvests', label: 'Mis Cosechas' },
+];
+
+const adminLinks = [
+    { to: '/dashboard', label: 'Resumen del sistema' },
+    { to: '/dashboard/panel', label: 'Panel de administración' },
+];
+
 export default function Navbar() {
     const { user, logout } = useAuth();
+
+    const isAdmin = Boolean(user?.is_staff);
+    const visibleLinks = isAdmin ? adminLinks : user ? userLinks : [];
 
     return (
         <nav className="navbar">
             <div className="navbar-container">
 
-                <div className="navbar-logo">
+                <NavLink to="/" className="navbar-logo">
                     <div className="logo-icon">
                         🌱
                     </div>
+
                     <span className="logo-text">
                         SI
                         <span className="logo-text-green">
                             GRA
                         </span>
                     </span>
-                </div>
+                </NavLink>
 
                 <div className="navbar-links">
-                    <NavLink
-                        to="/"
-                        className={({ isActive }) =>
-                            isActive ? 'nav-item active' : 'nav-item'
-                        }
-                    >
-                        Inicio
-                    </NavLink>
+                    {publicLinks.map(({ to, label }) => (
+                        <NavLink
+                            key={to}
+                            to={to}
+                            className={navClass}
+                        >
+                            {label}
+                        </NavLink>
+                    ))}
 
-                    {user && (
+                    {visibleLinks.map(({ to, label }) => (
                         <NavLink
-                            to="/recommendations"
-                            className={({ isActive }) =>
-                                isActive ? 'nav-item active' : 'nav-item'
-                            }
+                            key={to}
+                            to={to}
+                            className={navClass}
                         >
-                            Recomendaciones
+                            {label}
                         </NavLink>
-                    )}
-                    
-                    {user && (
-                        <NavLink
-                            to="/mis-cultivos"
-                            className={({ isActive }) =>
-                                isActive ? 'nav-item active' : 'nav-item'
-                            }
-                        >
-                            Mis Cultivos
-                        </NavLink>
-                    )}
-
-                    {user?.is_staff && (
-                        <NavLink
-                            to="/dashboard"
-                            className={({ isActive }) =>
-                                isActive ? 'nav-item active' : 'nav-item'
-                            }
-                        >
-                            Resumen del sistema
-                        </NavLink>
-                    )}
-                    {user?.is_staff && (
-                        <NavLink
-                            to="/dashboard/panel"
-                            className={({ isActive }) =>
-                                isActive ? 'nav-item active' : 'nav-item'
-                            }
-                        >
-                            Panel de administración
-                        </NavLink>
-                    )}
+                    ))}
                 </div>
 
                 <div className="navbar-user-section">
-
                     {user ? (
                         <>
                             <NavLink
                                 to="/profile"
-                                className={({ isActive }) =>
-                                    isActive ? 'user-badge active' : 'user-badge'
-                                }
+                                className={userBadgeClass}
                             >
                                 <div className="user-avatar">
-                                    {user.first_name?.charAt(0) || 'U'}
+                                    {user.first_name?.charAt(0) || user.username?.charAt(0) || 'U'}
                                 </div>
+
                                 <span className="user-name">
                                     {user.username || 'Usuario'}
                                 </span>
                             </NavLink>
 
                             <button
+                                type="button"
                                 className="btn-logout"
                                 onClick={logout}
                             >
@@ -103,24 +95,21 @@ export default function Navbar() {
                         <>
                             <NavLink
                                 to="/login"
-                                className={({ isActive }) =>
-                                    isActive ? 'nav-item active' : 'nav-item'
-                                }
+                                className={navClass}
                             >
                                 Iniciar Sesión
                             </NavLink>
 
                             <NavLink
                                 to="/register"
-                                className="user-badge"
-                                style={{ backgroundColor: 'rgba(34, 197, 94, 0.1)', color: 'var(--green-hover)' }}
+                                className="user-badge user-badge--register"
                             >
                                 Registrarse
                             </NavLink>
                         </>
                     )}
-
                 </div>
+
             </div>
         </nav>
     );
