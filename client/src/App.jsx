@@ -15,8 +15,9 @@ import LoadingScreen from './components/common/LoadingScreen';
 import DashboardView from "./components/dashboard/overview/DashboardView";
 import CrudPanel from "./components/dashboard/crud/CrudPanel";
 import PrivateRoute from './routes/PrivateRoute';
-import Recomendaciones from './pages/Recommendation';
-import MisCultivos from './pages/MisCultivos';
+import Recomendaciones from './pages/Recommendations';
+import MisCultivos from './pages/MyCrops';
+import MisCosechas from './pages/MyHarvests';
 
 function App() {
     const [appReady, setAppReady] = useState(false);
@@ -81,22 +82,33 @@ function App() {
                 />
 
                 <Route
-                    path="/mis-cultivos"
+                    path="/recommendations"
                     element={
-                        <PrivateRoute>
+                        <PrivateRoute userOnly>
+                            <Recomendaciones />
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/my-crops"
+                    element={
+                        <PrivateRoute userOnly>
                             <MisCultivos />
                         </PrivateRoute>
                     }
                 />
 
                 <Route
-                    path="/recommendations"
+                    path="/my-harvests"
                     element={
-                        <PrivateRoute>
-                            <Recomendaciones />
+                        <PrivateRoute userOnly>
+                            <MisCosechas />
                         </PrivateRoute>
                     }
                 />
+
+
 
             </Routes>
 
