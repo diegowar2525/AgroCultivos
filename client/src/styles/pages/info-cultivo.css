@@ -1,0 +1,281 @@
+.info-cultivo-page {
+    background-color: var(--bg-dark);
+    font-family: var(--font-main);
+    min-height: 100vh;
+}
+
+.info-cultivo-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 24px;
+}
+
+.info-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-family: var(--font-main);
+    margin-bottom: 22px;
+    padding: 0;
+}
+
+.info-cultivo-loading,
+.info-cultivo-error {
+    color: var(--text-muted);
+    padding: 40px 24px;
+}
+
+.info-cultivo-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+@media (max-width: 800px) {
+    .info-cultivo-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.info-cultivo-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ── Tarjeta genérica ── */
+.info-card {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(217, 198, 107, 0.2);
+    border-radius: 14px;
+    padding: 20px 22px;
+}
+
+.info-seccion-titulo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+}
+
+.info-seccion-titulo svg {
+    color: var(--green-main);
+}
+
+/* ── Imagen ── */
+.info-cultivo-imagen {
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.info-cultivo-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-cultivo-imagen-placeholder {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+/* ── Nombre / categoría ── */
+.info-cultivo-nombre {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 2px;
+}
+
+.info-cultivo-cientifico {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-style: italic;
+    margin: 0 0 10px;
+}
+
+.info-cultivo-categoria {
+    background-color: rgba(217, 198, 107, 0.1);
+    color: var(--green-main);
+    border: 1px solid rgba(217, 198, 107, 0.25);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+/* ── Descripción ── */
+.info-cultivo-descripcion {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* ── Fila de info (ícono + label + valor) ── */
+.info-fila-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-fila {
+    display: flex;
+    gap: 10px;
+}
+
+.info-fila-icon {
+    color: var(--green-main);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.info-fila-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.info-fila-label {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+}
+
+.info-fila-valor {
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.info-fila-detalle {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+/* ── Requerimientos climáticos ── */
+.clima-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 24px;
+}
+
+@media (max-width: 500px) {
+    .clima-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.clima-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(217, 198, 107, 0.08);
+}
+
+.clima-fila-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.clima-fila-valor {
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+/* ── Enfermedades: tags + detalle ── */
+.tags-enfermedades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-enfermedad {
+    background-color: var(--bg-dark);
+    border: 1px solid rgba(217, 198, 107, 0.25);
+    color: var(--text-muted);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: var(--font-main);
+    transition: all 0.15s;
+}
+
+.tag-enfermedad--activa {
+    background-color: rgba(217, 198, 107, 0.15);
+    border-color: var(--green-main);
+    color: var(--green-main);
+}
+
+.enfermedad-detalle {
+    background-color: var(--bg-dark);
+    border: 1px solid rgba(248, 113, 113, 0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+}
+
+.enfermedad-detalle-titulo {
+    color: #fca5a5;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.enfermedad-detalle-texto {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── Cuidados generales ── */
+.cuidados-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cuidado-item {
+    display: flex;
+    gap: 10px;
+}
+
+.cuidado-check {
+    color: var(--green-main);
+    flex-shrink: 0;
+    font-weight: 700;
+}
+
+.cuidado-item span:last-child {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+

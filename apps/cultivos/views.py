@@ -45,6 +45,13 @@ class EspecificacionViewSet(viewsets.ModelViewSet):
     queryset = Especificacion.objects.all()
     serializer_class = EspecificacionSerializer
 
+    def get_queryset(self):
+        queryset = Especificacion.objects.all()
+        cultivo_id = self.request.query_params.get("cultivo")
+        if cultivo_id is not None:
+            queryset = queryset.filter(cultivo_id=cultivo_id)
+        return queryset
+
 
 class SeguimientoCultivoViewSet(viewsets.ModelViewSet):
     queryset = SeguimientoCultivo.objects.all()

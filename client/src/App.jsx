@@ -18,6 +18,7 @@ import PrivateRoute from './routes/PrivateRoute';
 import Recomendaciones from './pages/Recommendations';
 import MisCultivos from './pages/MyCrops';
 import MisCosechas from './pages/MyHarvests';
+import InfoCultivo from './pages/InfoCultivo';
 
 function App() {
     const [appReady, setAppReady] = useState(false);
@@ -108,8 +109,14 @@ function App() {
                     }
                 />
 
-
-
+                <Route
+                    path="/info-cultivo/:id"
+                    element={
+                        <PrivateRoute>
+                            <InfoCultivo />
+                        </PrivateRoute>
+                    }
+                />
             </Routes>
 
         </BrowserRouter>

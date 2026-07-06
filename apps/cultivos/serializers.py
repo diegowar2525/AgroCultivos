@@ -15,6 +15,8 @@ from .models import (
 
 
 class CultivoSerializer(serializers.ModelSerializer):
+    categoria_nombre = serializers.CharField(source="categoria.nombre", read_only=True)
+
     class Meta:
         model = Cultivo
         fields = "__all__"
