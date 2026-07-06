@@ -22,7 +22,7 @@
 /* ── Tarjeta genérica reutilizada en todo el perfil ── */
 .profile-card {
     background-color: var(--bg-card);
-    border: 1px solid rgba(111, 200, 68, 0.3);
+    border: 1px solid rgba(217, 198, 107, 0.3);
     border-radius: 12px;
     padding: 20px;
 }
@@ -107,7 +107,7 @@
 }
 
 .profile-member-since {
-    border-top: 1px solid rgba(111, 200, 68, 0.15);
+    border-top: 1px solid rgba(217, 198, 107, 0.15);
     width: 100%;
     padding-top: 12px;
     text-align: center;
@@ -172,7 +172,7 @@
 }
 
 .profile-edit-btn {
-    border: 1px solid rgba(111, 200, 68, 0.4);
+    border: 1px solid rgba(217, 198, 107, 0.4);
     color: var(--text-primary);
     border-radius: 8px;
     background-color: transparent;
@@ -287,7 +287,7 @@
 
 .profile-back-btn {
     background-color: var(--bg-card);
-    border: 1px solid rgba(111, 200, 68, 0.3);
+    border: 1px solid rgba(217, 198, 107, 0.3);
     border-radius: 8px;
     color: var(--text-primary);
     width: 36px;
@@ -389,7 +389,7 @@
 
 .profile-cancel-btn {
     background-color: transparent;
-    border: 1px solid rgba(111, 200, 68, 0.3);
+    border: 1px solid rgba(217, 198, 107, 0.3);
     color: var(--text-primary);
     border-radius: 8px;
     display: flex;

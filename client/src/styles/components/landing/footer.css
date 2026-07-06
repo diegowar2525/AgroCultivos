@@ -1,5 +1,5 @@
 .site-footer {
-    background-color: #071409;
+    background-color: var(--bg-dark);
     border-top: 1px solid var(--border-main);
     padding: 20px 64px;
     display: flex;

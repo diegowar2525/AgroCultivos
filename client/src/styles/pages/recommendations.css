@@ -1,11 +1,11 @@
 .recommendations-page {
     --recommendations-bg: var(--color-bg, var(--bg-dark, #0b1f0e));
-    --recommendations-card: var(--color-surface, var(--card-dark, #132a17));
-    --recommendations-card-alt: var(--color-surface-alt, #1a3820);
-    --recommendations-green: var(--color-primary, var(--green-main, #6fc844));
-    --recommendations-green-soft: var(--color-primary-soft, rgba(111, 200, 68, 0.15));
-    --recommendations-border: var(--color-border, rgba(111, 200, 68, 0.2));
-    --recommendations-border-soft: var(--color-border-soft, rgba(111, 200, 68, 0.1));
+    --recommendations-card: var(--bg-card);
+    --recommendations-card-alt: var(--card-light);
+    --recommendations-green: var(--color-primary, var(--green-main, #d9c66b));
+    --recommendations-green-soft: var(--color-primary-soft, rgba(217, 198, 107, 0.15));
+    --recommendations-border: var(--color-border, rgba(217, 198, 107, 0.2));
+    --recommendations-border-soft: var(--color-border-soft, rgba(217, 198, 107, 0.1));
     --recommendations-text: var(--color-text, var(--text-primary, #f0f5ee));
     --recommendations-muted: var(--color-muted, var(--text-muted, #8aad7a));
     --recommendations-danger: #fca5a5;
@@ -63,7 +63,7 @@
 }
 
 .recommendations-location--active {
-    border-color: rgba(111, 200, 68, 0.4);
+    border-color: rgba(217, 198, 107, 0.4);
 }
 
 .recommendations-location__icon {
@@ -197,7 +197,7 @@
 }
 
 .recommendations-option--cycle small {
-    color: #6a9460;
+    color: var(--text-muted);
     font-size: 0.7rem;
 }
 
@@ -232,7 +232,7 @@
 }
 
 .recommendations-button--primary:disabled {
-    background-color: rgba(111, 200, 68, 0.4);
+    background-color: rgba(217, 198, 107, 0.4);
 }
 
 .recommendations-button--secondary {

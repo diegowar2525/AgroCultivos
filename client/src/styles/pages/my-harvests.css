@@ -41,15 +41,15 @@
 }
 
 .my-harvests-empty__icon {
-    background-color: rgba(111, 200, 68, 0.08);
-    border: 1px solid var(--border-green, rgba(111, 200, 68, 0.2));
+    background-color: rgba(217, 198, 107, 0.08);
+    border: 1px solid var(--border-green, rgba(217, 198, 107, 0.2));
     border-radius: 20px;
     width: 80px;
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(111, 200, 68, 0.4);
+    color: rgba(217, 198, 107, 0.4);
 }
 
 .my-harvests-empty h3 {
@@ -67,12 +67,12 @@
 }
 
 .my-harvests-empty strong {
-    color: var(--green-main, #6fc844);
+    color: var(--green-main, #d9c66b);
 }
 
 .my-harvests-empty__button {
-    background-color: var(--green-main, #6fc844);
-    color: #0b1f0e;
+    background-color: var(--green-main, #d9c66b);
+    color: var(--bg-dark);
     border-radius: 10px;
     padding: 10px 24px;
     font-weight: 600;
@@ -111,8 +111,8 @@
 .my-harvests-side-card,
 .my-harvests-expanded-card,
 .my-harvests-history-card {
-    background-color: var(--card-bg, #132a17);
-    border: 1px solid var(--border-green, rgba(111, 200, 68, 0.2));
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-green, rgba(217, 198, 107, 0.2));
 }
 
 .my-harvests-stat-card {
@@ -139,7 +139,7 @@
 .my-harvests-stat-value--total { color: var(--text-primary, #f0f5ee); }
 
 .my-harvests-table-card {
-    background-color: #132e17;
+    background-color: var(--bg-card);
     border-radius: 12px;
     overflow: hidden;
 }
@@ -154,7 +154,7 @@
 }
 
 .my-harvests-table thead tr {
-    border-bottom: 1px solid rgba(111, 200, 68, 0.15);
+    border-bottom: 1px solid rgba(217, 198, 107, 0.15);
 }
 
 .my-harvests-table th {
@@ -167,7 +167,7 @@
 }
 
 .my-harvests-row {
-    border-bottom: 1px solid rgba(111, 200, 68, 0.07);
+    border-bottom: 1px solid rgba(217, 198, 107, 0.07);
     cursor: pointer;
     transition: background-color 0.15s ease;
 }
@@ -181,7 +181,7 @@
 }
 
 .my-harvests-crop-name {
-    color: var(--green-main, #6fc844);
+    color: var(--green-main, #d9c66b);
     font-weight: 600;
     font-size: 0.9rem;
 }
@@ -211,7 +211,7 @@
 }
 
 .harvest-progress-bar {
-    background-color: rgba(111, 200, 68, 0.15);
+    background-color: rgba(217, 198, 107, 0.15);
     border-radius: 4px;
     height: 6px;
     overflow: hidden;
@@ -221,7 +221,7 @@
 .harvest-progress-bar__fill {
     width: var(--progress-value, 0%);
     height: 100%;
-    background-color: var(--green-main, #6fc844);
+    background-color: var(--green-main, #d9c66b);
     border-radius: 4px;
     transition: width 0.6s ease;
 }
@@ -267,9 +267,9 @@
 }
 
 .my-harvests-info-button {
-    background-color: rgba(111, 200, 68, 0.1);
-    border: 1px solid rgba(111, 200, 68, 0.25);
-    color: var(--green-main, #6fc844);
+    background-color: rgba(217, 198, 107, 0.1);
+    border: 1px solid rgba(217, 198, 107, 0.25);
+    color: var(--green-main, #d9c66b);
     border-radius: 8px;
     padding: 5px 14px;
     font-size: 0.78rem;
@@ -291,8 +291,8 @@
 }
 
 .my-harvests-expanded-cell {
-    background-color: #132e17;
-    border-bottom: 1px solid var(--border-green, rgba(111, 200, 68, 0.2));
+    background-color: var(--bg-dark);
+    border-bottom: 1px solid var(--border-green, rgba(217, 198, 107, 0.2));
     padding: 0;
 }
 
@@ -323,7 +323,7 @@
 }
 
 .my-harvests-expanded-percent {
-    color: var(--green-main, #6fc844);
+    color: var(--green-main, #d9c66b);
     font-weight: 700;
     font-size: 0.9rem;
     min-width: 36px;
@@ -340,7 +340,7 @@
 }
 
 .my-harvests-expanded-date-card {
-    background-color: var(--card-bg-strong, #1a3820);
+    background-color: var(--card-light);
     border-radius: 8px;
     padding: 8px 12px;
 }
@@ -360,8 +360,8 @@
 .my-harvests-expanded-days {
     margin-top: 10px;
     padding: 8px 12px;
-    background-color: rgba(111, 200, 68, 0.08);
-    border: 1px solid rgba(111, 200, 68, 0.2);
+    background-color: rgba(217, 198, 107, 0.08);
+    border: 1px solid rgba(217, 198, 107, 0.2);
     border-radius: 8px;
 }
 
@@ -371,7 +371,7 @@
 }
 
 .my-harvests-expanded-days p {
-    color: var(--green-main, #6fc844);
+    color: var(--green-main, #d9c66b);
     font-size: 0.85rem;
     font-weight: 600;
     margin: 0;
@@ -444,7 +444,7 @@
 }
 
 .my-harvests-health-card--bien {
-    border-color: var(--border-green, rgba(111, 200, 68, 0.2));
+    border-color: var(--border-green, rgba(217, 198, 107, 0.2));
 }
 
 .my-harvests-health-card--observacion {
@@ -462,7 +462,7 @@
 }
 
 .my-harvests-health-title svg {
-    color: var(--green-main, #6fc844);
+    color: var(--green-main, #d9c66b);
 }
 
 .my-harvests-health-options {
@@ -594,8 +594,8 @@
 
 .my-harvests-form-control {
     flex: 1;
-    background-color: #0d1f10;
-    border: 1px solid rgba(111, 200, 68, 0.25);
+    background-color: var(--bg-dark);
+    border: 1px solid rgba(217, 198, 107, 0.25);
     border-radius: 7px;
     padding: 7px 10px;
     color: var(--text-primary, #f0f5ee);
@@ -626,8 +626,8 @@
 }
 
 .my-harvests-upload-box {
-    background-color: rgba(111, 200, 68, 0.05);
-    border: 1px dashed rgba(111, 200, 68, 0.25);
+    background-color: rgba(217, 198, 107, 0.05);
+    border: 1px dashed rgba(217, 198, 107, 0.25);
     border-radius: 8px;
     padding: 14px 12px;
     text-align: center;
@@ -641,7 +641,7 @@
 }
 
 .my-harvests-upload-box svg {
-    color: rgba(111, 200, 68, 0.4);
+    color: rgba(217, 198, 107, 0.4);
 }
 
 .my-harvests-upload-input {
@@ -649,7 +649,7 @@
 }
 
 .my-harvests-upload-file {
-    color: var(--green-main, #6fc844);
+    color: var(--green-main, #d9c66b);
     font-size: 0.78rem;
     display: flex;
     align-items: center;
@@ -661,9 +661,9 @@
 }
 
 .my-harvests-save-button--good {
-    background-color: var(--green-main, #6fc844);
+    background-color: var(--green-main, #d9c66b);
     border: none;
-    color: #0b1f0e;
+    color: var(--bg-dark);
 }
 
 .my-harvests-save-button--good.is-success {
@@ -701,7 +701,7 @@
 }
 
 .my-harvests-chip-title span {
-    color: var(--green-main, #6fc844);
+    color: var(--green-main, #d9c66b);
     font-weight: 600;
 }
 
@@ -767,7 +767,7 @@
 
 .my-harvests-history__divider {
     height: 1px;
-    background-color: rgba(111, 200, 68, 0.12);
+    background-color: rgba(217, 198, 107, 0.12);
     margin-bottom: 12px;
 }
 
@@ -789,7 +789,7 @@
 }
 
 .my-harvests-history__header svg {
-    color: var(--green-main, #6fc844);
+    color: var(--green-main, #d9c66b);
 }
 
 .my-harvests-history__header span,
@@ -815,7 +815,7 @@
     top: 6px;
     bottom: 6px;
     width: 1px;
-    background-color: rgba(111, 200, 68, 0.2);
+    background-color: rgba(217, 198, 107, 0.2);
 }
 
 .my-harvests-timeline__item {
@@ -834,8 +834,8 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: var(--green-main, #6fc844);
-    border: 2px solid #0c1e0e;
+    background-color: var(--green-main, #d9c66b);
+    border: 2px solid var(--bg-dark);
 }
 
 .my-harvests-timeline__item--warning .my-harvests-timeline__dot {
@@ -888,7 +888,7 @@
     height: 44px;
     border-radius: 6px;
     object-fit: cover;
-    border: 1px solid rgba(111, 200, 68, 0.3);
+    border: 1px solid rgba(217, 198, 107, 0.3);
     cursor: pointer;
     flex-shrink: 0;
 }
@@ -971,8 +971,8 @@
 }
 
 .my-harvests-chart-tooltip {
-    background-color: #1a3820;
-    border: 1px solid rgba(111, 200, 68, 0.2);
+    background-color: var(--card-light);
+    border: 1px solid rgba(217, 198, 107, 0.2);
     border-radius: 8px;
     color: var(--text-primary, #f0f5ee);
     font-size: 0.82rem;
@@ -1076,7 +1076,7 @@
 }
 
 .my-harvests-level-progress {
-    background-color: rgba(111, 200, 68, 0.1);
+    background-color: rgba(217, 198, 107, 0.1);
     border-radius: 6px;
     height: 7px;
     overflow: hidden;
@@ -1163,7 +1163,7 @@
 }
 
 .my-harvests-badges-card__header span {
-    color: var(--green-main, #6fc844);
+    color: var(--green-main, #d9c66b);
     font-size: 0.72rem;
     font-weight: 600;
 }
