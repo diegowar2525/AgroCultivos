@@ -91,5 +91,6 @@ class UsuarioAdminSerializer(serializers.ModelSerializer):
             "fecha_nacimiento",
             "profesion",
             "is_staff",
-            'is_active'
+            'is_active',
+            "date_joined",
         )

@@ -19,7 +19,10 @@ class ConsultaViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-       # Cada usuario solo debe ver sus propias consultas, no las de todos.
+        # El staff ve todas las consultas (resumen del sistema); un usuario
+        # normal solo debe ver las suyas, nunca las de todos.
+        if self.request.user.is_staff:
+            return Consulta.objects.all()
         return Consulta.objects.filter(usuario=self.request.user)
 
 class ResultadoConsultaViewSet(viewsets.ModelViewSet):
