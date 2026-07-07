@@ -8,6 +8,11 @@ export const useCrud = (modelName, config) => {
     const [formData, setFormData] = useState({});
     const [selectOptions, setSelectOptions] = useState({});
 
+    // Nombres de los campos configurados como 'file' (ej. imagen del cultivo).
+    const camposArchivo = config.fields
+        ?.filter(field => field.type === 'file')
+        .map(field => field.name) || [];
+
     const cargarSelects = async () => {
         try {
             const camposSelect =
@@ -58,23 +63,61 @@ export const useCrud = (modelName, config) => {
         }));
     };
 
+    const handleFileChange = (e) => {
+        const { name, files } = e.target;
+
+        if (files && files[0]) {
+            setFormData(prev => ({
+                ...prev,
+                [name]: files[0]
+            }));
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
+            // Si se eligió un archivo nuevo (un objeto File real, no la URL
+            // de texto de una imagen ya existente), hay que mandar el
+            // formulario como multipart/form-data en vez de JSON.
+            const hayArchivoNuevo = camposArchivo.some(
+                nombre => formData[nombre] instanceof File
+            );
+
+            let payload = formData;
+
+            if (hayArchivoNuevo) {
+                const datosFormulario = new FormData();
+
+                Object.entries(formData).forEach(([campo, valor]) => {
+                    if (camposArchivo.includes(campo)) {
+                        // Solo se reenvía si es un archivo NUEVO. Si sigue
+                        // siendo la URL de la imagen existente (string), se
+                        // omite para no romper el campo en el backend.
+                        if (valor instanceof File) {
+                            datosFormulario.append(campo, valor);
+                        }
+                    } else if (valor !== null && valor !== undefined) {
+                        datosFormulario.append(campo, valor);
+                    }
+                });
+
+                payload = datosFormulario;
+            }
 
             if (formData.id) {
 
                 await api.put(
                     `${config.endpoint}${formData.id}/`,
-                    formData
+                    payload
                 );
 
             } else {
 
                 await api.post(
                     config.endpoint,
-                    formData
+                    payload
                 );
             }
 
@@ -130,6 +173,7 @@ export const useCrud = (modelName, config) => {
         setFormData,
         setIsEditing,
         handleInputChange,
+        handleFileChange,
         handleSubmit,
         handleEdit,
         executeDelete

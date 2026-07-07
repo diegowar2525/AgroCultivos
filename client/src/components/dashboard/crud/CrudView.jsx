@@ -15,6 +15,7 @@ const CrudView = ({ modelName, config }) => {
         setFormData,
         setIsEditing,
         handleInputChange,
+        handleFileChange,
         handleSubmit,
         handleEdit,
         executeDelete
@@ -83,6 +84,7 @@ const CrudView = ({ modelName, config }) => {
                     formData={formData}
                     selectOptions={selectOptions}
                     handleInputChange={handleInputChange}
+                    handleFileChange={handleFileChange}
                     handleSubmit={handleSubmit}
                     setIsEditing={setIsEditing}
                 />

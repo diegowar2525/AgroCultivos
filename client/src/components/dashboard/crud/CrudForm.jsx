@@ -3,13 +3,14 @@ const CrudForm = ({
     formData,
     selectOptions,
     handleInputChange,
+    handleFileChange,
     handleSubmit,
     setIsEditing
 }) => {
 
     return (
-        <form onSubmit={handleSubmit} style={{ animation: 'fadeIn 0.3s ease' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <form onSubmit={handleSubmit} className="crud-form">
+            <div className="crud-form-grid">
                 {config.fields?.map(field => (
 
                     <div
@@ -60,15 +61,7 @@ const CrudForm = ({
 
                         ) : field.type === 'checkbox' ? (
 
-                            <label
-                                style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.75rem',
-                                    marginTop: '0.5rem',
-                                    cursor: 'pointer'
-                                }}
-                            >
+                            <label className="crud-checkbox-label">
                                 <input
                                     type="checkbox"
                                     name={field.name}
@@ -80,6 +73,32 @@ const CrudForm = ({
 
                                 {field.label}
                             </label>
+
+                        ) : field.type === 'file' ? (
+
+                            <div className="crud-file-field">
+                                {typeof formData[field.name] === 'string' && formData[field.name] && (
+                                    <img
+                                        src={formData[field.name]}
+                                        alt=""
+                                        className="crud-file-preview"
+                                    />
+                                )}
+
+                                <input
+                                    type="file"
+                                    name={field.name}
+                                    accept="image/*"
+                                    className="input-field"
+                                    onChange={handleFileChange}
+                                />
+
+                                {formData[field.name] instanceof File && (
+                                    <span className="crud-file-selected">
+                                        Nuevo archivo: {formData[field.name].name}
+                                    </span>
+                                )}
+                            </div>
 
                         ) : (
 
@@ -97,14 +116,13 @@ const CrudForm = ({
 
                 ))}
             </div>
-            <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
-                <button type="submit" className="btn-primary" style={{ width: 'auto' }}>
+            <div className="crud-form-actions">
+                <button type="submit" className="btn-primary crud-form-submit">
                     Guardar Cambios
                 </button>
                 <button
                     type="button"
-                    className="btn-logout"
-                    style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}
+                    className="btn-logout crud-form-cancel"
                     onClick={() => setIsEditing(false)}
                 >
                     Cancelar

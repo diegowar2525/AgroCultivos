@@ -16,6 +16,13 @@ api.interceptors.request.use((config) => {
         config.headers.Authorization = `Token ${token}`;
     }
 
+    // Al subir un archivo (FormData), el navegador debe fijar su propio
+    // Content-Type con el "boundary" correcto — si se deja "application/json"
+    // fijo, la subida del archivo se rompe silenciosamente en el backend.
+    if (config.data instanceof FormData) {
+        delete config.headers['Content-Type'];
+    }
+
     return config;
 });
 

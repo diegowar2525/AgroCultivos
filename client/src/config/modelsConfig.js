@@ -36,6 +36,11 @@ const modelsConfig = {
                 name: 'activo',
                 label: 'Activo',
                 type: 'checkbox'
+            },
+            {
+                name: 'imagen',
+                label: 'Imagen del cultivo',
+                type: 'file'
             }
         ]
     },
