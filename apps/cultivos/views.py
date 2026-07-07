@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.decorators import action
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
@@ -54,8 +55,24 @@ class EspecificacionViewSet(viewsets.ModelViewSet):
 
 
 class SeguimientoCultivoViewSet(viewsets.ModelViewSet):
-    queryset = SeguimientoCultivo.objects.all()
+    queryset = SeguimientoCultivo.objects.all()  # usado por el router para el basename; el filtro real está en get_queryset()
     serializer_class = SeguimientoCultivoSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        # Cada usuario solo debe ver/editar seguimientos de SUS PROPIOS
+        # cultivos, no los de todos los demás usuarios.
+        return SeguimientoCultivo.objects.filter(
+            cultivo_usuario__usuario=self.request.user
+        )
+
+    def perform_create(self, serializer):
+        # Evita que alguien registre un seguimiento sobre el cultivo de
+        # OTRO usuario adivinando el id de "cultivo_usuario" en el payload.
+        cultivo_usuario = serializer.validated_data.get("cultivo_usuario")
+        if cultivo_usuario and cultivo_usuario.usuario_id != self.request.user.id:
+            raise PermissionDenied("No puedes registrar seguimiento sobre un cultivo que no es tuyo.")
+        serializer.save()
 
 
 class AmenazaViewSet(viewsets.ModelViewSet):
@@ -79,8 +96,18 @@ class CultivoUsuarioViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        # Cada usuario solo debe ver sus propios cultivos, no los de todos.
-        queryset = CultivoUsuario.objects.filter(usuario=self.request.user)
+        usuario_id = self.request.query_params.get("usuario")
+
+        if self.request.user.is_staff:
+            if usuario_id is not None:
+                # Actividad de un usuario específico (panel "Actividad de usuarios").
+                queryset = CultivoUsuario.objects.filter(usuario_id=usuario_id)
+            else:
+                # Sin filtro: resumen agregado de todos los usuarios (dashboard).
+                queryset = CultivoUsuario.objects.all()
+        else:
+            # Cualquier usuario normal solo ve sus propios cultivos, nunca los de todos.
+            queryset = CultivoUsuario.objects.filter(usuario=self.request.user)
 
         iniciado = self.request.query_params.get("iniciado")
         if iniciado is not None:
@@ -92,7 +119,7 @@ class CultivoUsuarioViewSet(viewsets.ModelViewSet):
         # Si el cliente no mandó un estado (ej. al guardar una recomendación
         # desde /recommendations), se le asigna un estado inicial por defecto.
         if "estado" not in serializer.validated_data:
-            estado_inicial, _ = Estado.objects.get_or_create(nombre="Sembrado")
+            estado_inicial, _ = Estado.objects.get_or_create(nombre="Activo")
             serializer.save(usuario=self.request.user, estado=estado_inicial)
         else:
             serializer.save(usuario=self.request.user)

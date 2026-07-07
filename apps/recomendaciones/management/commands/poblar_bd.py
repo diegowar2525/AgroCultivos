@@ -344,8 +344,7 @@ class Command(BaseCommand):
 
     def crear_estados(self):
         self.stdout.write("Creando estados...")
-
-        nombres = ["Sembrado", "En crecimiento", "En floración", "Cosechado", "Perdido"]
+        nombres = ["Activo", "Cosecha", "Completado", "Suspendido"]
 
         return [Estado.objects.get_or_create(nombre=nombre)[0] for nombre in nombres]
 
@@ -581,8 +580,9 @@ class Command(BaseCommand):
                 cultivo=cultivo,
                 fecha_siembra=fecha_siembra,
                 defaults={
-                    "estado": por_estado["En crecimiento"],
+                    "estado": por_estado["Activo"],
                     "fecha_cosecha_estimada": fecha_estimada,
+                    "iniciado": True,
                 },
             )
 
