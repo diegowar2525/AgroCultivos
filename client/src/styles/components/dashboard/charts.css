@@ -87,48 +87,45 @@
 }
 
 .barra-container {
-
     height: 6px;
-
     background: rgba(255, 255, 255, .08);
-
     border-radius: 4px;
-
 }
 
 .barra-fill {
-
     height: 100%;
-
     border-radius: 4px;
-
 }
 
-.top-1 {
-
+/* Color de texto para el nombre/contador de cada puesto (sin fondo) */
+.top-name.top-1,
+.top-count.top-1 {
     color: #d9c66b;
-
-    background: #d9c66b;
-
 }
 
-.top-2 {
-
+.top-name.top-2,
+.top-count.top-2 {
     color: #60a5fa;
-
-    background: #60a5fa;
-
 }
 
-.top-3 {
-
+.top-name.top-3,
+.top-count.top-3 {
     color: #a78bfa;
+}
 
+/* Color de fondo solo para la barra de progreso (nunca en el texto) */
+.barra-fill.top-1 {
+    background: #d9c66b;
+}
+
+.barra-fill.top-2 {
+    background: #60a5fa;
+}
+
+.barra-fill.top-3 {
     background: #a78bfa;
 }
 
 .empty-data {
-
     color: var(--text-muted);
-
 }
