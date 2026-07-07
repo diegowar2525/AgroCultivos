@@ -35,6 +35,8 @@ class EspecificacionSerializer(serializers.ModelSerializer):
 
 
 class SeguimientoCultivoSerializer(serializers.ModelSerializer):
+    cultivo_nombre = serializers.CharField(source="cultivo_usuario.cultivo.nombre", read_only=True)
+
     class Meta:
         model = SeguimientoCultivo
         fields = "__all__"
@@ -62,6 +64,7 @@ class CultivoUsuarioSerializer(serializers.ModelSerializer):
     cultivo_nombre = serializers.CharField(source="cultivo.nombre", read_only=True)
     cultivo_imagen = serializers.ImageField(source="cultivo.imagen", read_only=True)
     estado_nombre = serializers.CharField(source="estado.nombre", read_only=True)
+    categoria_nombre = serializers.CharField(source="cultivo.categoria.nombre", read_only=True)
 
     class Meta:
         model = CultivoUsuario

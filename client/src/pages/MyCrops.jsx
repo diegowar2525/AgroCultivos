@@ -2,6 +2,7 @@ import Navbar from '../components/layout/Navbar';
 import { useMisCultivos } from '../hooks/useMisCultivos';
 import CultivoCard from '../components/myCrops/CultivoCard';
 import EstadoVacio from '../components/myCrops/EstadoVacio';
+import UserDashboardPanel from '../components/userDashboard/UserDashboardPanel';
 
 export default function MisCultivos() {
     const {
@@ -18,6 +19,8 @@ export default function MisCultivos() {
         <div className="mis-cultivos-page">
             <Navbar />
             <div className="mis-cultivos-container">
+                <UserDashboardPanel />
+
                 <div className="mis-cultivos-header">
                     <h1>Mis cultivos</h1>
                     <p>

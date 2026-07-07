@@ -27,5 +27,7 @@
 @import './styles/pages/my-harvests.css';
 @import './styles/pages/recommendations.css';
 @import './styles/pages/info-cultivo.css';
+@import './styles/pages/user-activity.css';
+@import './styles/components/user-dashboard/user-dashboard.css';
 
 
