@@ -12,14 +12,15 @@ const publicLinks = [
 ];
 
 const userLinks = [
-    { to: '/recommendations', label: 'Recomendaciones' },
     { to: '/my-crops', label: 'Mis Cultivos' },
+    { to: '/recommendations', label: 'Recomendaciones' },
     { to: '/my-harvests', label: 'Mis Cosechas' },
 ];
 
 const adminLinks = [
     { to: '/dashboard', label: 'Resumen del sistema' },
     { to: '/dashboard/panel', label: 'Panel de administración' },
+    { to: '/dashboard/usuarios', label: 'Actividad de usuarios' },
 ];
 
 export default function Navbar() {
@@ -60,6 +61,7 @@ export default function Navbar() {
                         <NavLink
                             key={to}
                             to={to}
+                            end
                             className={navClass}
                         >
                             {label}

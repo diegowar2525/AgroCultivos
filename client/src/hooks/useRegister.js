@@ -91,7 +91,7 @@ export function useRegister() {
                 profesion: isAgronomo ? 'Agrónomo' : (form.profesion || 'Otro'),
             };
             await register(payload);
-            navigate('/recommendations');
+            navigate('/my-crops');
         } catch (err) {
             setError(parseServerError(err));
         } finally {
