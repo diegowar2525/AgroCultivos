@@ -2,19 +2,19 @@
     /* Base */
     --font-main: 'Plus Jakarta Sans', sans-serif;
 
-    /* Fondos — verde oliva */
-    --bg-dark: #4a5d3a;
+    /* Fondos — verde oliva (oscurecido para mejor contraste con el texto) */
+    --bg-dark: #2f3a22;
     --background: var(--bg-dark);
-    --card: #5c7248;
-    --card-light: #6a8354;
-    --bg-card: #5c7248;
-    --glass-bg: rgba(243, 242, 232, 0.05);
+    --card: #3d4b2c;
+    --card-light: #4a5c37;
+    --bg-card: #3d4b2c;
+    --glass-bg: rgba(251, 250, 243, 0.05);
 
-    /* Texto — crema, no blanco puro (mejor legibilidad sobre oliva) */
-    --text-light: #f3f2e8;
-    --text-primary: #f3f2e8;
+    /* Texto — crema claro (más contraste que antes) */
+    --text-light: #fbfaf3;
+    --text-primary: #fbfaf3;
     --text: var(--text-primary);
-    --text-muted: #b8c4a3;
+    --text-muted: #c9d4b8;
 
     /* Marca — acento dorado (el verde oliva de fondo no da contraste suficiente para botones) */
     --green-main: #d9c66b;
@@ -22,13 +22,13 @@
     --green-hover: #c9b65a;
     --green-light: #e8d98a;
     --green-glow: rgba(217, 198, 107, 0.15);
-    --green-border: rgba(243, 242, 232, 0.2);
-    --green-border-sm: rgba(243, 242, 232, 0.12);
+    --green-border: rgba(251, 250, 243, 0.2);
+    --green-border-sm: rgba(251, 250, 243, 0.12);
 
     /* Bordes */
-    --glass-border: rgba(243, 242, 232, 0.12);
-    --border-card: rgba(243, 242, 232, 0.2);
-    --border-main: rgba(243, 242, 232, 0.15);
+    --glass-border: rgba(251, 250, 243, 0.12);
+    --border-card: rgba(251, 250, 243, 0.2);
+    --border-main: rgba(251, 250, 243, 0.15);
 
     /* Estados (sin cambios: deben seguir siendo reconocibles sin importar el tema) */
     --red-main: #d4183d;
