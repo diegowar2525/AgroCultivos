@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import api, { resolveMediaUrl } from '../services/api';
-import { getExtra, IMAGENES_CULTIVOS } from '../data/infoCultivos';
+import { getExtra } from '../data/infoCultivos';
 
 /**
  * Carga el cultivo y su especificación agroclimática por id desde el
@@ -39,9 +39,7 @@ export function useInfoCultivo(cultivoId) {
     }, [cultivoId]);
 
     const extra = cultivo ? getExtra(cultivo.nombre) : null;
-    const imagenUrl = cultivo
-        ? (cultivo.imagen ? resolveMediaUrl(cultivo.imagen) : (IMAGENES_CULTIVOS[cultivo.nombre] || null))
-        : null;
+    const imagenUrl = cultivo?.imagen ? resolveMediaUrl(cultivo.imagen) : null;
 
     return { cultivo, especificacion, extra, imagenUrl, loading, error };
 }
