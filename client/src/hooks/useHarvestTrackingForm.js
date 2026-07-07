@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { createTrackingRecord, updateHarvestStatus } from '../services/harvestsService';
 
-function getFenologicalStatus(healthStatus, pestType) {
+function getFenologicalStatus(healthStatus, pestType, commonProblem) {
     if (healthStatus === 'bien') return 'Crecimiento';
-    if (healthStatus === 'observacion') return 'En observación';
+    if (healthStatus === 'observacion') {
+        return commonProblem ? `Observación: ${commonProblem.nombre}` : 'En observación';
+    }
     return `Plaga: ${pestType?.nombre || 'desconocida'}`;
 }
 
@@ -55,7 +57,7 @@ export default function useHarvestTrackingForm(cultivo, onCultivoActualizado) {
             await createTrackingRecord({
                 cultivoUsuarioId: cultivo.id,
                 altura: height,
-                estadoFenologico: getFenologicalStatus(healthStatus, pestType),
+                estadoFenologico: getFenologicalStatus(healthStatus, pestType, commonProblem),
                 observaciones: observation,
                 foto: photo,
             });

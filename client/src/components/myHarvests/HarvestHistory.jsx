@@ -1,18 +1,24 @@
 import { Leaf, Ruler } from 'lucide-react';
 
-import api, { resolveMediaUrl } from '../../services/api';
+import { resolveMediaUrl } from '../../services/api';
 import useHarvestHistory from '../../hooks/useHarvestHistory';
 import { getHealthBadgeClass } from '../../constants/healthStatus';
 import { formatDateTime } from '../../utils/dateFormat';
-import { PLAGAS_DEFAULT, PLAGAS_POR_CULTIVO } from '../../data/plagasPorCultivo';
+import { PLAGAS_DEFAULT, PLAGAS_POR_CULTIVO, PROBLEMAS_COMUNES } from '../../data/plagasPorCultivo';
 
-function findPestSolution(fenologicalStatus = '') {
-    if (!fenologicalStatus.startsWith('Plaga:')) return null;
+function findSolution(fenologicalStatus = '') {
+    if (fenologicalStatus.startsWith('Plaga:')) {
+        const pestName = fenologicalStatus.replace('Plaga: ', '').trim();
+        const allPests = Object.values(PLAGAS_POR_CULTIVO).flat().concat(PLAGAS_DEFAULT);
+        return allPests.find(pest => pest.nombre === pestName) || null;
+    }
 
-    const pestName = fenologicalStatus.replace('Plaga: ', '').trim();
-    const allPests = Object.values(PLAGAS_POR_CULTIVO).flat().concat(PLAGAS_DEFAULT);
+    if (fenologicalStatus.startsWith('Observación:')) {
+        const problemName = fenologicalStatus.replace('Observación: ', '').trim();
+        return PROBLEMAS_COMUNES.find(problem => problem.nombre === problemName) || null;
+    }
 
-    return allPests.find(pest => pest.nombre === pestName) || null;
+    return null;
 }
 
 export default function HarvestHistory({ cultivoId, refresh }) {
@@ -44,7 +50,7 @@ export default function HarvestHistory({ cultivoId, refresh }) {
 
                     {records.map((record, index) => {
                         const badgeClass = getHealthBadgeClass(record.estado_fenologico);
-                        const pestSolution = findPestSolution(record.estado_fenologico);
+                        const pestSolution = findSolution(record.estado_fenologico);
                         const timelineClass = record.estado_fenologico?.toLowerCase().includes('plaga')
                             ? 'my-harvests-timeline__item--danger'
                             : record.estado_fenologico?.toLowerCase().includes('observaci')
