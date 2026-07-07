@@ -19,6 +19,7 @@ import Recomendaciones from './pages/Recommendations';
 import MisCultivos from './pages/MyCrops';
 import MisCosechas from './pages/MyHarvests';
 import InfoCultivo from './pages/InfoCultivo';
+import UserActivity from './pages/UserActivity';
 
 function App() {
     const [appReady, setAppReady] = useState(false);
@@ -70,6 +71,10 @@ function App() {
                     <Route
                         path="panel"
                         element={<CrudPanel />}
+                    />
+                    <Route
+                        path="usuarios"
+                        element={<UserActivity />}
                     />
                 </Route>
 

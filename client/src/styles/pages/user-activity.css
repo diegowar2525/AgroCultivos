@@ -1,0 +1,388 @@
+.user-activity-page {
+    display: flex;
+    min-height: calc(100vh - 56px);
+    font-family: var(--font-main);
+}
+
+/* ── Sidebar de usuarios ── */
+.user-activity-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background-color: var(--bg-dark);
+    border-right: 1px solid var(--border-card);
+    display: flex;
+    flex-direction: column;
+}
+
+.user-activity-sidebar-header {
+    padding: 16px 14px;
+    border-bottom: 1px solid var(--border-card);
+}
+
+.user-activity-sidebar-header p {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+}
+
+.user-activity-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user-activity-search svg {
+    position: absolute;
+    left: 10px;
+    color: var(--text-muted);
+}
+
+.user-activity-search input {
+    width: 100%;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 8px;
+    padding: 7px 10px 7px 30px;
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    outline: none;
+    font-family: var(--font-main);
+    box-sizing: border-box;
+}
+
+.user-activity-lista {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.user-activity-lista-mensaje {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    padding: 16px;
+}
+
+.user-activity-sidebar-footer {
+    padding: 10px 14px;
+    border-top: 1px solid var(--border-card);
+}
+
+.user-activity-sidebar-footer p {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    margin: 0;
+}
+
+/* ── Item de usuario en la lista ── */
+.user-activity-item {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    padding: 12px 14px;
+    text-align: left;
+    font-family: var(--font-main);
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-activity-item--activo {
+    background-color: var(--green-glow);
+    border-left-color: var(--green-main);
+}
+
+.user-activity-item-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: var(--card-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--text-muted);
+}
+
+.user-activity-item--activo .user-activity-item-avatar {
+    background-color: var(--green-glow);
+    color: var(--green-main);
+    border: 1px solid var(--green-main);
+}
+
+.user-activity-item-texto {
+    min-width: 0;
+}
+
+.user-activity-item-nombre {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-activity-item--activo .user-activity-item-nombre {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.user-activity-item-username {
+    color: var(--text-muted);
+    opacity: 0.6;
+    font-size: 0.72rem;
+    margin: 1px 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ── Panel de detalle ── */
+.user-activity-detalle {
+    flex: 1;
+    background-color: var(--bg-dark);
+    overflow-y: auto;
+    padding: 24px 28px;
+}
+
+.user-activity-estado-inicial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60%;
+    gap: 14px;
+    text-align: center;
+}
+
+.user-activity-estado-inicial-icono {
+    background-color: var(--green-glow);
+    border: 1px solid var(--border-card);
+    border-radius: 20px;
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green-main);
+}
+
+.user-activity-estado-inicial-titulo {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+}
+
+.user-activity-estado-inicial-texto {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* ── Cabecera del usuario ── */
+.user-activity-header {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.user-activity-header-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: var(--green-glow);
+    border: 2px solid var(--green-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--green-main);
+}
+
+.user-activity-header-texto {
+    flex: 1;
+    min-width: 160px;
+}
+
+.user-activity-header-texto h2 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 2px;
+}
+
+.user-activity-header-texto p {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin: 0;
+}
+
+.user-activity-stats {
+    display: flex;
+    gap: 12px;
+}
+
+.user-activity-stat {
+    background-color: var(--card-light);
+    border-radius: 10px;
+    padding: 10px 16px;
+    text-align: center;
+    min-width: 80px;
+}
+
+.user-activity-stat-valor {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 2px;
+    line-height: 1;
+}
+
+.user-activity-stat-valor--verde { color: var(--green-main); }
+.user-activity-stat-valor--ambar { color: var(--warning-text); }
+.user-activity-stat-valor--azul { color: var(--info-text); }
+
+.user-activity-stat-label {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    margin: 0;
+}
+
+/* ── Tabs ── */
+.user-activity-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.user-activity-tab {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 18px;
+    border-radius: 9px;
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border-card);
+    background-color: transparent;
+    color: var(--text-muted);
+    transition: all 0.15s;
+}
+
+.user-activity-tab--activo {
+    border-color: var(--green-main);
+    background-color: var(--green-glow);
+    color: var(--green-main);
+}
+
+.user-activity-tab-count {
+    background-color: var(--card-light);
+    color: var(--text-muted);
+    border-radius: 20px;
+    padding: 1px 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.user-activity-tab--activo .user-activity-tab-count {
+    background-color: var(--green-main);
+    color: var(--bg-dark);
+}
+
+/* ── Estado vacío ── */
+.user-activity-vacio {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    padding: 40px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-activity-vacio svg {
+    color: var(--green-main);
+    opacity: 0.4;
+}
+
+.user-activity-vacio p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* ── Tabla ── */
+.user-activity-table-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.user-activity-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-activity-table thead tr {
+    border-bottom: 1px solid var(--border-card);
+}
+
+.user-activity-table th {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.user-activity-table tbody tr {
+    border-bottom: 1px solid var(--border-main);
+}
+
+.user-activity-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.user-activity-table td {
+    padding: 13px 16px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+}
+
+.user-activity-cultivo-nombre {
+    color: var(--green-main) !important;
+    font-weight: 600;
+    font-size: 0.88rem !important;
+}
+
+.user-activity-progreso-celda {
+    min-width: 140px;
+}
+
+@media (max-width: 800px) {
+    .user-activity-page {
+        flex-direction: column;
+    }
+
+    .user-activity-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-card);
+    }
+}
