@@ -79,8 +79,12 @@ WSGI_APPLICATION = "AgroCultivos.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "sigra_db",
+        'USER': 'damian',
+        'PASSWORD': 'damian2004',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
