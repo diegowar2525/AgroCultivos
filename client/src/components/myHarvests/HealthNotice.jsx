@@ -1,9 +1,10 @@
-import { CircleCheck, Eye } from 'lucide-react';
+import { AlertTriangle, CircleCheck, Eye } from 'lucide-react';
 import { HEALTH_NOTICE } from '../../constants/healthStatus';
 
 const NOTICE_ICONS = {
     bien: CircleCheck,
     observacion: Eye,
+    amenaza: AlertTriangle,
 };
 
 export default function HealthNotice({ type }) {

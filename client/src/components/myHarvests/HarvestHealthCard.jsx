@@ -1,14 +1,15 @@
 import { Leaf } from 'lucide-react';
 
-import { getPlagas } from '../../data/plagasPorCultivo';
+import { getAmenazas } from '../../data/amenazasPorCultivo';
 import HealthStatusSelector from './HealthStatusSelector';
 import HealthyTrackingForm from './HealthyTrackingForm';
 import ObservationTrackingForm from './ObservationTrackingForm';
-import PestTrackingForm from './PestTrackingForm';
+import ThreatTrackingForm from './ThreatTrackingForm';
+import TrackingImageAnalyzer from './TrackingImageAnalyzer';
 
 export default function HarvestHealthCard({ harvest, form }) {
     const cropName = harvest.cultivo_nombre || '';
-    const cropPests = getPlagas(cropName);
+    const cropThreats = getAmenazas(cropName);
 
     return (
         <section className={`my-harvests-expanded-card my-harvests-health-card my-harvests-health-card--${form.healthStatus}`}>
@@ -28,12 +29,19 @@ export default function HarvestHealthCard({ harvest, form }) {
                 </div>
             )}
 
+            <TrackingImageAnalyzer
+                photo={form.photo}
+                setPhoto={form.setPhoto}
+                detectingThreat={form.detectingThreat}
+                detectionResult={form.detectionResult}
+                detectionError={form.detectionError}
+                onAnalyze={form.analyzeThreatFromPhoto}
+            />
+
             {form.healthStatus === 'bien' && (
                 <HealthyTrackingForm
                     height={form.height}
                     setHeight={form.setHeight}
-                    photo={form.photo}
-                    setPhoto={form.setPhoto}
                     observation={form.observation}
                     setObservation={form.setObservation}
                     saving={form.saving}
@@ -46,6 +54,8 @@ export default function HarvestHealthCard({ harvest, form }) {
                 <ObservationTrackingForm
                     commonProblem={form.commonProblem}
                     setCommonProblem={form.setCommonProblem}
+                    height={form.height}
+                    setHeight={form.setHeight}
                     observation={form.observation}
                     setObservation={form.setObservation}
                     saving={form.saving}
@@ -54,17 +64,21 @@ export default function HarvestHealthCard({ harvest, form }) {
                 />
             )}
 
-            {form.healthStatus === 'plaga' && (
-                <PestTrackingForm
+            {form.healthStatus === 'amenaza' && (
+                <ThreatTrackingForm
                     cropName={cropName}
-                    pests={cropPests}
-                    pestType={form.pestType}
-                    setPestType={form.setPestType}
+                    threats={cropThreats}
+                    threatType={form.threatType}
+                    setThreatType={form.setThreatType}
+                    height={form.height}
+                    setHeight={form.setHeight}
                     observation={form.observation}
                     setObservation={form.setObservation}
                     saving={form.saving}
                     success={form.success}
                     onSave={form.saveTrackingRecord}
+                    autoDetectedThreat={Boolean(form.detectionResult?.prediccion)}
+                    detectedThreatName={form.detectionResult?.prediccion?.amenaza}
                 />
             )}
         </section>

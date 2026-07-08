@@ -5,7 +5,7 @@
  * enfocada en UI/estado, y esta data se pueda reutilizar o mover a una
  * fuente externa (API/JSON) mas adelante sin tocar componentes.
  */
-export const PLAGAS_POR_CULTIVO = {
+export const AMENAZAS_POR_CULTIVO = {
     'Tomate riñón': [
         { nombre: 'Tizón tardío', pasos: ['Aplicar mancozeb o clorotalonil preventivamente.', 'Evitar riego nocturno y exceso de humedad foliar.', 'Retirar hojas muy afectadas y quemar fuera del cultivo.'] },
         { nombre: 'Mosca blanca', pasos: ['Colocar trampas amarillas adhesivas cerca del cultivo.', 'Aplicar imidacloprid al suelo o jabón potásico en hojas.', 'Repetir cada 5 días hasta eliminar la colonia.'] },
@@ -350,7 +350,7 @@ export const PLAGAS_POR_CULTIVO = {
     ],
 };
 
-export const PLAGAS_DEFAULT = [
+export const AMENAZAS_DEFAULT = [
     { nombre: 'Hongos foliares', pasos: ['Aplicar fungicida preventivo a base de cobre o azufre.', 'Mejorar la ventilación entre plantas.', 'Eliminar las partes afectadas para evitar propagación.'] },
     { nombre: 'Pulgones', pasos: ['Aplicar jabón potásico diluido al 2% en el envés.', 'Colocar trampas amarillas adhesivas.', 'Repetir el tratamiento cada 3 días.'] },
     { nombre: 'Araña roja', pasos: ['Aumentar la humedad ambiental rociando agua en hojas.', 'Aplicar aceite de neem diluido en agua.', 'Retirar hojas muy afectadas.'] },
@@ -368,7 +368,7 @@ export const PROBLEMAS_COMUNES = [
     { nombre: 'Suelo compactado',     pasos: ['Aflojar el suelo con una herramienta alrededor de la planta sin dañar raíces.', 'Incorporar materia orgánica o compost para mejorar la estructura.', 'Reducir el tráfico y la compresión sobre el área de cultivo.'] },
 ];
 
-/** Devuelve las plagas conocidas de un cultivo, o una lista generica si no hay match. */
-export function getPlagas(nombreCultivo) {
-    return PLAGAS_POR_CULTIVO[nombreCultivo] || PLAGAS_DEFAULT;
+/** Devuelve las amenazas conocidas de un cultivo, o una lista generica si no hay match. */
+export function getAmenazas(nombreCultivo) {
+    return AMENAZAS_POR_CULTIVO[nombreCultivo] || AMENAZAS_DEFAULT;
 }

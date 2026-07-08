@@ -1,45 +1,60 @@
-import { Bug, Eye, Leaf } from 'lucide-react';
+import { AlertTriangle, CircleCheck, Eye } from 'lucide-react';
 
 export const HEALTH_STATUS_OPTIONS = [
     {
         key: 'bien',
         label: 'Bien',
-        icon: Leaf,
+        icon: CircleCheck,
     },
     {
         key: 'observacion',
-        label: 'En observación',
+        label: 'Observación',
         icon: Eye,
     },
     {
-        key: 'plaga',
-        label: 'Plaga',
-        icon: Bug,
+        key: 'amenaza',
+        label: 'Amenaza',
+        icon: AlertTriangle,
     },
 ];
 
 export const HEALTH_NOTICE = {
     bien: {
-        title: 'Cultivo en buen estado',
+        title: 'El cultivo se encuentra en buen estado',
         lines: [
-            'Continúa con el riego regular',
-            'Revisa semanalmente por señales de plagas',
+            'Registra la altura actual de la planta.',
+            'Agrega una observación si notas algún cambio importante.',
         ],
     },
     observacion: {
-        title: 'Cultivo en observación',
+        title: 'El cultivo requiere observación',
         lines: [
-            'Revisa diariamente las hojas y el suelo',
-            'Si detectas plaga, cambia el estado a Plaga',
+            'Registra síntomas leves o cambios que aún no parecen graves.',
+            'Haz seguimiento en los próximos días.',
+        ],
+    },
+    amenaza: {
+        title: 'Amenaza detectada o sospechada',
+        lines: [
+            'Puedes registrar una enfermedad, plaga u otro problema observado.',
+            'También puedes usar la autodetección por imagen como apoyo.',
         ],
     },
 };
 
-export function getHealthBadgeClass(estado = '') {
-    const lower = estado.toLowerCase();
+export function getHealthBadgeClass(status = '') {
+    const normalizedStatus = status.toLowerCase();
 
-    if (lower.includes('plaga')) return 'health-badge--danger';
-    if (lower.includes('observaci')) return 'health-badge--warning';
+    if (
+        normalizedStatus.includes('amenaza') ||
+        normalizedStatus.includes('plaga')
+    ) {
+        return 'my-harvests-health-badge--danger';
+    }
 
-    return 'health-badge--good';
+    if (normalizedStatus.includes('observaci')) {
+        return 'my-harvests-health-badge--warning';
+    }
+
+    return 'my-harvests-health-badge--good';
 }

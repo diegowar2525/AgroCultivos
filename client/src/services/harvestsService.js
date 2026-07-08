@@ -37,3 +37,23 @@ export async function updateHarvestStatus(cultivoUsuarioId, estadoId) {
         estado: estadoId,
     });
 }
+
+export async function predictThreatFromTrackingImage({ cultivoUsuarioId, foto }) {
+    const form = new FormData();
+
+    form.append('imagen', foto);
+
+    if (cultivoUsuarioId) {
+        form.append('cultivo_usuario', cultivoUsuarioId);
+    }
+
+    const response = await api.post(
+        '/api/cultivos/seguimientos/predecir-amenaza/',
+        form,
+        {
+            headers: { 'Content-Type': 'multipart/form-data' },
+        }
+    );
+
+    return response.data;
+}

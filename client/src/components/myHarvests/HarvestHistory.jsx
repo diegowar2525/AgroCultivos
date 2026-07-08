@@ -4,13 +4,19 @@ import { resolveMediaUrl } from '../../services/api';
 import useHarvestHistory from '../../hooks/useHarvestHistory';
 import { getHealthBadgeClass } from '../../constants/healthStatus';
 import { formatDateTime } from '../../utils/dateFormat';
-import { PLAGAS_DEFAULT, PLAGAS_POR_CULTIVO, PROBLEMAS_COMUNES } from '../../data/plagasPorCultivo';
+import { AMENAZAS_DEFAULT, AMENAZAS_POR_CULTIVO, PROBLEMAS_COMUNES } from '../../data/amenazasPorCultivo';
 
 function findSolution(fenologicalStatus = '') {
-    if (fenologicalStatus.startsWith('Plaga:')) {
-        const pestName = fenologicalStatus.replace('Plaga: ', '').trim();
-        const allPests = Object.values(PLAGAS_POR_CULTIVO).flat().concat(PLAGAS_DEFAULT);
-        return allPests.find(pest => pest.nombre === pestName) || null;
+    if (fenologicalStatus.startsWith('Amenaza:')) {
+        const threatName = fenologicalStatus
+            .replace('Amenaza: ', '')
+            .trim();
+
+        const allThreats = Object.values(AMENAZAS_POR_CULTIVO)
+            .flat()
+            .concat(AMENAZAS_DEFAULT);
+
+        return allThreats.find(threat => threat.nombre === threatName) || null;
     }
 
     if (fenologicalStatus.startsWith('Observación:')) {
@@ -50,12 +56,15 @@ export default function HarvestHistory({ cultivoId, refresh }) {
 
                     {records.map((record, index) => {
                         const badgeClass = getHealthBadgeClass(record.estado_fenologico);
-                        const pestSolution = findSolution(record.estado_fenologico);
-                        const timelineClass = record.estado_fenologico?.toLowerCase().includes('plaga')
-                            ? 'my-harvests-timeline__item--danger'
-                            : record.estado_fenologico?.toLowerCase().includes('observaci')
-                                ? 'my-harvests-timeline__item--warning'
-                                : 'my-harvests-timeline__item--good';
+                        const threatSolution  = findSolution(record.estado_fenologico);
+                        const estadoLower = record.estado_fenologico?.toLowerCase() || '';
+
+                        const timelineClass =
+                            estadoLower.includes('amenaza')
+                                ? 'my-harvests-timeline__item--danger'
+                                : estadoLower.includes('observaci')
+                                    ? 'my-harvests-timeline__item--warning'
+                                    : 'my-harvests-timeline__item--good';
 
                         return (
                             <article
@@ -98,11 +107,11 @@ export default function HarvestHistory({ cultivoId, refresh }) {
                                         </p>
                                     )}
 
-                                    {pestSolution && (
+                                    {threatSolution  && (
                                         <div className="my-harvests-history-solution">
                                             <p>Pasos de solución:</p>
 
-                                            {pestSolution.pasos.map((step, stepIndex) => (
+                                            {threatSolution .pasos.map((step, stepIndex) => (
                                                 <div key={`${step}-${stepIndex}`} className="my-harvests-history-solution__step">
                                                     <span>{stepIndex + 1}.</span>
                                                     <span>{step}</span>

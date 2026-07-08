@@ -1,12 +1,15 @@
 import HealthNotice from './HealthNotice';
 import ObservationField from './ObservationField';
+import PlantHeightField from './PlantHeightField';
 import ProblemChips from './ProblemChips';
 import SolutionSteps from './SolutionSteps';
-import { PROBLEMAS_COMUNES } from '../../data/plagasPorCultivo';
+import { PROBLEMAS_COMUNES } from '../../data/amenazasPorCultivo';
 
 export default function ObservationTrackingForm({
     commonProblem,
     setCommonProblem,
+    height,
+    setHeight,
     observation,
     setObservation,
     saving,
@@ -16,6 +19,11 @@ export default function ObservationTrackingForm({
     return (
         <div className="my-harvests-form-stack">
             <HealthNotice type="observacion" />
+
+            <PlantHeightField
+                height={height}
+                setHeight={setHeight}
+            />
 
             <div className="my-harvests-form-group">
                 <p className="my-harvests-chip-title">¿Qué problema observaste?</p>
@@ -37,7 +45,7 @@ export default function ObservationTrackingForm({
             )}
 
             <ObservationField
-                label="¿Qué observaste? (opcional)"
+                label="Observación (opcional)"
                 placeholder="Ej: manchas leves en hojas inferiores..."
                 value={observation}
                 rows={3}
@@ -51,7 +59,7 @@ export default function ObservationTrackingForm({
                 disabled={saving}
                 className={`my-harvests-save-button my-harvests-save-button--warning ${success ? 'is-success' : ''}`}
             >
-                {saving ? 'Guardando...' : success ? '✓ Guardado' : 'Guardar observación'}
+                {saving ? 'Guardando...' : success ? '✓ Registro guardado' : 'Guardar registro'}
             </button>
         </div>
     );
