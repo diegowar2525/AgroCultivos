@@ -1,8 +1,13 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.parsers import FormParser, MultiPartParser
+
+from .services.amenaza_imagen_service import predecir_amenaza_desde_ruta
+from .utils import construir_texto_prediccion
+
 
 from .models import (
     Amenaza,
@@ -55,24 +60,125 @@ class EspecificacionViewSet(viewsets.ModelViewSet):
 
 
 class SeguimientoCultivoViewSet(viewsets.ModelViewSet):
-    queryset = SeguimientoCultivo.objects.all()  # usado por el router para el basename; el filtro real está en get_queryset()
+    queryset = SeguimientoCultivo.objects.all()
     serializer_class = SeguimientoCultivoSerializer
     permission_classes = [IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser]
 
     def get_queryset(self):
-        # Cada usuario solo debe ver/editar seguimientos de SUS PROPIOS
-        # cultivos, no los de todos los demás usuarios.
         return SeguimientoCultivo.objects.filter(
             cultivo_usuario__usuario=self.request.user
         )
 
     def perform_create(self, serializer):
-        # Evita que alguien registre un seguimiento sobre el cultivo de
-        # OTRO usuario adivinando el id de "cultivo_usuario" en el payload.
         cultivo_usuario = serializer.validated_data.get("cultivo_usuario")
+
         if cultivo_usuario and cultivo_usuario.usuario_id != self.request.user.id:
-            raise PermissionDenied("No puedes registrar seguimiento sobre un cultivo que no es tuyo.")
+            raise PermissionDenied(
+                "No puedes registrar seguimiento sobre un cultivo que no es tuyo."
+            )
+
         serializer.save()
+
+    @action(
+        detail=False,
+        methods=["post"],
+        url_path="predecir-amenaza",
+        parser_classes=[MultiPartParser, FormParser],
+    )
+    def predecir_amenaza(self, request):
+        """
+        POST /api/cultivos/seguimientos/predecir-amenaza/
+
+        Este endpoint solo analiza una imagen temporalmente.
+        No crea SeguimientoCultivo.
+        No guarda la imagen en la BD.
+
+        form-data:
+        imagen: archivo.jpg
+        cultivo_usuario: opcional
+        """
+
+        imagen = request.FILES.get("imagen")
+        cultivo_usuario_id = request.data.get("cultivo_usuario")
+
+        if not imagen:
+            return Response(
+                {"imagen": "Debes enviar una imagen."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        cultivo_usuario = None
+
+        if cultivo_usuario_id:
+            try:
+                cultivo_usuario = CultivoUsuario.objects.get(
+                    id=cultivo_usuario_id,
+                    usuario=request.user,
+                )
+            except CultivoUsuario.DoesNotExist:
+                raise PermissionDenied(
+                    "No puedes analizar una imagen para un cultivo que no es tuyo."
+                )
+
+        import tempfile
+        import os
+
+        extension = os.path.splitext(imagen.name)[1] or ".jpg"
+
+        try:
+            with tempfile.NamedTemporaryFile(
+                delete=False, suffix=extension
+            ) as archivo_temporal:
+                for chunk in imagen.chunks():
+                    archivo_temporal.write(chunk)
+
+                ruta_temporal = archivo_temporal.name
+
+            resultado_prediccion = predecir_amenaza_desde_ruta(
+                ruta_temporal,
+                top_n=5,
+            )
+
+            cultivo_bd = None
+            cultivo_coincide = None
+
+            if cultivo_usuario:
+                cultivo_bd = cultivo_usuario.cultivo.nombre
+                cultivo_detectado = resultado_prediccion.get("cultivo")
+
+                cultivo_coincide = (
+                    cultivo_detectado.lower() in cultivo_bd.lower()
+                    or cultivo_bd.lower() in cultivo_detectado.lower()
+                )
+
+            return Response(
+                {
+                    "prediccion": resultado_prediccion,
+                    "cultivo_usuario": {
+                        "id": cultivo_usuario.id if cultivo_usuario else None,
+                        "cultivo_bd": cultivo_bd,
+                        "cultivo_coincide": cultivo_coincide,
+                    },
+                    "mensaje_observacion": construir_texto_prediccion(
+                        resultado_prediccion
+                    ),
+                },
+                status=status.HTTP_200_OK,
+            )
+
+        except Exception as error:
+            return Response(
+                {
+                    "detail": "Ocurrió un error al analizar la imagen.",
+                    "error": str(error),
+                },
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+
+        finally:
+            if "ruta_temporal" in locals() and os.path.exists(ruta_temporal):
+                os.remove(ruta_temporal)
 
 
 class AmenazaViewSet(viewsets.ModelViewSet):
@@ -91,7 +197,9 @@ class EstadoViewSet(viewsets.ModelViewSet):
 
 
 class CultivoUsuarioViewSet(viewsets.ModelViewSet):
-    queryset = CultivoUsuario.objects.all()  # usado por el router para el basename; el filtro real está en get_queryset()
+    queryset = (
+        CultivoUsuario.objects.all()
+    )  # usado por el router para el basename; el filtro real está en get_queryset()
     serializer_class = CultivoUsuarioSerializer
     permission_classes = [IsAuthenticated]
 
