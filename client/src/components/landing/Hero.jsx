@@ -10,7 +10,10 @@ const Hero = () => {
         <section className="hero-section">
             <div className="hero-inner">
                 <div className="hero-text">
-                    <span className="badge-tag">Inteligencia Agronómica</span>
+                    <span className="badge-tag">
+                        <span className="badge-dot" />
+                        Inteligencia Agronómica
+                    </span>
 
                     <h1 className="hero-title">
                         Sistema Inteligente de Guía y Recomendación{' '}
