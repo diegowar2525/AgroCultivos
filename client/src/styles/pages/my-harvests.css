@@ -1,3 +1,7 @@
+/* ==========================================================================
+   My Harvests - Base de página y contenedores
+   ========================================================================== */
+
 .my-harvests-page {
     min-height: 100vh;
     background-color: var(--bg-dark, #0b1f0e);
@@ -99,6 +103,11 @@
     top: 20px;
 }
 
+
+/* ==========================================================================
+   Resumen estadístico
+   ========================================================================== */
+
 .my-harvests-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -133,10 +142,26 @@
     margin: 0;
 }
 
-.my-harvests-stat-value--activo { color: #4ade80; }
-.my-harvests-stat-value--cosecha { color: #fbbf24; }
-.my-harvests-stat-value--completado { color: #60a5fa; }
-.my-harvests-stat-value--total { color: var(--text-primary, #f0f5ee); }
+.my-harvests-stat-value--activo {
+    color: #4ade80;
+}
+
+.my-harvests-stat-value--cosecha {
+    color: #fbbf24;
+}
+
+.my-harvests-stat-value--completado {
+    color: #60a5fa;
+}
+
+.my-harvests-stat-value--total {
+    color: var(--text-primary, #f0f5ee);
+}
+
+
+/* ==========================================================================
+   Tabla principal de cosechas
+   ========================================================================== */
 
 .my-harvests-table-card {
     background-color: var(--bg-card);
@@ -203,12 +228,17 @@
     min-width: 120px;
 }
 
-.my-harvests-progress-cell > span {
+.my-harvests-progress-cell>span {
     color: var(--text-primary, #f0f5ee);
     font-size: 0.8rem;
     font-weight: 600;
     min-width: 32px;
 }
+
+
+/* ==========================================================================
+   Barras de progreso y badges de estado
+   ========================================================================== */
 
 .harvest-progress-bar {
     background-color: rgba(217, 198, 107, 0.15);
@@ -289,6 +319,11 @@
     font-size: 0.82rem;
     font-family: inherit;
 }
+
+
+/* ==========================================================================
+   Fila expandida y progreso del ciclo
+   ========================================================================== */
 
 .my-harvests-expanded-cell {
     background-color: var(--bg-dark);
@@ -381,6 +416,11 @@
     color: #fbbf24;
 }
 
+
+/* ==========================================================================
+   Botones de estado y acciones de cosecha
+   ========================================================================== */
+
 .my-harvests-status-button,
 .my-harvests-save-button {
     border-radius: 8px;
@@ -439,6 +479,11 @@
     gap: 6px;
 }
 
+
+/* ==========================================================================
+   Tarjeta de salud, selector Bien/Observación/Amenaza y formularios
+   ========================================================================== */
+
 .my-harvests-health-card {
     transition: border-color 0.3s ease;
 }
@@ -451,8 +496,21 @@
     border-color: rgba(251, 191, 36, 0.25);
 }
 
-.my-harvests-health-card--plaga {
+.my-harvests-health-card--amenaza {
     border-color: rgba(248, 113, 113, 0.3);
+}
+
+.my-harvests-health-notice--amenaza {
+    background-color: rgba(248, 113, 113, 0.07);
+    border: 1px solid rgba(248, 113, 113, 0.22);
+}
+
+.my-harvests-health-notice--amenaza p {
+    color: #f87171;
+}
+
+.my-harvests-health-notice--amenaza span {
+    color: rgba(252, 165, 165, 0.85);
 }
 
 .my-harvests-health-title {
@@ -463,6 +521,18 @@
 
 .my-harvests-health-title svg {
     color: var(--green-main, #d9c66b);
+}
+
+.my-harvests-health-card--bien .my-harvests-health-title svg {
+    color: #4ade80;
+}
+
+.my-harvests-health-card--observacion .my-harvests-health-title svg {
+    color: #fbbf24;
+}
+
+.my-harvests-health-card--amenaza .my-harvests-health-title svg {
+    color: #f87171;
 }
 
 .my-harvests-health-options {
@@ -501,7 +571,7 @@
     color: #fbbf24;
 }
 
-.my-harvests-health-option--plaga.is-active {
+.my-harvests-health-option--amenaza.is-active {
     border-color: rgba(248, 113, 113, 0.4);
     background-color: rgba(248, 113, 113, 0.1);
     color: #fca5a5;
@@ -625,6 +695,11 @@
     flex-shrink: 0;
 }
 
+
+/* ==========================================================================
+   Subida de imagen, botones de guardado y chips
+   ========================================================================== */
+
 .my-harvests-upload-box {
     background-color: rgba(217, 198, 107, 0.05);
     border: 1px dashed rgba(217, 198, 107, 0.25);
@@ -661,9 +736,14 @@
 }
 
 .my-harvests-save-button--good {
-    background-color: var(--green-main, #d9c66b);
-    border: none;
-    color: var(--bg-dark);
+    background-color: rgba(74, 222, 128, 0.12);
+    border: 1px solid rgba(74, 222, 128, 0.32);
+    color: #4ade80;
+}
+
+.my-harvests-save-button--good:hover:not(:disabled) {
+    background-color: rgba(74, 222, 128, 0.18);
+    border-color: rgba(74, 222, 128, 0.45);
 }
 
 .my-harvests-save-button--good.is-success {
@@ -692,6 +772,32 @@
 .my-harvests-save-button--danger.is-success {
     background-color: rgba(248, 113, 113, 0.2);
     border-color: rgba(248, 113, 113, 0.5);
+}
+
+.my-harvests-form-alert--neutral {
+    background: #7485a8;
+    border: 1px solid #d1d5db;
+    color: #374151;
+}
+
+.my-harvests-form-alert--neutral strong {
+    color: #1f2937;
+}
+
+.my-harvests-save-button--neutral {
+    background: #4b5563;
+    color: #5ecab6;
+    border: 1px solid #4b5563;
+}
+
+.my-harvests-save-button--neutral:hover:not(:disabled) {
+    background: #374151;
+    border-color: #374151;
+}
+
+.my-harvests-save-button--neutral:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
 }
 
 .my-harvests-chip-title {
@@ -754,6 +860,11 @@
     font-weight: 700;
     flex-shrink: 0;
 }
+
+
+/* ==========================================================================
+   Historial de seguimiento y timeline
+   ========================================================================== */
 
 .my-harvests-history {
     margin-top: 14px;
@@ -938,6 +1049,11 @@
     line-height: 1.5;
 }
 
+
+/* ==========================================================================
+   Panel lateral, gráficos, niveles e insignias
+   ========================================================================== */
+
 .my-harvests-achievements {
     display: flex;
     flex-direction: column;
@@ -989,7 +1105,7 @@
 }
 
 .my-harvests-chart-legend__item,
-.my-harvests-chart-legend__item > div {
+.my-harvests-chart-legend__item>div {
     display: flex;
     align-items: center;
 }
@@ -998,7 +1114,7 @@
     justify-content: space-between;
 }
 
-.my-harvests-chart-legend__item > div {
+.my-harvests-chart-legend__item>div {
     gap: 7px;
 }
 
@@ -1019,10 +1135,21 @@
     font-size: 0.9rem;
 }
 
-.my-harvests-chart--active { color: #4ade80; }
-.my-harvests-chart--harvest { color: #fbbf24; }
-.my-harvests-chart--completed { color: #60a5fa; }
-.my-harvests-chart--suspended { color: #f87171; }
+.my-harvests-chart--active {
+    color: #4ade80;
+}
+
+.my-harvests-chart--harvest {
+    color: #fbbf24;
+}
+
+.my-harvests-chart--completed {
+    color: #60a5fa;
+}
+
+.my-harvests-chart--suspended {
+    color: #f87171;
+}
 
 .my-harvests-level-card__summary {
     display: flex;
@@ -1269,6 +1396,90 @@
     color: #444;
     flex-shrink: 0;
 }
+
+
+/* ==========================================================================
+   Aviso del modelo y diagnóstico automático
+   ========================================================================== */
+
+.my-harvests-model-notice {
+    background-color: rgba(96, 165, 250, 0.08);
+    border: 1px solid rgba(96, 165, 250, 0.25);
+    color: rgba(191, 219, 254, 0.9);
+    border-radius: 8px;
+    padding: 8px 11px;
+    font-size: 0.76rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    margin-bottom: 9px;
+}
+
+.my-harvests-model-notice svg {
+    color: #60a5fa;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.my-harvests-model-notice p {
+    margin: 0;
+}
+
+.my-harvests-model-notice strong {
+    color: #60a5fa;
+    font-weight: 700;
+}
+
+.my-harvests-model-notice span {
+    color: #bfdbfe;
+    font-weight: 600;
+}
+
+.my-harvests-diagnosis-card {
+    border-radius: 8px;
+    padding: 9px 11px;
+    font-size: 0.76rem;
+    line-height: 1.5;
+}
+
+.my-harvests-diagnosis-card__title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.my-harvests-diagnosis-card p {
+    margin: 4px 0;
+}
+
+.my-harvests-diagnosis-card--good {
+    background-color: rgba(74, 222, 128, 0.08);
+    border: 1px solid rgba(74, 222, 128, 0.28);
+    color: rgba(187, 247, 208, 0.9);
+}
+
+.my-harvests-diagnosis-card--good strong,
+.my-harvests-diagnosis-card--good svg {
+    color: #4ade80;
+}
+
+.my-harvests-diagnosis-card--danger {
+    background-color: rgba(248, 113, 113, 0.08);
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    color: rgba(252, 165, 165, 0.9);
+}
+
+.my-harvests-diagnosis-card--danger strong,
+.my-harvests-diagnosis-card--danger svg {
+    color: #f87171;
+}
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
 
 @media (max-width: 1100px) {
     .my-harvests-layout {
