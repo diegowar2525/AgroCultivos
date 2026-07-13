@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import CrudForm from './CrudForm';
 import CrudTable from './CrudTable';
 
-import DeleteConfirmation from '@/components/common/DeleteConfirmation';
+import ConfirmationToast from '@/components/common/ConfirmationToast';
 
 const CrudView = ({ modelName, config }) => {
 
@@ -24,9 +24,13 @@ const CrudView = ({ modelName, config }) => {
     const handleDelete = (id) => {
         toast.info(
             ({ closeToast }) => (
-                <DeleteConfirmation
+                <ConfirmationToast
                     closeToast={closeToast}
                     onConfirm={() => executeDelete(id)}
+                    message="¿Estás seguro de eliminar este registro?"
+                    confirmLabel="Eliminar"
+                    cancelLabel="Cancelar"
+                    confirmClassName="btn-toast-delete"
                 />
             ),
             {
