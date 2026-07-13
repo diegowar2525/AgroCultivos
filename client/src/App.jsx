@@ -16,10 +16,10 @@ import DashboardView from "./components/dashboard/overview/DashboardView";
 import CrudPanel from "./components/dashboard/crud/CrudPanel";
 import PrivateRoute from './routes/PrivateRoute';
 import Recomendaciones from './pages/Recommendations';
-import MisCultivos from './pages/MyCrops';
+import MyCrops from './pages/MyCrops';
 import MisCosechas from './pages/MyHarvests';
-import InfoCultivo from './pages/InfoCultivo';
-import UserActivity from './pages/UserActivity';
+import CropInfo from './pages/CropInfo';
+import UserCropManagement from './pages/UserCropManagement';
 
 function App() {
     const [appReady, setAppReady] = useState(false);
@@ -69,12 +69,12 @@ function App() {
                     />
 
                     <Route
-                        path="panel"
+                        path="admin-panel"
                         element={<CrudPanel />}
                     />
                     <Route
-                        path="usuarios"
-                        element={<UserActivity />}
+                        path="users"
+                        element={<UserCropManagement />}
                     />
                 </Route>
 
@@ -100,7 +100,7 @@ function App() {
                     path="/my-crops"
                     element={
                         <PrivateRoute userOnly>
-                            <MisCultivos />
+                            <MyCrops />
                         </PrivateRoute>
                     }
                 />
@@ -115,10 +115,10 @@ function App() {
                 />
 
                 <Route
-                    path="/info-cultivo/:id"
+                    path="/crop-info/:id"
                     element={
-                        <PrivateRoute>
-                            <InfoCultivo />
+                        <PrivateRoute userOnly>
+                            <CropInfo />
                         </PrivateRoute>
                     }
                 />
