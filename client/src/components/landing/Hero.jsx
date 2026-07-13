@@ -31,7 +31,7 @@ const Hero = () => {
                             className="btn-hero"
                             onClick={() => navigate(user ? '/recommendations' : '/login')}
                         >
-                            Iniciar mi huerto
+                            Empieza ahora
                         </button>
                     </div>
                 </div>
