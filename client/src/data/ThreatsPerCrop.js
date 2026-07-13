@@ -5,7 +5,7 @@
  * enfocada en UI/estado, y esta data se pueda reutilizar o mover a una
  * fuente externa (API/JSON) mas adelante sin tocar componentes.
  */
-export const AMENAZAS_POR_CULTIVO = {
+export const THREATS_PER_CROP = {
     'Tomate riñón': [
         { nombre: 'Tizón tardío', pasos: ['Aplicar mancozeb o clorotalonil preventivamente.', 'Evitar riego nocturno y exceso de humedad foliar.', 'Retirar hojas muy afectadas y quemar fuera del cultivo.'] },
         { nombre: 'Mosca blanca', pasos: ['Colocar trampas amarillas adhesivas cerca del cultivo.', 'Aplicar imidacloprid al suelo o jabón potásico en hojas.', 'Repetir cada 5 días hasta eliminar la colonia.'] },
@@ -350,12 +350,12 @@ export const AMENAZAS_POR_CULTIVO = {
     ],
 };
 
-export const AMENAZAS_DEFAULT = [
+export const DEFAULT_THREATS = [
     { nombre: 'Hongos foliares', pasos: ['Aplicar fungicida preventivo a base de cobre o azufre.', 'Mejorar la ventilación entre plantas.', 'Eliminar las partes afectadas para evitar propagación.'] },
     { nombre: 'Pulgones', pasos: ['Aplicar jabón potásico diluido al 2% en el envés.', 'Colocar trampas amarillas adhesivas.', 'Repetir el tratamiento cada 3 días.'] },
     { nombre: 'Araña roja', pasos: ['Aumentar la humedad ambiental rociando agua en hojas.', 'Aplicar aceite de neem diluido en agua.', 'Retirar hojas muy afectadas.'] },
 ];
-export const PROBLEMAS_COMUNES = [
+export const COMMON_PROBLEMS = [
     { nombre: 'Hojas amarillas',      pasos: ['Verificar si hay exceso de riego o falta de drenaje.', 'Aplicar fertilizante con nitrógeno si el suelo está pobre.', 'Revisar si hay plagas como pulgones en el envés de las hojas.'] },
     { nombre: 'Hojas secas/quemadas', pasos: ['Aumentar la frecuencia de riego especialmente en época seca.', 'Proteger el cultivo del sol directo con malla sombra si es necesario.', 'Verificar que el sustrato retenga humedad adecuadamente.'] },
     { nombre: 'Cultivo marchito',     pasos: ['Regar inmediatamente si el suelo está muy seco.', 'Si el suelo está húmedo, revisar las raíces por pudrición.', 'Mejorar el drenaje del suelo para evitar encharcamiento.'] },
@@ -369,6 +369,6 @@ export const PROBLEMAS_COMUNES = [
 ];
 
 /** Devuelve las amenazas conocidas de un cultivo, o una lista generica si no hay match. */
-export function getAmenazas(nombreCultivo) {
-    return AMENAZAS_POR_CULTIVO[nombreCultivo] || AMENAZAS_DEFAULT;
+export function getThreats(nombreCultivo) {
+    return THREATS_PER_CROP[nombreCultivo] || DEFAULT_THREATS;
 }

@@ -5,10 +5,10 @@ import {
     Mountain, Sun, Clock, Leaf, Bug, Flame,
 } from 'lucide-react';
 import Navbar from '../components/layout/Navbar';
-import { useInfoCultivo } from '../hooks/useInfoCultivo';
-import SeccionTitulo from '../components/infoCultivo/SeccionTitulo';
-import FilaInfo from '../components/infoCultivo/FilaInfo';
-import TagEnfermedad from '../components/infoCultivo/TagEnfermedad';
+import { useCropInfo } from '../hooks/useCropInfo';
+import SectionTitle from '../components/cropInfo/SectionTitle';
+import RowInfo from '../components/cropInfo/RowInfo';
+import DiseaseTag from '../components/cropInfo/DeseaseTag';
 
 const CUIDADOS_GENERALES = [
     'Revisar semanalmente por señales de plagas o enfermedades.',
@@ -18,10 +18,10 @@ const CUIDADOS_GENERALES = [
     'Registrar el crecimiento del cultivo en Mis Cosechas para un mejor seguimiento.',
 ];
 
-export default function InfoCultivo() {
+export default function CropInfo() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { cultivo, especificacion, extra, imagenUrl, loading, error } = useInfoCultivo(id);
+    const { cultivo, especificacion, extra, imagenUrl, loading, error } = useCropInfo(id);
     const [enfActiva, setEnfActiva] = useState(null);
 
     if (loading) {
@@ -89,12 +89,12 @@ export default function InfoCultivo() {
                         </div>
 
                         <div className="info-card">
-                            <SeccionTitulo icon={Sprout} titulo="Información general" />
+                            <SectionTitle icon={Sprout} titulo="Información general" />
                             <div className="info-fila-lista">
-                                <FilaInfo icon={Clock} label="Tiempo de cosecha" valor={`${cultivo.tiempo_cosecha} días`} />
-                                <FilaInfo icon={Droplets} label="Frecuencia de riego" valor={extra?.riego?.frecuencia} detalle={extra?.riego?.detalle} />
-                                <FilaInfo icon={Leaf} label="Abono recomendado" valor={extra?.abono?.tipo} detalle={extra?.abono?.detalle} />
-                                <FilaInfo icon={Thermometer} label="Temperatura ideal" valor={extra?.temp} />
+                                <RowInfo icon={Clock} label="Tiempo de cosecha" valor={`${cultivo.tiempo_cosecha} días`} />
+                                <RowInfo icon={Droplets} label="Frecuencia de riego" valor={extra?.riego?.frecuencia} detalle={extra?.riego?.detalle} />
+                                <RowInfo icon={Leaf} label="Abono recomendado" valor={extra?.abono?.tipo} detalle={extra?.abono?.detalle} />
+                                <RowInfo icon={Thermometer} label="Temperatura ideal" valor={extra?.temp} />
                             </div>
                         </div>
                     </div>
@@ -102,7 +102,7 @@ export default function InfoCultivo() {
                     {/* Columna derecha */}
                     <div className="info-cultivo-col">
                         <div className="info-card">
-                            <SeccionTitulo icon={Sprout} titulo="Descripción" />
+                            <SectionTitle icon={Sprout} titulo="Descripción" />
                             <p className="info-cultivo-descripcion">
                                 {cultivo.descripcion || 'Sin descripción disponible.'}
                             </p>
@@ -110,7 +110,7 @@ export default function InfoCultivo() {
 
                         {especificacion && (
                             <div className="info-card">
-                                <SeccionTitulo icon={Thermometer} titulo="Requerimientos climáticos" />
+                                <SectionTitle icon={Thermometer} titulo="Requerimientos climáticos" />
                                 <div className="clima-grid">
                                     {filasClima.map(({ icon: Icon, label, val }) => (
                                         <div className="clima-fila" key={label}>
@@ -123,10 +123,10 @@ export default function InfoCultivo() {
                         )}
 
                         <div className="info-card">
-                            <SeccionTitulo icon={Bug} titulo="Enfermedades frecuentes" />
+                            <SectionTitle icon={Bug} titulo="Enfermedades frecuentes" />
                             <div className="tags-enfermedades">
                                 {enfermedades.map((enf, i) => (
-                                    <TagEnfermedad
+                                    <DiseaseTag
                                         key={enf.nombre}
                                         nombre={enf.nombre}
                                         activa={enfActiva === i}
@@ -146,7 +146,7 @@ export default function InfoCultivo() {
                         </div>
 
                         <div className="info-card">
-                            <SeccionTitulo icon={Leaf} titulo="Cuidados generales" />
+                            <SectionTitle icon={Leaf} titulo="Cuidados generales" />
                             <div className="cuidados-lista">
                                 {CUIDADOS_GENERALES.map((texto) => (
                                     <div className="cuidado-item" key={texto}>

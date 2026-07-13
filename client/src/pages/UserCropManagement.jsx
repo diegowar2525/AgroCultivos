@@ -1,10 +1,10 @@
 import { Sprout, Layers, Search, Users } from 'lucide-react';
-import { useUserActivity } from '../hooks/useUserActivity';
-import UserListItem from '../components/userActivity/UserListItem';
-import UserActivityHeader from '../components/userActivity/UserActivityHeader';
-import UserActivityTable from '../components/userActivity/UserActivityTable';
+import { useUserCropManagement } from '../hooks/useUserCropManagement';
+import UserListItem from '../components/UserCropManagement/UserListItem';
+import UserCropManagementHeader from '../components/UserCropManagement/UserCropManagementHeader';
+import UserCropManagementTable from '../components/UserCropManagement/UserCropManagementTable';
 
-export default function UserActivity() {
+export default function UserCropManagement() {
     const {
         usuarios,
         usuariosFiltrados,
@@ -19,7 +19,7 @@ export default function UserActivity() {
         misCultivos,
         misCosechas,
         completados,
-    } = useUserActivity();
+    } = useUserCropManagement();
 
     return (
         <div className="user-activity-page">
@@ -73,7 +73,7 @@ export default function UserActivity() {
                     </div>
                 ) : (
                     <>
-                        <UserActivityHeader
+                        <UserCropManagementHeader
                             usuario={usuarioSel}
                             misCultivos={misCultivos}
                             misCosechas={misCosechas}
@@ -100,12 +100,12 @@ export default function UserActivity() {
                         {loadingDetalle ? (
                             <p className="user-activity-lista-mensaje">Cargando cultivos...</p>
                         ) : tab === 'cultivos' ? (
-                            <UserActivityTable
+                            <UserCropManagementTable
                                 cultivos={misCultivos}
                                 mensajeVacio="Este usuario no tiene cultivos pendientes."
                             />
                         ) : (
-                            <UserActivityTable
+                            <UserCropManagementTable
                                 cultivos={misCosechas}
                                 mostrarProgreso
                                 mensajeVacio="Este usuario no ha iniciado ningún cultivo."

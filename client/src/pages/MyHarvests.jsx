@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import Navbar from '../components/layout/Navbar';
-import AchievementsPanel from '../components/myHarvests/AchievementsPanel';
+import AchievementsPanel from '../components/myHarvests/gamification/AchievementsPanel';
 import HarvestChart from '../components/myHarvests/HarvestChart';
 import MyHarvestsEmptyState from '../components/myHarvests/MyHarvestsEmptyState';
 import MyHarvestsHeader from '../components/myHarvests/MyHarvestsHeader';
@@ -41,7 +41,7 @@ export default function MyHarvests() {
                                 expandedHarvestId={expandedHarvestId}
                                 onToggleExpanded={toggleExpandedHarvest}
                                 onReloadHarvests={reloadHarvests}
-                                onViewCropInfo={(cropId) => navigate(`/info-cultivo/${cropId}`)}
+                                onViewCropInfo={(cropId) => navigate(`/crop-info/${cropId}`)}
                             />
                         </div>
 

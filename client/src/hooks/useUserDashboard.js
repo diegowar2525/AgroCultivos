@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import api from '../services/api';
-import { getNivel, getSiguienteNivel } from '../data/gamificacion';
+import { getLevel, getNextLevel } from '../data/gamification';
 import { calculateDaysRemaining, calculateProgress } from '../utils/harvestProgress';
 
 /**
@@ -50,7 +50,7 @@ export function useUserDashboard() {
                 setSeguimientos(rSeguimientos.data?.results || rSeguimientos.data || []);
                 setConsultas(rConsultas.data?.results || rConsultas.data || []);
             })
-            .catch(() => {})
+            .catch(() => { })
             .finally(() => setLoading(false));
     }, []);
 
@@ -58,8 +58,8 @@ export function useUserDashboard() {
     const enSeguimiento = cultivos.filter((c) => c.iniciado && c.estado_nombre !== 'Completado');
     const completados = cultivos.filter((c) => c.estado_nombre === 'Completado');
 
-    const nivel = getNivel(completados.length);
-    const siguienteNivel = getSiguienteNivel(completados.length);
+    const nivel = getLevel(completados.length);
+    const siguienteNivel = getNextLevel(completados.length);
     const rangoNivel = siguienteNivel ? siguienteNivel.min - nivel.min : 1;
     const progresoNivel = siguienteNivel
         ? Math.min(100, Math.round(((completados.length - nivel.min) / rangoNivel) * 100))

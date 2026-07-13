@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import api from '../services/api';
 
-export function useEstadoIds() {
+export function useStateId() {
     const [estadoIds, setEstadoIds] = useState({});
 
     useEffect(() => {

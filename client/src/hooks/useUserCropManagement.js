@@ -5,7 +5,7 @@ import api from '../services/api';
  * Lógica del panel admin "Actividad de usuarios": lista de usuarios,
  * búsqueda, selección de un usuario y carga de sus cultivos/cosechas.
  */
-export function useUserActivity() {
+export function useUserCropManagement() {
     const [usuarios, setUsuarios] = useState([]);
     const [usuarioSel, setUsuarioSel] = useState(null);
     const [cultivos, setCultivos] = useState([]);
