@@ -1,8 +1,10 @@
+import { toast } from 'react-toastify';
 import {
     DEFAULT_LEVEL_CLASS,
     LEVEL_CLASS,
 } from '../../constants/recommendations';
 import CompatibilityBar from './CompatibilityBar';
+import ConfirmationToast from '../common/ConfirmationToast';
 
 export default function RecommendationCard({
     cultivo,
@@ -22,6 +24,28 @@ export default function RecommendationCard({
         ['🌧', cultivo.rango_precip],
     ];
 
+    const solicitarConfirmacion = () => {
+        toast(
+            ({ closeToast }) => (
+                <ConfirmationToast
+                    closeToast={closeToast}
+                    message={`¿Estás seguro de agregar ${cultivo.cultivo} a Mis cultivos?`}
+                    confirmLabel="Sí, agregar"
+                    confirmClassName="btn-toast-confirm"
+                    onConfirm={() =>
+                        onAgregar(cultivo.cultivo, cultivo.ciclo)
+                    }
+                />
+            ),
+            {
+                autoClose: false,
+                closeButton: false,
+                closeOnClick: false,
+                draggable: false,
+            }
+        );
+    };
+
     return (
         <article className="recommendations-card">
             <div className="recommendations-card__header">
@@ -29,6 +53,7 @@ export default function RecommendationCard({
                     <h3 className="recommendations-card__title">
                         {cultivo.cultivo}
                     </h3>
+
                     <p className="recommendations-card__meta">
                         {cultivo.ciclo} · {cultivo.tipo_siembra}
                     </p>
@@ -38,13 +63,17 @@ export default function RecommendationCard({
                     <p className={`recommendations-score__value ${levelClass}`}>
                         {cultivo.score}%
                     </p>
+
                     <span className={`recommendations-score__badge ${levelClass}`}>
                         {cultivo.nivel}
                     </span>
                 </div>
             </div>
 
-            <CompatibilityBar value={cultivo.score} nivel={cultivo.nivel} />
+            <CompatibilityBar
+                value={cultivo.score}
+                nivel={cultivo.nivel}
+            />
 
             <p className="recommendations-card__description">
                 {cultivo.justificacion}
@@ -65,7 +94,7 @@ export default function RecommendationCard({
             ) : (
                 <button
                     type="button"
-                    onClick={() => onAgregar(cultivo.cultivo, cultivo.ciclo)}
+                    onClick={solicitarConfirmacion}
                     disabled={loading}
                     className="recommendations-button recommendations-button--outline recommendations-card__button"
                 >
