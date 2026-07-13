@@ -7,33 +7,42 @@ const navClass = ({ isActive }) =>
 const userBadgeClass = ({ isActive }) =>
     isActive ? 'user-badge active' : 'user-badge';
 
-const publicLinks = [
-    { to: '/', label: 'Inicio' },
-];
+const homeLink = {
+    to: '/',
+    label: 'Inicio',
+};
 
 const userLinks = [
-    { to: '/my-crops', label: 'Mis Cultivos' },
     { to: '/recommendations', label: 'Recomendaciones' },
+    { to: '/my-crops', label: 'Mis Cultivos' },
     { to: '/my-harvests', label: 'Mis Cosechas' },
 ];
 
 const adminLinks = [
     { to: '/dashboard', label: 'Resumen del sistema' },
-    { to: '/dashboard/panel', label: 'Panel de administración' },
-    { to: '/dashboard/usuarios', label: 'Actividad de usuarios' },
+    { to: '/dashboard/admin-panel', label: 'Panel de administración' },
+    { to: '/dashboard/users', label: 'Gestión de cultivos de usuarios' },
 ];
 
 export default function Navbar() {
     const { user, logout } = useAuth();
 
     const isAdmin = Boolean(user?.is_staff);
-    const visibleLinks = isAdmin ? adminLinks : user ? userLinks : [];
+
+    const visibleLinks = isAdmin
+        ? adminLinks
+        : [
+            homeLink,
+            ...(user ? userLinks : []),
+        ];
+
+    const logoDestination = isAdmin ? '/dashboard' : '/';
 
     return (
         <nav className="navbar">
             <div className="navbar-container">
 
-                <NavLink to="/" className="navbar-logo">
+                <NavLink to={logoDestination} className="navbar-logo">
                     <div className="logo-icon">
                         🌱
                     </div>
@@ -47,16 +56,6 @@ export default function Navbar() {
                 </NavLink>
 
                 <div className="navbar-links">
-                    {publicLinks.map(({ to, label }) => (
-                        <NavLink
-                            key={to}
-                            to={to}
-                            className={navClass}
-                        >
-                            {label}
-                        </NavLink>
-                    ))}
-
                     {visibleLinks.map(({ to, label }) => (
                         <NavLink
                             key={to}
@@ -77,7 +76,9 @@ export default function Navbar() {
                                 className={userBadgeClass}
                             >
                                 <div className="user-avatar">
-                                    {user.first_name?.charAt(0) || user.username?.charAt(0) || 'U'}
+                                    {user.first_name?.charAt(0)
+                                        || user.username?.charAt(0)
+                                        || 'U'}
                                 </div>
 
                                 <span className="user-name">
