@@ -1,7 +1,7 @@
 import { CheckCircle, CircleCheck, Leaf } from 'lucide-react';
 
 import { calculateDaysRemaining, calculateProgress } from '../../utils/harvestProgress';
-import { useEstadoIds } from '../../hooks/useEstadoIds';
+import { useStateId } from '../../hooks/useStateId';
 import HarvestProgressBar from './HarvestProgressBar';
 import HarvestHistory from './HarvestHistory';
 
@@ -11,7 +11,7 @@ export default function HarvestCycleCard({
     updatingStatus,
     onChangeStatus,
 }) {
-    const estadoIds = useEstadoIds();
+    const estadoIds = useStateId();
     const progress = calculateProgress(
         harvest.fecha_siembra,
         harvest.fecha_cosecha_estimada,

@@ -1,6 +1,6 @@
 import { Leaf } from 'lucide-react';
 
-import { getAmenazas } from '../../data/amenazasPorCultivo';
+import { getThreats } from '../../data/threatsPerCrop';
 import HealthStatusSelector from './HealthStatusSelector';
 import HealthyTrackingForm from './HealthyTrackingForm';
 import ObservationTrackingForm from './ObservationTrackingForm';
@@ -9,7 +9,7 @@ import TrackingImageAnalyzer from './TrackingImageAnalyzer';
 
 export default function HarvestHealthCard({ harvest, form }) {
     const cropName = harvest.cultivo_nombre || '';
-    const cropThreats = getAmenazas(cropName);
+    const cropThreats = getThreats(cropName);
 
     return (
         <section className={`my-harvests-expanded-card my-harvests-health-card my-harvests-health-card--${form.healthStatus}`}>

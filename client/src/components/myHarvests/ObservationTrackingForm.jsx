@@ -3,7 +3,7 @@ import ObservationField from './ObservationField';
 import PlantHeightField from './PlantHeightField';
 import ProblemChips from './ProblemChips';
 import SolutionSteps from './SolutionSteps';
-import { PROBLEMAS_COMUNES } from '../../data/amenazasPorCultivo';
+import { COMMON_PROBLEMS } from '../../data/threatsPerCrop';
 
 export default function ObservationTrackingForm({
     commonProblem,
@@ -29,7 +29,7 @@ export default function ObservationTrackingForm({
                 <p className="my-harvests-chip-title">¿Qué problema observaste?</p>
 
                 <ProblemChips
-                    items={PROBLEMAS_COMUNES}
+                    items={COMMON_PROBLEMS}
                     selectedItem={commonProblem}
                     onSelect={setCommonProblem}
                     variant="warning"

@@ -1,12 +1,12 @@
 import { Lock } from 'lucide-react';
 
-import { calcularInsignias, getNivel, getSiguienteNivel, NIVELES } from '../../data/gamificacion';
+import { calculateBadges, getLevel, getNextLevel, LEVELS } from '../../data/gamification';
 
 export default function AchievementsPanel({ harvests }) {
     const completed = harvests.filter(harvest => harvest.estado_nombre === 'Completado').length;
-    const currentLevel = getNivel(completed);
-    const nextLevel = getSiguienteNivel(completed);
-    const badges = calcularInsignias(harvests);
+    const currentLevel = getLevel(completed);
+    const nextLevel = getNextLevel(completed);
+    const badges = calculateBadges(harvests);
     const LevelIcon = currentLevel.icon;
     const levelProgress = nextLevel
         ? Math.round(((completed - currentLevel.min) / (nextLevel.min - currentLevel.min)) * 100)
@@ -49,7 +49,7 @@ export default function AchievementsPanel({ harvests }) {
                 )}
 
                 <div className="my-harvests-level-list">
-                    {NIVELES.map(level => {
+                    {LEVELS.map(level => {
                         const Icon = level.icon;
                         const isActive = level.nivel === currentLevel.nivel;
                         const isPast = level.nivel < currentLevel.nivel;

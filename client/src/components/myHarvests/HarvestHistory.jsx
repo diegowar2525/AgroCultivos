@@ -4,7 +4,7 @@ import { resolveMediaUrl } from '../../services/api';
 import useHarvestHistory from '../../hooks/useHarvestHistory';
 import { getHealthBadgeClass } from '../../constants/healthStatus';
 import { formatDateTime } from '../../utils/dateFormat';
-import { AMENAZAS_DEFAULT, AMENAZAS_POR_CULTIVO, PROBLEMAS_COMUNES } from '../../data/amenazasPorCultivo';
+import { DEFAULT_THREATS, THREATS_PER_CROP, COMMON_PROBLEMS } from '../../data/threatsPerCrop';
 
 function findSolution(fenologicalStatus = '') {
     if (fenologicalStatus.startsWith('Amenaza:')) {
@@ -12,16 +12,16 @@ function findSolution(fenologicalStatus = '') {
             .replace('Amenaza: ', '')
             .trim();
 
-        const allThreats = Object.values(AMENAZAS_POR_CULTIVO)
+        const allThreats = Object.values(THREATS_PER_CROP)
             .flat()
-            .concat(AMENAZAS_DEFAULT);
+            .concat(DEFAULT_THREATS);
 
         return allThreats.find(threat => threat.nombre === threatName) || null;
     }
 
     if (fenologicalStatus.startsWith('Observación:')) {
         const problemName = fenologicalStatus.replace('Observación: ', '').trim();
-        return PROBLEMAS_COMUNES.find(problem => problem.nombre === problemName) || null;
+        return COMMON_PROBLEMS.find(problem => problem.nombre === problemName) || null;
     }
 
     return null;

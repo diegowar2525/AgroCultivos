@@ -1,4 +1,5 @@
 import { RotateCcw } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import RecommendationCard from './RecommendationCard';
 
 export default function RecommendationResults({
@@ -21,8 +22,11 @@ export default function RecommendationResults({
                 </div>
 
                 <div className="recommendations-results__actions">
-                    <p className="recommendations-results__hint">
-                        Agregados se guardan en <span>Mis cultivos</span>
+                    <p className="recommendations-results__subtitle">
+                        Los cultivos agregados se guardan en{' '}
+                        <Link to="/my-crops">
+                            Mis cultivos
+                        </Link>
                     </p>
 
                     <button
