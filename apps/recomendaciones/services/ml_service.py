@@ -38,9 +38,20 @@ def _cargar_modelo():
         _info = json.load(archivo)
 
 
-def _parsear_ciclo_min(ciclo_texto: str) -> float:
-    match = re.search(r"(\d+(?:\.\d+)?)", ciclo_texto or "")
-    return float(match.group(1)) if match else 999.0
+def _parsear_ciclo_promedio(ciclo_texto: str) -> float:
+    """
+    Convierte un texto de ciclo (ej. "3 – 4 meses") en un número de meses
+    representativo, usando el PROMEDIO del rango en vez de solo el
+    mínimo. Antes se tomaba únicamente el primer número encontrado, lo
+    que clasificaba erróneamente cultivos de ciclo medio (ej. "3 – 4
+    meses") como ciclo corto, dejando la búsqueda "medio" casi vacía
+    para cultivos de maceta.
+    """
+    numeros = re.findall(r"(\d+(?:\.\d+)?)", ciclo_texto or "")
+    if not numeros:
+        return 999.0
+    numeros = [float(n) for n in numeros]
+    return sum(numeros) / len(numeros)
 
 
 def recomendar_con_ml(
@@ -89,7 +100,7 @@ def recomendar_con_ml(
 
         if ciclo and ciclo.strip().lower() in ciclo_meses:
             rango_min, rango_max = ciclo_meses[ciclo.strip().lower()]
-            meses_cultivo = _parsear_ciclo_min(cultivo_info.get("ciclo", ""))
+            meses_cultivo = _parsear_ciclo_promedio(cultivo_info.get("ciclo", ""))
 
             if not (rango_min <= meses_cultivo <= rango_max):
                 continue
