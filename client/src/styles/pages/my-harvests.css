@@ -1501,3 +1501,24 @@
         grid-template-columns: 1fr;
     }
 }
+.my-harvests-suspended-card {
+    background-color: rgba(248, 113, 113, 0.08);
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.my-harvests-suspended-title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #f87171;
+}
+
+.my-harvests-suspended-texto {
+    color: var(--text-muted, #8aad7a);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    margin: 0;
+}

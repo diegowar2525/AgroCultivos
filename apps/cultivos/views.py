@@ -78,6 +78,11 @@ class SeguimientoCultivoViewSet(viewsets.ModelViewSet):
                 "No puedes registrar seguimiento sobre un cultivo que no es tuyo."
             )
 
+        if cultivo_usuario and cultivo_usuario.estado.nombre == "Suspendido":
+            raise PermissionDenied(
+                "Este cultivo fue suspendido por un administrador. No puedes registrar seguimiento hasta que se reactive."
+            )
+
         serializer.save()
 
     @action(
