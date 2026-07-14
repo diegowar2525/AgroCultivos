@@ -1,8 +1,9 @@
 import Navbar from '../components/layout/Navbar';
 import { useMyCrops } from '../hooks/useMyCrops';
+import { useCropRegistry } from '../hooks/useCropRegistry';
 import CultivoCard from '../components/myCrops/CultivoCard';
 import EstadoVacio from '../components/myCrops/EstadoVacio';
-import UserDashboardPanel from '../components/userDashboard/UserDashboardPanel';
+import CropRegistryTable from '../components/myCrops/CropRegistryTable';
 
 export default function MyCrops() {
     const {
@@ -14,6 +15,8 @@ export default function MyCrops() {
         iniciarCultivo,
         eliminarCultivo,
     } = useMyCrops();
+
+    const { registro, loading: loadingRegistro } = useCropRegistry();
 
     return (
         <div className="mis-cultivos-page">
@@ -47,7 +50,8 @@ export default function MyCrops() {
                         ))}
                     </div>
                 )}
-                <UserDashboardPanel />
+
+                <CropRegistryTable registro={registro} loading={loadingRegistro} />
             </div>
         </div>
     );

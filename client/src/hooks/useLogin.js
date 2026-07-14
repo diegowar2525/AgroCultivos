@@ -26,7 +26,7 @@ export function useLogin() {
 
         try {
             const userData = await login(form);
-            navigate(userData?.is_staff ? '/dashboard' : '/my-crops');
+            navigate(userData?.is_staff ? '/dashboard' : '/my-dashboard');
         } catch (err) {
             const detail = err.response?.data?.detail;
             setError(detail || 'Credenciales incorrectas. Verifica tu usuario y contraseña.');

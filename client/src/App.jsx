@@ -20,6 +20,7 @@ import MyCrops from './pages/MyCrops';
 import MisCosechas from './pages/MyHarvests';
 import CropInfo from './pages/CropInfo';
 import UserCropManagement from './pages/UserCropManagement';
+import Dashboard from './pages/Dashboard';
 
 function App() {
     const [appReady, setAppReady] = useState(false);
@@ -95,7 +96,14 @@ function App() {
                         </PrivateRoute>
                     }
                 />
-
+                <Route
+                    path="/my-dashboard"
+                    element={
+                        <PrivateRoute userOnly>
+                            <Dashboard />
+                        </PrivateRoute>
+                    }
+                />
                 <Route
                     path="/my-crops"
                     element={
