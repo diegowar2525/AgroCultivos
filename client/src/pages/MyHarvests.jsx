@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import Navbar from '../components/layout/Navbar';
-import AchievementsPanel from '../components/myHarvests/gamification/AchievementsPanel';
+import AchievementsPanel from '../components/myHarvests/AchievementsPanel';
 import HarvestChart from '../components/myHarvests/HarvestChart';
 import MyHarvestsEmptyState from '../components/myHarvests/MyHarvestsEmptyState';
 import MyHarvestsHeader from '../components/myHarvests/MyHarvestsHeader';

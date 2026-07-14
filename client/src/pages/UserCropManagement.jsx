@@ -1,8 +1,8 @@
 import { Sprout, Layers, Search, Users } from 'lucide-react';
 import { useUserCropManagement } from '../hooks/useUserCropManagement';
-import UserListItem from '../components/UserCropManagement/UserListItem';
-import UserCropManagementHeader from '../components/UserCropManagement/UserCropManagementHeader';
-import UserCropManagementTable from '../components/UserCropManagement/UserCropManagementTable';
+import UserListItem from '../components/userCropManagement/UserListItem';
+import UserCropManagementHeader from '../components/userCropManagement/UserCropManagementHeader';
+import UserCropManagementTable from '../components/userCropManagement/UserCropManagementTable';
 
 export default function UserCropManagement() {
     const {
@@ -19,6 +19,9 @@ export default function UserCropManagement() {
         misCultivos,
         misCosechas,
         completados,
+        suspenderCultivo,
+        reactivarCultivo,
+        suspendiendoId,
     } = useUserCropManagement();
 
     return (
@@ -85,14 +88,14 @@ export default function UserCropManagement() {
                                 className={`user-activity-tab ${tab === 'cultivos' ? 'user-activity-tab--activo' : ''}`}
                                 onClick={() => setTab('cultivos')}
                             >
-                                <Sprout size={14} /> Mis Cultivos
+                                <Sprout size={14} /> Cultivos
                                 <span className="user-activity-tab-count">{misCultivos.length}</span>
                             </button>
                             <button
                                 className={`user-activity-tab ${tab === 'cosechas' ? 'user-activity-tab--activo' : ''}`}
                                 onClick={() => setTab('cosechas')}
                             >
-                                <Layers size={14} /> Mis Cosechas
+                                <Layers size={14} /> Cosechas
                                 <span className="user-activity-tab-count">{misCosechas.length}</span>
                             </button>
                         </div>
@@ -103,12 +106,18 @@ export default function UserCropManagement() {
                             <UserCropManagementTable
                                 cultivos={misCultivos}
                                 mensajeVacio="Este usuario no tiene cultivos pendientes."
+                                onSuspender={suspenderCultivo}
+                                onReactivar={reactivarCultivo}
+                                suspendiendoId={suspendiendoId}
                             />
                         ) : (
                             <UserCropManagementTable
                                 cultivos={misCosechas}
                                 mostrarProgreso
                                 mensajeVacio="Este usuario no ha iniciado ningún cultivo."
+                                onSuspender={suspenderCultivo}
+                                onReactivar={reactivarCultivo}
+                                suspendiendoId={suspendiendoId}
                             />
                         )}
                     </>

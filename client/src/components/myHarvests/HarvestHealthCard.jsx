@@ -1,6 +1,6 @@
 import { Leaf } from 'lucide-react';
 
-import { getThreats } from '../../data/threatsPerCrop';
+import { getThreats } from '../../data/ThreatsPerCrop';
 import HealthStatusSelector from './HealthStatusSelector';
 import HealthyTrackingForm from './HealthyTrackingForm';
 import ObservationTrackingForm from './ObservationTrackingForm';

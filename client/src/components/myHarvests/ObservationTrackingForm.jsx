@@ -3,7 +3,7 @@ import ObservationField from './ObservationField';
 import PlantHeightField from './PlantHeightField';
 import ProblemChips from './ProblemChips';
 import SolutionSteps from './SolutionSteps';
-import { COMMON_PROBLEMS } from '../../data/threatsPerCrop';
+import { COMMON_PROBLEMS } from '../../data/ThreatsPerCrop';
 
 export default function ObservationTrackingForm({
     commonProblem,

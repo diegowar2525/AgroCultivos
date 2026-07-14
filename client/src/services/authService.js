@@ -21,8 +21,6 @@ const authService = {
 
     cambiarPassword: (data) =>
         api.post('/api/usuarios/cambiar-password/', data),
-    updateProfile: (data) =>
-        api.put('/api/usuarios/profile/', data),
 
     deleteProfile: () =>
         api.delete('/api/usuarios/profile/'),

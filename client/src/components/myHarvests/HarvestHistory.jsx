@@ -4,7 +4,7 @@ import { resolveMediaUrl } from '../../services/api';
 import useHarvestHistory from '../../hooks/useHarvestHistory';
 import { getHealthBadgeClass } from '../../constants/healthStatus';
 import { formatDateTime } from '../../utils/dateFormat';
-import { DEFAULT_THREATS, THREATS_PER_CROP, COMMON_PROBLEMS } from '../../data/threatsPerCrop';
+import { DEFAULT_THREATS, THREATS_PER_CROP, COMMON_PROBLEMS } from '../../data/ThreatsPerCrop';
 
 function findSolution(fenologicalStatus = '') {
     if (fenologicalStatus.startsWith('Amenaza:')) {
