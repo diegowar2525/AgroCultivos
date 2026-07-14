@@ -412,7 +412,16 @@
 .recommendations-results__hint span {
     color: var(--recommendations-green);
 }
+.recommendations-results__link {
+    color: var(--recommendations-green);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
 
+.recommendations-results__link:hover {
+    color: var(--green-hover, var(--recommendations-green));
+}
 .recommendations-results__actions {
     display: flex;
     align-items: center;

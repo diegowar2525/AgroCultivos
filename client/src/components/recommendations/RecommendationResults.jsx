@@ -24,7 +24,7 @@ export default function RecommendationResults({
                 <div className="recommendations-results__actions">
                     <p className="recommendations-results__subtitle">
                         Los cultivos agregados se guardan en{' '}
-                        <Link to="/my-crops">
+                        <Link to="/my-crops" className="recommendations-results__link">
                             Mis cultivos
                         </Link>
                     </p>
