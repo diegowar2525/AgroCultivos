@@ -3,7 +3,7 @@ import { User } from 'lucide-react';
 /** Cabecera del usuario seleccionado: identidad + estadísticas rápidas. */
 export default function UserActivityHeader({ usuario, misCultivos, misCosechas, completados }) {
     const stats = [
-        { label: 'Mis Cultivos', value: misCultivos.length, tono: 'verde' },
+        { label: 'Cultivos', value: misCultivos.length, tono: 'verde' },
         { label: 'Cosechas', value: misCosechas.length, tono: 'ambar' },
         { label: 'Completados', value: completados.length, tono: 'azul' },
     ];
