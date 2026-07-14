@@ -58,6 +58,9 @@ class Cultivo(models.Model):
 
     activo = models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ["id"]
+
     def __str__(self):
         return self.nombre
 
