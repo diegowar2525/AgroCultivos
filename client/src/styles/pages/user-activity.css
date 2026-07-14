@@ -386,3 +386,55 @@
         border-bottom: 1px solid var(--border-card);
     }
 }
+/* ── Botón "Suspender" en la tabla de gestión de cultivos ── */
+.user-activity-btn-suspender {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: transparent;
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    color: #f87171;
+    border-radius: 7px;
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.user-activity-btn-suspender:not(:disabled):hover {
+    background-color: rgba(248, 113, 113, 0.1);
+}
+
+.user-activity-btn-suspender:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.user-activity-sin-accion {
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+.user-activity-btn-reactivar {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: transparent;
+    border: 1px solid var(--green-main);
+    color: var(--green-main);
+    border-radius: 7px;
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.user-activity-btn-reactivar:not(:disabled):hover {
+    background-color: var(--green-glow);
+}
+
+.user-activity-btn-reactivar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

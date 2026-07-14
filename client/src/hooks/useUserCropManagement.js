@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import api from '../services/api';
+import { useStateId } from './useStateId';
 
 /**
  * Lógica del panel admin "Actividad de usuarios": lista de usuarios,
@@ -13,6 +15,9 @@ export function useUserCropManagement() {
     const [loadingDetalle, setLoadingDetalle] = useState(false);
     const [busqueda, setBusqueda] = useState('');
     const [tab, setTab] = useState('cultivos'); // 'cultivos' | 'cosechas'
+    const [suspendiendoId, setSuspendiendoId] = useState(null);
+
+    const estadoIds = useStateId();
 
     useEffect(() => {
         api.get('/api/usuarios/admin/usuarios/')
@@ -33,6 +38,44 @@ export function useUserCropManagement() {
             .then((r) => setCultivos(r.data?.results || r.data || []))
             .catch(() => setCultivos([]))
             .finally(() => setLoadingDetalle(false));
+    }
+
+    async function cambiarEstadoCultivo(cultivoUsuarioId, nombreEstado) {
+        const estadoId = estadoIds[nombreEstado];
+
+        if (!estadoId) {
+            toast.error(`No se encontró el estado "${nombreEstado}". Intenta de nuevo en unos segundos.`);
+            return;
+        }
+
+        setSuspendiendoId(cultivoUsuarioId);
+        try {
+            await api.patch(`/api/cultivos/cultivo-usuario/${cultivoUsuarioId}/`, {
+                estado: estadoId,
+            });
+            setCultivos((prev) =>
+                prev.map((c) =>
+                    c.id === cultivoUsuarioId ? { ...c, estado_nombre: nombreEstado } : c
+                )
+            );
+            toast.success(
+                nombreEstado === 'Suspendido'
+                    ? 'Cultivo suspendido correctamente.'
+                    : 'Cultivo reactivado correctamente.'
+            );
+        } catch {
+            toast.error('No se pudo actualizar el estado. Intenta de nuevo.');
+        } finally {
+            setSuspendiendoId(null);
+        }
+    }
+
+    function suspenderCultivo(cultivoUsuarioId) {
+        return cambiarEstadoCultivo(cultivoUsuarioId, 'Suspendido');
+    }
+
+    function reactivarCultivo(cultivoUsuarioId) {
+        return cambiarEstadoCultivo(cultivoUsuarioId, 'Activo');
     }
 
     const usuariosFiltrados = usuarios.filter((u) =>
@@ -59,5 +102,8 @@ export function useUserCropManagement() {
         misCultivos,
         misCosechas,
         completados,
+        suspenderCultivo,
+        reactivarCultivo,
+        suspendiendoId,
     };
 }
