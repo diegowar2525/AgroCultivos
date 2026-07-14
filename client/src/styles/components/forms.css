@@ -32,6 +32,10 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+select.input-field option {
+    background-color: var(--bg-card, #213d26);
+    color: var(--text-primary, #f0f5ee);
+}
 .error-msg {
     margin-bottom: 1.25rem;
     padding: 0.75rem 1rem;
