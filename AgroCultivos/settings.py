@@ -17,7 +17,6 @@ load_dotenv(BASE_DIR / ".env")
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-q6_e%nz)ks@o8=t2!k_(wjvct(kiri9c6jv%)sd_+xec187^%+"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -77,14 +76,16 @@ WSGI_APPLICATION = "AgroCultivos.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "sigra_db",
-        'USER': 'damian',
-        'PASSWORD': 'damian2004',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST", "localhost"),
+        "PORT": os.getenv("DB_PORT", "5432"),
     }
 }
 
@@ -144,23 +145,26 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # ── Correo (recuperación de contraseña) ──────────────────────────────
-# Las credenciales viven en un archivo .env (no versionado), nunca aquí.
-# Ver .env.example para las variables que hay que definir.
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "").strip()
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "").replace(" ", "")
 
 if EMAIL_HOST_USER and EMAIL_HOST_PASSWORD:
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
     EMAIL_HOST = "smtp.gmail.com"
     EMAIL_PORT = 587
+
     EMAIL_USE_TLS = True
+    EMAIL_USE_SSL = False
+
+    EMAIL_TIMEOUT = 30
 else:
-    # Sin credenciales configuradas: los correos se imprimen en la consola
-    # donde corre 'python manage.py runserver' en vez de enviarse de verdad.
-    # Así el flujo se puede probar en desarrollo sin configurar Gmail.
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-DEFAULT_FROM_EMAIL = f"SIGRA <{EMAIL_HOST_USER or 'no-reply@sigra.local'}>"
+DEFAULT_FROM_EMAIL = (
+    f"SIGRA <{EMAIL_HOST_USER}>" if EMAIL_HOST_USER else "SIGRA <no-reply@sigra.local>"
+)
 
 # Minutos de vigencia del código de restablecimiento de contraseña.
 CODIGO_RESTABLECIMIENTO_MINUTOS = 15
