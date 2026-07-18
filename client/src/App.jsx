@@ -12,15 +12,15 @@ import AdminDashboard from './pages/AdminDashboard';
 import Profile from './pages/Profile';
 import Home from './pages/Home';
 import LoadingScreen from './components/common/LoadingScreen';
-import DashboardView from "./components/dashboard/overview/DashboardView";
-import CrudPanel from "./components/dashboard/crud/CrudPanel";
+import DashboardView from "./components/adminDashboard/overview/DashboardView";
+import CrudPanel from "./components/adminDashboard/crud/CrudPanel";
 import PrivateRoute from './routes/PrivateRoute';
 import Recomendaciones from './pages/Recommendations';
 import MyCrops from './pages/MyCrops';
 import MisCosechas from './pages/MyHarvests';
 import CropInfo from './pages/CropInfo';
 import UserCropManagement from './pages/UserCropManagement';
-import Dashboard from './pages/Dashboard';
+import UserDashboard from './pages/UserDashboard';
 
 function App() {
     const [appReady, setAppReady] = useState(false);
@@ -100,7 +100,7 @@ function App() {
                     path="/my-dashboard"
                     element={
                         <PrivateRoute userOnly>
-                            <Dashboard />
+                            <UserDashboard />
                         </PrivateRoute>
                     }
                 />
