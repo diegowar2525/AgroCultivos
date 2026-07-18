@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import AuthLayout from '../components/layout/AuthLayout';
-import ResetPasswordModal from '../components/auth/ResetPasswordModal';
+import ResetPasswordModal from '../components/auth/resetPassword/ResetPasswordModal';
 import { useLogin } from '../hooks/useLogin';
 
 export default function Login() {
