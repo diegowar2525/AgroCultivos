@@ -1,10 +1,9 @@
-import { toast } from 'react-toastify';
 import {
     DEFAULT_LEVEL_CLASS,
     LEVEL_CLASS,
 } from '../../constants/recommendations';
+import { Link } from 'react-router-dom';
 import CompatibilityBar from './CompatibilityBar';
-import ConfirmationToast from '../common/ConfirmationToast';
 
 export default function RecommendationCard({
     cultivo,
@@ -13,9 +12,34 @@ export default function RecommendationCard({
     agregarExito,
     onAgregar,
 }) {
+    const getImageUrl = image => {
+        if (!image) {
+            return null;
+        }
+
+        if (
+            image.startsWith('http://') ||
+            image.startsWith('https://') ||
+            image.startsWith('blob:')
+        ) {
+            return image;
+        }
+
+        const apiUrl =
+            import.meta.env.VITE_API_URL?.replace(/\/$/, '') ||
+            'http://localhost:8000';
+
+        const normalizedImage = image.startsWith('/')
+            ? image
+            : `/${image}`;
+
+        return `${apiUrl}${normalizedImage}`;
+    };
+
     const levelClass = LEVEL_CLASS[cultivo.nivel] || DEFAULT_LEVEL_CLASS;
     const loading = agregarLoading === cultivo.cultivo;
     const added = agregarExito?.includes(cultivo.cultivo);
+    const imageUrl = getImageUrl(cultivo.imagen);
 
     const ranges = [
         ['🌡', cultivo.rango_temp],
@@ -23,28 +47,6 @@ export default function RecommendationCard({
         ['🏔', cultivo.rango_altitud],
         ['🌧', cultivo.rango_precip],
     ];
-
-    const solicitarConfirmacion = () => {
-        toast(
-            ({ closeToast }) => (
-                <ConfirmationToast
-                    closeToast={closeToast}
-                    message={`¿Estás seguro de agregar ${cultivo.cultivo} a Mis cultivos?`}
-                    confirmLabel="Sí, agregar"
-                    confirmClassName="btn-toast-confirm"
-                    onConfirm={() =>
-                        onAgregar(cultivo.cultivo, cultivo.ciclo)
-                    }
-                />
-            ),
-            {
-                autoClose: false,
-                closeButton: false,
-                closeOnClick: false,
-                draggable: false,
-            }
-        );
-    };
 
     return (
         <article className="recommendations-card">
@@ -64,7 +66,9 @@ export default function RecommendationCard({
                         {cultivo.score}%
                     </p>
 
-                    <span className={`recommendations-score__badge ${levelClass}`}>
+                    <span
+                        className={`recommendations-score__badge ${levelClass}`}
+                    >
                         {cultivo.nivel}
                     </span>
                 </div>
@@ -74,6 +78,21 @@ export default function RecommendationCard({
                 value={cultivo.score}
                 nivel={cultivo.nivel}
             />
+
+            <div className="recommendations-card__image-wrapper">
+                {imageUrl ? (
+                    <img
+                        src={imageUrl}
+                        alt={`Imagen de ${cultivo.cultivo}`}
+                        className="recommendations-card__image"
+                        loading="lazy"
+                    />
+                ) : (
+                    <div className="recommendations-card__image-empty">
+                        Sin imagen disponible
+                    </div>
+                )}
+            </div>
 
             <p className="recommendations-card__description">
                 {cultivo.justificacion}
@@ -89,16 +108,23 @@ export default function RecommendationCard({
 
             {added ? (
                 <div className="recommendations-added">
-                    ✓ Agregado a Mis cultivos
+                    <Link
+                        to="/my-crops"
+                        className="recommendations-results__link"
+                    >
+                        ✓ Agregado a Mis cultivos
+                    </Link>
                 </div>
             ) : (
                 <button
                     type="button"
-                    onClick={solicitarConfirmacion}
+                    onClick={() =>
+                        onAgregar(cultivo.cultivo, cultivo.ciclo)
+                    }
                     disabled={loading}
                     className="recommendations-button recommendations-button--outline recommendations-card__button"
                 >
-                    {loading ? 'Guardando...' : 'Agregar cultivo'}
+                    {loading ? 'Guardando...' : 'Guardar cultivo'}
                 </button>
             )}
         </article>
