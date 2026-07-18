@@ -1,6 +1,7 @@
 from .location_service import construir_zona, obtener_ubicacion_cercana
 from .ml_service import recomendar_con_ml
 from .persistence_service import guardar_consulta_recomendacion
+from ..models import Cultivo
 
 
 def generar_recomendacion_geo(
@@ -34,16 +35,20 @@ def generar_recomendacion_geo(
         longitud=longitud,
     )
 
+    resultados_con_imagen = agregar_imagenes_a_resultados(resultado["resultados"])
+
     respuesta = {
         "consulta_id": consulta.id,
         "clima": clima,
         "cultivo_predicho_arbol": resultado["cultivo_arbol"],
         "total_evaluados": resultado["total_evaluados"],
-        "resultados": resultado["resultados"],
+        "resultados": resultados_con_imagen,
         "zona": construir_zona(ubicacion_cercana),
         "persistencia": {
             "resultados_guardados": getattr(consulta, "_resultados_guardados", 0),
-            "cultivos_no_encontrados": getattr(consulta, "_cultivos_no_encontrados", []),
+            "cultivos_no_encontrados": getattr(
+                consulta, "_cultivos_no_encontrados", []
+            ),
         },
     }
 
@@ -51,6 +56,33 @@ def generar_recomendacion_geo(
         respuesta["debug_modelo"] = resultado["debug_modelo"]
 
     return respuesta
+
+
+def agregar_imagenes_a_resultados(resultados):
+    nombres = [
+        resultado.get("cultivo") for resultado in resultados if resultado.get("cultivo")
+    ]
+
+    cultivos_bd = Cultivo.objects.filter(nombre__in=nombres)
+
+    imagenes_por_nombre = {
+        cultivo.nombre.casefold(): (cultivo.imagen.url if cultivo.imagen else None)
+        for cultivo in cultivos_bd
+    }
+
+    resultados_con_imagen = []
+
+    for resultado in resultados:
+        nombre = resultado.get("cultivo", "")
+
+        resultado_actualizado = {
+            **resultado,
+            "imagen": imagenes_por_nombre.get(nombre.casefold()),
+        }
+
+        resultados_con_imagen.append(resultado_actualizado)
+
+    return resultados_con_imagen
 
 
 def validar_parametros_geo(latitud, longitud, top_n):
