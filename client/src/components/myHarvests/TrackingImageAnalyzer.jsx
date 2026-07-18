@@ -1,4 +1,13 @@
-import { Bot, Camera, CircleCheck, CloudUpload, Info, Loader2, Sparkles } from 'lucide-react';
+import {
+    Bot,
+    Camera,
+    CircleCheck,
+    CloudUpload,
+    Info,
+    Loader2,
+    Sparkles,
+    TriangleAlert,
+} from 'lucide-react';
 
 export default function TrackingImageAnalyzer({
     photo,
@@ -21,18 +30,33 @@ export default function TrackingImageAnalyzer({
             <div className="my-harvests-model-notice">
                 <Info size={14} />
 
-                <p>
-                    <strong>Dato importante:</strong> el modelo de autodetección solo puede analizar enfermedades en cultivos de
-                    <span> Maíz, Pimiento, Papa y Tomate.</span>
-                </p>
+                <div>
+                    <p>
+                        <strong>Dato importante:</strong> el modelo de autodetección
+                        solo puede analizar enfermedades en cultivos de
+                        <span> Maíz, Pimiento, Papa y Tomate.</span>
+                    </p>
+                </div>
             </div>
+            {cropMatch === false && (
+                <div className="my-harvests-model-notice my-harvests-model-notice--danger">
+                    <TriangleAlert size={16} />
+
+                    <p>
+                        <strong>Advertencia:</strong> la imagen parece corresponder a un cultivo
+                        diferente al seleccionado.
+                    </p>
+                </div>
+            )}
 
             <label className="my-harvests-upload-box">
                 <input
                     type="file"
                     accept="image/*"
                     capture="environment"
-                    onChange={event => setPhoto(event.target.files[0] || null)}
+                    onChange={event =>
+                        setPhoto(event.target.files[0] || null)
+                    }
                     className="my-harvests-upload-input"
                 />
 
@@ -77,30 +101,34 @@ export default function TrackingImageAnalyzer({
             )}
 
             {prediction && (
-                <div className={`my-harvests-diagnosis-card ${getDiagnosisClass(prediction.estado)}`}>
+                <div
+                    className={`my-harvests-diagnosis-card ${getDiagnosisClass(
+                        prediction.estado
+                    )}`}
+                >
                     <div className="my-harvests-diagnosis-card__title">
                         <Sparkles size={14} />
                         <strong>Diagnóstico automático</strong>
                     </div>
 
                     <p>
-                        <strong>Cultivo:</strong> {prediction.cultivo || 'No definido'}
+                        <strong>Cultivo:</strong>{' '}
+                        {prediction.cultivo || 'No definido'}
                     </p>
+
                     <p>
-                        <strong>Resultado:</strong> {prediction.amenaza || 'No definida'}
+                        <strong>Resultado:</strong>{' '}
+                        {prediction.amenaza || 'No definida'}
                     </p>
+
                     <p>
-                        <strong>Estado:</strong> {prediction.estado || 'No definido'}
+                        <strong>Estado:</strong>{' '}
+                        {prediction.estado || 'No definido'}
                     </p>
+
                     <p>
                         <strong>Confianza:</strong> {prediction.confianza}%
                     </p>
-
-                    {cropMatch === false && (
-                        <p>
-                            ⚠ La imagen parece corresponder a otro cultivo diferente al seleccionado.
-                        </p>
-                    )}
                 </div>
             )}
         </div>
