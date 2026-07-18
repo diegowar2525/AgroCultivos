@@ -1,7 +1,5 @@
-import React from 'react';
-
-import ExpandedHarvestRow from './ExpandedHarvestRow';
 import HarvestRow from './HarvestRow';
+import ExpandedHarvestPanel from './ExpandedHarvestPanel';
 
 const TABLE_HEADINGS = [
     'Cultivo',
@@ -20,6 +18,10 @@ export default function MyHarvestsTable({
     onReloadHarvests,
     onViewCropInfo,
 }) {
+    const expandedHarvest = harvests.find(
+        harvest => harvest.id === expandedHarvestId,
+    );
+
     return (
         <section className="my-harvests-table-card">
             <div className="my-harvests-table-wrap">
@@ -34,29 +36,33 @@ export default function MyHarvestsTable({
 
                     <tbody>
                         {harvests.map(harvest => {
-                            const isExpanded = expandedHarvestId === harvest.id;
+                            const isExpanded =
+                                expandedHarvestId === harvest.id;
 
                             return (
-                                <React.Fragment key={harvest.id}>
-                                    <HarvestRow
-                                        harvest={harvest}
-                                        isExpanded={isExpanded}
-                                        onToggle={() => onToggleExpanded(harvest.id)}
-                                        onInfo={() => onViewCropInfo(harvest.cultivo)}
-                                    />
-
-                                    {isExpanded && (
-                                        <ExpandedHarvestRow
-                                            harvest={harvest}
-                                            onHarvestUpdated={onReloadHarvests}
-                                        />
-                                    )}
-                                </React.Fragment>
+                                <HarvestRow
+                                    key={harvest.id}
+                                    harvest={harvest}
+                                    isExpanded={isExpanded}
+                                    onToggle={() =>
+                                        onToggleExpanded(harvest.id)
+                                    }
+                                    onInfo={() =>
+                                        onViewCropInfo(harvest.cultivo)
+                                    }
+                                />
                             );
                         })}
                     </tbody>
                 </table>
             </div>
+
+            {expandedHarvest && (
+                <ExpandedHarvestPanel
+                    harvest={expandedHarvest}
+                    onHarvestUpdated={onReloadHarvests}
+                />
+            )}
         </section>
     );
 }
