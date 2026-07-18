@@ -13,7 +13,7 @@ const homeLink = {
 };
 
 const userLinks = [
-    { to: '/my-dashboard', label: 'Dashboard' },
+    { to: '/my-dashboard', label: 'Resumen' },
     { to: '/recommendations', label: 'Recomendaciones' },
     { to: '/my-crops', label: 'Mis Cultivos' },
     { to: '/my-harvests', label: 'Mis Cosechas' },

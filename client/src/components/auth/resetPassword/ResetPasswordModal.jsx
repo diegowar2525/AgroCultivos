@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import PasoCorreo from './resetPassword/PasoCorreo';
-import PasoCodigo from './resetPassword/PasoCodigo';
-import PasoNuevaPassword from './resetPassword/PasoNuevaPassword';
-import PasoExito from './resetPassword/PasoExito';
+import PasoCorreo from './PasoCorreo';
+import PasoCodigo from './PasoCodigo';
+import PasoNuevaPassword from './PasoNuevaPassword';
+import PasoExito from './PasoExito';
 
 /**
  * Modal del flujo de "olvidé mi contraseña": correo → código → nueva
