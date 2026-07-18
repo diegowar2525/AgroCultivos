@@ -3,10 +3,16 @@ const modelsConfig = {
         title: 'Cultivos',
         endpoint: '/api/cultivos/cultivos/',
 
+        filterConfig: {
+            activeKey: 'activo',
+            nameKey: 'nombre'
+        },
+
         columns: [
             { key: 'id', label: 'ID' },
             { key: 'nombre', label: 'Nombre' },
             { key: 'tiempo_cosecha', label: 'Tiempo de cosecha' },
+            { key: 'imagen', label: 'Imagen', type: 'image' },
             { key: 'activo', label: 'Activo' }
         ],
 
@@ -33,14 +39,15 @@ const modelsConfig = {
                 type: 'number'
             },
             {
+                name: 'imagen',
+                label: 'Imagen del cultivo',
+                type: 'file',
+                accept: 'image/*'
+            },
+            {
                 name: 'activo',
                 label: 'Activo',
                 type: 'checkbox'
-            },
-            {
-                name: 'imagen',
-                label: 'Imagen del cultivo',
-                type: 'file'
             }
         ]
     },
@@ -131,6 +138,10 @@ const modelsConfig = {
         title: 'Categorías',
         endpoint: '/api/cultivos/categorias/',
 
+        filterConfig: {
+            nameKey: 'nombre'
+        },
+
         columns: [
             { key: 'id', label: 'ID' },
             { key: 'nombre', label: 'Nombre' },
@@ -156,6 +167,10 @@ const modelsConfig = {
     TipoSuelo: {
         title: 'Tipos de Suelo',
         endpoint: '/api/cultivos/tipo-suelo/',
+
+        filterConfig: {
+            nameKey: 'nombre'
+        },
 
         columns: [
             { key: 'id', label: 'ID' },
@@ -183,6 +198,10 @@ const modelsConfig = {
         title: 'Tipos de Amenaza',
         endpoint: '/api/cultivos/tipo-amenazas/',
 
+        filterConfig: {
+            nameKey: 'nombre'
+        },
+
         columns: [
             { key: 'id', label: 'ID' },
             { key: 'nombre', label: 'Nombre' }
@@ -201,6 +220,10 @@ const modelsConfig = {
     Amenaza: {
         title: 'Amenazas',
         endpoint: '/api/cultivos/amenazas/',
+
+        filterConfig: {
+            nameKey: 'nombre'
+        },
 
         columns: [
             { key: 'id', label: 'ID' },
@@ -235,6 +258,10 @@ const modelsConfig = {
         title: 'Estados',
         endpoint: '/api/cultivos/estados/',
 
+        filterConfig: {
+            nameKey: 'nombre'
+        },
+
         columns: [
             { key: 'id', label: 'ID' },
             { key: 'nombre', label: 'Nombre' }
@@ -254,6 +281,10 @@ const modelsConfig = {
         title: 'Provincias',
         endpoint: '/api/agroclima/provincias/',
 
+        filterConfig: {
+            nameKey: 'nombre'
+        },
+
         columns: [
             { key: 'id', label: 'ID' },
             { key: 'nombre', label: 'Nombre' }
@@ -272,6 +303,10 @@ const modelsConfig = {
     Canton: {
         title: 'Cantones',
         endpoint: '/api/agroclima/cantones/',
+
+        filterConfig: {
+            nameKey: 'nombre'
+        },
 
         columns: [
             { key: 'id', label: 'ID' },
@@ -299,6 +334,10 @@ const modelsConfig = {
         title: 'Parroquias',
         endpoint: '/api/agroclima/parroquias/',
 
+        filterConfig: {
+            nameKey: 'nombre'
+        },
+
         columns: [
             { key: 'id', label: 'ID' },
             { key: 'canton', label: 'Cantón' },
@@ -325,6 +364,12 @@ const modelsConfig = {
         title: 'Usuarios',
         endpoint: '/api/usuarios/admin/usuarios/',
         allowCreate: false,
+
+        filterConfig: {
+            activeKey: 'is_active',
+            nameKey: 'first_name',
+            secondaryNameKey: 'last_name'
+        },
 
         columns: [
             { key: 'id', label: 'ID' },
