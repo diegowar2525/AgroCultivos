@@ -1,0 +1,10 @@
+@import '../layout/crop-info-layout.css';
+
+@import '../components/crop-info/crop-info-card.css';
+@import '../components/crop-info/crop-info-header.css';
+@import '../components/crop-info/crop-info-image.css';
+@import '../components/crop-info/crop-info-details.css';
+@import '../components/crop-info/crop-info-climate.css';
+@import '../components/crop-info/crop-info-threats.css';
+@import '../components/crop-info/crop-info-care.css';
+@import '../components/crop-info/crop-info-responsive.css';

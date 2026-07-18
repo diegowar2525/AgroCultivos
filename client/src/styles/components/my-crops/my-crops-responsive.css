@@ -1,0 +1,100 @@
+/*
+ * Breakpoints de Mis Cultivos
+ *
+ * Escritorio:      3 columnas
+ * Tablet:          2 columnas
+ * Móvil:           1 columna
+ */
+
+@media (max-width: 899px) {
+    .mis-cultivos-grid {
+        --my-crops-grid-columns: 2;
+    }
+
+    .mis-cultivos-container {
+        --my-crops-container-padding-block: 1.75rem;
+    }
+}
+
+@media (max-width: 599px) {
+    .mis-cultivos-grid {
+        --my-crops-grid-columns: 1;
+        --my-crops-grid-gap: 1rem;
+    }
+
+    .mis-cultivos-container {
+        width: min(
+            calc(100% - 1.5rem),
+            var(--my-crops-container-width)
+        );
+
+        --my-crops-container-padding-block: 1.25rem;
+    }
+
+    .mis-cultivos-header {
+        --my-crops-header-margin-bottom: 1.5rem;
+    }
+
+    .cultivo-card {
+        --my-crops-card-radius: 0.75rem;
+    }
+
+    .cultivo-card-body {
+        --my-crops-card-padding: 1rem;
+    }
+
+    .cultivo-card-imagen {
+        --my-crops-card-image-height: 11rem;
+    }
+
+    .mis-cultivos-empty {
+        min-height: 14rem;
+        padding-block: 2.5rem;
+    }
+
+    .mis-cultivos-empty-btn {
+        width: 100%;
+    }
+
+    .crop-registry {
+        --my-crops-registry-margin-top: 2rem;
+    }
+
+    .crop-registry-table-card {
+        margin-inline: 0;
+    }
+}
+
+@media (max-width: 399px) {
+    .data-row {
+        flex-direction: column;
+        gap: 0.125rem;
+    }
+
+    .data-row-value {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .crop-registry-header {
+        align-items: flex-start;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cultivo-card,
+    .cultivo-card-imagen img,
+    .mis-cultivos-empty-btn,
+    .cultivo-btn,
+    .crop-registry-table tbody tr {
+        transition: none;
+    }
+
+    .cultivo-card:hover,
+    .cultivo-card:hover .cultivo-card-imagen img,
+    .cultivo-btn:hover:not(:disabled),
+    .cultivo-btn:active:not(:disabled),
+    .mis-cultivos-empty-btn:active {
+        transform: none;
+    }
+}

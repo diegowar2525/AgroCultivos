@@ -1,0 +1,124 @@
+.crop-registry {
+    margin-top: var(--my-crops-registry-margin-top);
+}
+
+.crop-registry-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    color: var(--green-main);
+}
+
+.crop-registry-header svg {
+    flex-shrink: 0;
+}
+
+.crop-registry-header h2 {
+    margin: 0;
+
+    color: var(--text-primary);
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.crop-registry-subtitulo {
+    margin: 0.25rem 0 1rem;
+
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.crop-registry-mensaje {
+    margin: 0;
+
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.crop-registry-table-card {
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--my-crops-registry-radius);
+
+    box-shadow: var(--my-crops-registry-shadow);
+}
+
+.crop-registry-table {
+    width: 100%;
+    min-width: 42rem;
+
+    border-collapse: collapse;
+}
+
+.crop-registry-table thead tr {
+    border-bottom: 1px solid var(--border-card);
+}
+
+.crop-registry-table th {
+    padding: 0.75rem 1rem;
+
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.crop-registry-table tbody tr {
+    border-bottom: 1px solid var(--border-main);
+
+    transition: background-color 0.2s ease;
+}
+
+.crop-registry-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.crop-registry-table tbody tr:hover {
+    background-color: var(--glass-bg);
+}
+
+.crop-registry-table td {
+    padding: 0.8125rem 1rem;
+
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    vertical-align: middle;
+}
+
+.crop-registry-nombre {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+
+    min-width: 0;
+
+    font-weight: 600;
+}
+
+.crop-registry-nombre svg {
+    flex-shrink: 0;
+}
+
+.crop-registry-row--completado {
+    background-color: var(--green-glow);
+}
+
+.crop-registry-row--completado:hover {
+    background-color: var(--my-crops-registry-completed-hover);
+}
+
+.crop-registry-row--completado .crop-registry-nombre svg {
+    color: var(--green-main);
+}

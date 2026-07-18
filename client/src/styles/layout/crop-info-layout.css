@@ -1,0 +1,48 @@
+.info-cultivo-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    background-color: var(--bg-dark);
+    font-family: var(--font-main);
+}
+
+.info-cultivo-container {
+    width: min(calc(100% - (var(--crop-info-page-padding) * 2)),
+            var(--crop-info-container-width));
+
+    margin-inline: auto;
+    padding-block: var(--crop-info-container-padding-block);
+}
+
+.info-cultivo-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, var(--crop-info-sidebar-width)) minmax(0, 1fr);
+
+    align-items: start;
+    gap: var(--crop-info-layout-gap);
+}
+
+.info-cultivo-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--crop-info-column-gap);
+
+    min-width: 0;
+}
+
+.info-cultivo-loading,
+.info-cultivo-error {
+    width: min(calc(100% - (var(--crop-info-page-padding) * 2)),
+            var(--crop-info-container-width));
+
+    margin-inline: auto;
+    padding-block: 2.5rem;
+
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.info-cultivo-error {
+    color: var(--danger-text);
+}

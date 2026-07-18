@@ -1,0 +1,55 @@
+.user-dash-stat {
+    min-width: 0;
+    padding: var(--user-dash-stat-padding);
+
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--user-dash-card-radius);
+
+    box-shadow: var(--user-dash-card-shadow);
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.user-dash-stat:hover {
+    border-color: var(--green-border);
+    box-shadow: var(--user-dash-card-shadow-hover);
+    transform: translateY(-0.125rem);
+}
+
+.user-dash-stat-label {
+    margin: 0 0 0.5rem;
+
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.user-dash-stat-valor {
+    margin: 0;
+
+    overflow-wrap: anywhere;
+
+    font-size: clamp(1.5rem, 4vw, 1.9rem);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.user-dash-stat-valor--crema {
+    color: var(--text-primary);
+}
+
+.user-dash-stat-valor--ambar {
+    color: var(--warning-text);
+}
+
+.user-dash-stat-valor--azul {
+    color: var(--info-text);
+}
+
+.user-dash-stat-valor--violeta {
+    color: var(--user-dash-violet);
+}

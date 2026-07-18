@@ -1,0 +1,37 @@
+.my-harvests-chart-card .my-harvests-side-card__eyebrow {
+    margin-bottom: 4px;
+}
+
+.my-harvests-chart-tooltip {
+    background-color: var(--card-light);
+    border: 1px solid rgba(217, 198, 107, 0.2);
+    border-radius: 8px;
+    color: var(--text-primary, #f0f5ee);
+    font-size: 0.82rem;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.my-harvests-chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.my-harvests-chart--active {
+    color: var(--success-text);
+}
+
+.my-harvests-chart--harvest {
+    color: var(--warning-text);
+}
+
+.my-harvests-chart--completed {
+    color: var(--info-text);
+}
+
+.my-harvests-chart--suspended {
+    color: var(--danger-text);
+}

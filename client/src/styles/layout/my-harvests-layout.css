@@ -1,0 +1,38 @@
+.my-harvests-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    background-color: var(--bg-dark);
+    font-family: var(--font-main);
+}
+
+.my-harvests-container {
+    width: min(
+        calc(100% - (var(--my-harvests-page-padding) * 2)),
+        var(--my-harvests-container-width)
+    );
+
+    margin-inline: auto;
+    padding-block: var(--my-harvests-container-padding-block);
+}
+
+.my-harvests-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, var(--my-harvests-aside-width));
+
+    align-items: start;
+    gap: var(--my-harvests-layout-gap);
+}
+
+.my-harvests-main {
+    min-width: 0;
+}
+
+.my-harvests-aside {
+    position: sticky;
+    top: var(--my-harvests-aside-top);
+
+    min-width: 0;
+}

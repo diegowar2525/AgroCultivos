@@ -1,0 +1,118 @@
+.my-harvests-badges-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.my-harvests-badges-card__header .my-harvests-side-card__eyebrow {
+    margin: 0;
+}
+
+.my-harvests-badges-card__header span {
+    color: var(--green-main, #d9c66b);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.my-harvests-badge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.my-harvests-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+.my-harvests-badge.is-unlocked {
+    background-color: color-mix(in srgb, var(--achievement-color) 10%, transparent);
+    border-color: color-mix(in srgb, var(--achievement-color) 35%, transparent);
+}
+
+.my-harvests-badge__icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background-color: rgba(255, 255, 255, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #444;
+}
+
+.my-harvests-badge.is-unlocked .my-harvests-badge__icon {
+    background-color: color-mix(in srgb, var(--achievement-color) 20%, transparent);
+    color: var(--achievement-color);
+}
+
+.my-harvests-badge__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.my-harvests-badge__title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.my-harvests-badge h3 {
+    color: #555;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.my-harvests-badge.is-unlocked h3 {
+    color: var(--text-primary, #f0f5ee);
+}
+
+.my-harvests-badge__title-row span {
+    font-size: 0.65rem;
+    color: var(--achievement-color);
+    font-weight: 600;
+}
+
+.my-harvests-badge__title-row small {
+    font-size: 0.65rem;
+    color: #555;
+}
+
+.my-harvests-badge p {
+    color: #444;
+    font-size: 0.7rem;
+    margin: 2px 0 0;
+}
+
+.my-harvests-badge.is-unlocked p {
+    color: var(--text-muted, #8aad7a);
+}
+
+.my-harvests-badge-progress {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    height: 3px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.my-harvests-badge-progress__fill {
+    width: var(--badge-progress, 0%);
+    height: 100%;
+    background-color: var(--achievement-color);
+    opacity: 0.5;
+    border-radius: 4px;
+}
+
+.my-harvests-badge__lock {
+    color: #444;
+    flex-shrink: 0;
+}

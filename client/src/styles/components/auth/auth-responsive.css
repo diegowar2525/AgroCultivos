@@ -1,0 +1,139 @@
+/*
+ * Breakpoints del módulo Auth
+ *
+ * Mobile:       hasta 479px
+ * Tablet:       desde 480px
+ * Desktop:      desde 768px
+ * Pantalla baja: altura máxima de 700px
+ */
+
+/* Teléfonos pequeños */
+@media (max-width: 479px) {
+    .auth-layout {
+        align-items: flex-start;
+        padding-inline: 0.75rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .auth-back-link {
+        top: max(0.75rem, env(safe-area-inset-top));
+        left: max(0.75rem, env(safe-area-inset-left));
+
+        padding: 0.4375rem 0.625rem;
+    }
+
+    .auth-container {
+        --auth-section-gap: 0.875rem;
+        --auth-container-width: 100%;
+    }
+
+    .auth-logo {
+        width: 3.25rem;
+        height: 3.25rem;
+        margin-bottom: 0.625rem;
+    }
+
+    .auth-card {
+        --auth-card-padding: 1rem;
+        --auth-card-gap: 0.875rem;
+        --auth-card-radius: 0.875rem;
+    }
+
+    .form-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 0.8125rem;
+    }
+
+    .choice-group {
+        flex-direction: column;
+    }
+
+    .choice-btn {
+        width: 100%;
+    }
+
+    .reset-modal-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .reset-modal {
+        width: 100%;
+        max-height: 92dvh;
+        padding: 1.25rem;
+
+        border-right: none;
+        border-bottom: none;
+        border-left: none;
+        border-radius: 1rem 1rem 0 0;
+    }
+
+    .reset-step-footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .reset-step-footer>* {
+        width: 100%;
+    }
+
+    .reset-success-btn {
+        width: 100%;
+    }
+}
+
+/* Tablets y pantallas medianas */
+@media (min-width: 480px) {
+    .auth-container {
+        --auth-container-width: 26rem;
+    }
+}
+
+/* Registro más ancho en escritorio */
+@media (min-width: 768px) {
+    .auth-container:has(.register-form) {
+        --auth-container-width: 34rem;
+    }
+
+    .auth-container:has(.register-form) .auth-card {
+        --auth-card-padding: 1.75rem;
+    }
+}
+
+/* Pantallas con poca altura */
+@media (max-height: 700px) and (min-width: 480px) {
+    .auth-layout {
+        align-items: flex-start;
+        padding-top: 4.5rem;
+    }
+
+    .auth-logo {
+        width: 3.125rem;
+        height: 3.125rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .auth-container {
+        --auth-section-gap: 0.75rem;
+    }
+
+    .auth-card {
+        --auth-card-padding: 1.125rem;
+        --auth-card-gap: 0.75rem;
+    }
+}
+
+/* Usuarios que prefieren menos animaciones */
+@media (prefers-reduced-motion: reduce) {
+
+    .auth-back-link,
+    .auth-link,
+    .forgot-password-link,
+    .choice-btn,
+    .icon-field-trailing-btn,
+    .input-icon-btn,
+    .reset-modal-dot,
+    .reset-link-btn {
+        transition: none;
+    }
+}

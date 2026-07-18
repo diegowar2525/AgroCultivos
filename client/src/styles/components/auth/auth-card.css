@@ -1,0 +1,52 @@
+.auth-card {
+    width: 100%;
+    padding: var(--auth-card-padding, 1.5rem);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--auth-card-gap, 1rem);
+
+    background-color: var(--bg-card);
+    border: 1px solid var(--auth-card-border, rgba(217, 198, 107, 0.3));
+    border-radius: var(--auth-card-radius, 1rem);
+
+    box-shadow: var(
+        --auth-card-shadow,
+        0 1rem 2.5rem rgba(0, 0, 0, 0.16)
+    );
+}
+
+.auth-card .form-group:last-of-type {
+    margin-bottom: 0;
+}
+
+.auth-card .field-label {
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+.forgot-password-link {
+    padding: 0;
+
+    background: none;
+    border: none;
+
+    color: var(--green-main);
+    font-family: var(--font-main);
+    font-size: 0.78rem;
+
+    cursor: pointer;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+}
+
+.forgot-password-link:focus-visible {
+    outline: 2px solid var(--green-main);
+    outline-offset: 3px;
+    border-radius: 0.25rem;
+}

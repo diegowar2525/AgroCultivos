@@ -1,0 +1,118 @@
+.crud-file-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+
+    width: 100%;
+}
+
+.crud-file-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/*
+ * Mantiene el input accesible para teclado y lectores de pantalla,
+ * pero lo oculta visualmente.
+ */
+.crud-file-input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+
+    white-space: nowrap;
+
+    border: 0;
+}
+
+.crud-file-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    width: 100%;
+    min-height: var(--crud-control-height);
+    padding: 0.75rem 1rem;
+
+    background-color: var(--crud-surface-soft);
+    border: 1px dashed var(--crud-border-strong);
+    border-radius: var(--crud-radius-medium);
+
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.crud-file-button:hover {
+    background-color: var(--crud-surface-hover);
+    border-color: var(--green-main);
+    transform: translateY(-0.0625rem);
+}
+
+.crud-file-button:active {
+    transform: translateY(0);
+}
+
+.crud-file-input:focus-visible + .crud-file-button {
+    outline: 2px solid var(--green-main);
+    outline-offset: 3px;
+}
+
+.crud-file-button-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    width: 1.625rem;
+    height: 1.625rem;
+
+    background-color: var(--green-main);
+    border-radius: 0.4375rem;
+
+    color: var(--bg-dark);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.crud-file-selected {
+    max-width: 100%;
+
+    overflow-wrap: anywhere;
+
+    color: var(--crud-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.crud-file-preview {
+    display: block;
+
+    width: var(--crud-preview-width);
+    height: var(--crud-preview-height);
+
+    object-fit: cover;
+
+    background-color: var(--crud-surface-soft);
+    border: 1px solid var(--crud-border);
+    border-radius: var(--crud-radius-medium);
+}

@@ -1,0 +1,97 @@
+.auth-container {
+    width: min(100%, var(--auth-container-width, 22.5rem));
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--auth-section-gap, 1.125rem);
+
+    position: relative;
+    z-index: 1;
+}
+
+.auth-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    text-align: center;
+}
+
+.auth-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 3.625rem;
+    height: 3.625rem;
+    margin-bottom: 0.75rem;
+
+    border-radius: 0.875rem;
+    background-color: var(--green-main);
+    color: var(--bg-dark);
+
+    box-shadow: 0 0.5rem 1.5rem var(--green-glow);
+}
+
+.auth-title {
+    margin: 0;
+
+    color: var(--text-primary);
+    font-size: clamp(1.5rem, 5vw, 1.8rem);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.auth-subtitle {
+    max-width: 32rem;
+    margin: 0.25rem 0 0;
+
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.auth-footer {
+    margin-top: 0.25rem;
+
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.auth-link {
+    color: var(--green-main);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+.auth-link:focus-visible {
+    outline: 2px solid var(--green-main);
+    outline-offset: 3px;
+    border-radius: 0.25rem;
+}
+
+.system-note {
+    width: 100%;
+    margin: 0;
+    padding: 0.625rem 0.875rem;
+
+    background-color: var(--green-glow);
+    border: 1px solid var(--green-border);
+    border-radius: 0.5625rem;
+
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.system-note strong {
+    color: var(--text-primary);
+}

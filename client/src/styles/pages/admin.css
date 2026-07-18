@@ -1,0 +1,10 @@
+@import '../components/admin/overview/charts.css';
+@import '../components/admin/overview/dashboard.css';
+@import '../components/admin/overview/sidebar.css';
+@import '../components/admin/overview/stat-card.css';
+
+@import '../components/admin/crud/crud-table.css';
+@import '../components/admin/crud/crud-table-media.css';
+@import '../components/admin/crud/crud-file-field.css';
+@import '../components/admin/crud/crud-table-filters.css';
+@import '../components/admin/crud/crud-responsive.css';

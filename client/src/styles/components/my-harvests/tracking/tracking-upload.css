@@ -1,0 +1,52 @@
+.my-harvests-upload-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3125rem;
+
+    padding: 0.875rem 0.75rem;
+
+    background-color: var(--my-harvests-accent-bg-subtle);
+    border: 1px dashed var(--my-harvests-card-border);
+    border-radius: 0.5rem;
+
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.my-harvests-upload-box:hover {
+    background-color: var(--green-glow);
+    border-color: var(--green-main);
+}
+
+.my-harvests-upload-box:focus-within {
+    outline: 2px solid var(--green-main);
+    outline-offset: 3px;
+}
+
+.my-harvests-upload-box svg {
+    color: var(--my-harvests-accent-muted);
+}
+
+.my-harvests-upload-input {
+    display: none;
+}
+
+.my-harvests-upload-file {
+    display: flex;
+    align-items: center;
+    gap: 0.3125rem;
+
+    max-width: 100%;
+
+    color: var(--green-main);
+    font-size: 0.78rem;
+    overflow-wrap: anywhere;
+}

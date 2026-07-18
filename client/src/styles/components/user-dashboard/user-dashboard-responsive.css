@@ -1,0 +1,79 @@
+/*
+ * User Dashboard
+ *
+ * Escritorio: 4 estadísticas y 3 tarjetas de indicadores
+ * Tablet:     2 estadísticas y 1 columna de indicadores
+ * Móvil:      1 columna cuando el ancho es muy reducido
+ */
+
+@media (max-width: 899px) {
+    .user-dash-stats {
+        --user-dash-stat-columns: 2;
+    }
+
+    .user-dash-gauges {
+        --user-dash-gauge-columns: 1;
+    }
+}
+
+@media (max-width: 599px) {
+    .user-dash-panel {
+        --user-dash-panel-gap: 1rem;
+        --user-dash-panel-margin-bottom: 1.75rem;
+    }
+
+    .user-dash-card {
+        --user-dash-card-padding: 1rem;
+        --user-dash-card-radius: 0.75rem;
+    }
+
+    .user-dash-stat {
+        --user-dash-stat-padding: 1rem;
+        --user-dash-card-radius: 0.75rem;
+    }
+
+    .user-dash-card-titulo {
+        margin-bottom: 0.875rem;
+    }
+
+    .user-dash-categoria-legend {
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 399px) {
+    .user-dash-stats {
+        --user-dash-stat-columns: 1;
+    }
+
+    .user-dash-stat {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .user-dash-stat-label {
+        margin: 0;
+    }
+
+    .user-dash-stat-valor {
+        flex-shrink: 0;
+        text-align: right;
+    }
+
+    .user-dash-categoria-legend {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .user-dash-stat {
+        transition: none;
+    }
+
+    .user-dash-stat:hover {
+        transform: none;
+    }
+}

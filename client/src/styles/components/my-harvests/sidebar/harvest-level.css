@@ -1,0 +1,126 @@
+.my-harvests-level-card__summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.my-harvests-level-card__icon {
+    background-color: color-mix(in srgb, var(--achievement-color) 20%, transparent);
+    border: 2px solid var(--achievement-color);
+    border-radius: 12px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--achievement-color);
+}
+
+.my-harvests-level-card h2 {
+    color: var(--achievement-color);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.my-harvests-level-card__summary p {
+    color: var(--text-muted, #8aad7a);
+    font-size: 0.75rem;
+    margin: 2px 0 0;
+    line-height: 1.4;
+}
+
+.my-harvests-level-card__progress-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.my-harvests-level-card__progress-meta span {
+    color: var(--text-muted, #8aad7a);
+    font-size: 0.72rem;
+}
+
+.my-harvests-level-card__progress-meta strong {
+    color: var(--text-primary, #f0f5ee);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.my-harvests-level-progress {
+    background-color: rgba(217, 198, 107, 0.1);
+    border-radius: 6px;
+    height: 7px;
+    overflow: hidden;
+}
+
+.my-harvests-level-progress__fill {
+    width: var(--level-progress, 0%);
+    height: 100%;
+    background-color: var(--achievement-color);
+    border-radius: 6px;
+    transition: width 0.6s ease;
+}
+
+.my-harvests-level-max {
+    background-color: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 8px;
+    padding: 7px 10px;
+}
+
+.my-harvests-level-max p {
+    color: #fbbf24;
+    font-size: 0.78rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.my-harvests-level-list {
+    display: flex;
+    gap: 5px;
+    margin-top: 14px;
+}
+
+.my-harvests-level-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #444;
+}
+
+.my-harvests-level-item.is-active,
+.my-harvests-level-item.is-past {
+    color: var(--achievement-color);
+}
+
+.my-harvests-level-item__icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.my-harvests-level-item.is-active .my-harvests-level-item__icon {
+    background-color: color-mix(in srgb, var(--achievement-color) 25%, transparent);
+    border-color: var(--achievement-color);
+}
+
+.my-harvests-level-item.is-past .my-harvests-level-item__icon {
+    background-color: color-mix(in srgb, var(--achievement-color) 15%, transparent);
+    border-color: color-mix(in srgb, var(--achievement-color) 60%, transparent);
+}
+
+.my-harvests-level-item span {
+    font-size: 0.58rem;
+    text-align: center;
+    line-height: 1.2;
+}

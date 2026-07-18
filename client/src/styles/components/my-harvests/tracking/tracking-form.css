@@ -1,0 +1,138 @@
+.my-harvests-form-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5625rem;
+}
+
+.my-harvests-form-label {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    margin-bottom: 0.25rem;
+
+    color: var(--text-muted);
+    font-size: 0.72rem;
+}
+
+.my-harvests-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4375rem;
+}
+
+.my-harvests-form-control {
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
+
+    padding: 0.4375rem 0.625rem;
+
+    background-color: var(--bg-dark);
+    border: 1px solid var(--my-harvests-card-border);
+    border-radius: 0.4375rem;
+
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.875rem;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.my-harvests-form-control:focus {
+    border-color: var(--green-main);
+    box-shadow: 0 0 0 3px var(--green-glow);
+}
+
+.my-harvests-form-control::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.my-harvests-textarea {
+    width: 100%;
+    min-height: 5rem;
+
+    resize: vertical;
+
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+.my-harvests-textarea--warning {
+    border-color: var(--my-harvests-warning-border);
+}
+
+.my-harvests-textarea--danger {
+    border-color: var(--my-harvests-danger-border);
+}
+
+.my-harvests-unit {
+    flex-shrink: 0;
+
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.my-harvests-form-alert {
+    margin-bottom: 0.5rem;
+    padding: 0.4375rem 0.625rem;
+
+    background-color: var(--my-harvests-danger-bg-strong);
+    border: 1px solid var(--my-harvests-danger-border);
+    border-radius: 0.4375rem;
+
+    color: var(--my-harvests-danger-text-light);
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.my-harvests-form-alert--neutral {
+    background-color: var(--my-harvests-neutral-bg);
+    border-color: var(--my-harvests-neutral-border);
+    color: var(--my-harvests-neutral-text);
+}
+
+.my-harvests-form-alert--neutral strong {
+    color: var(--text-primary);
+}
+
+.my-harvests-save-button {
+    border-radius: 0.4375rem;
+}
+
+.my-harvests-save-button--good {
+    background-color: var(--my-harvests-success-bg-strong);
+    border: 1px solid var(--my-harvests-success-border);
+    color: var(--success-text);
+}
+
+.my-harvests-save-button--warning {
+    background-color: var(--my-harvests-warning-bg-strong);
+    border: 1px solid var(--my-harvests-warning-border);
+    color: var(--warning-text);
+}
+
+.my-harvests-save-button--danger {
+    background-color: var(--my-harvests-danger-bg-strong);
+    border: 1px solid var(--my-harvests-danger-border);
+    color: var(--my-harvests-danger-text-light);
+}
+
+.my-harvests-save-button--neutral {
+    background-color: var(--my-harvests-neutral-button-bg);
+    border: 1px solid var(--my-harvests-neutral-border);
+    color: var(--text-primary);
+}
+
+.my-harvests-save-button--neutral:hover:not(:disabled) {
+    background-color: var(--my-harvests-neutral-button-hover);
+}
+
+.my-harvests-save-button.is-success {
+    filter: brightness(1.12);
+}

@@ -1,0 +1,102 @@
+@media (max-width: 1099px) {
+    .my-harvests-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .my-harvests-aside {
+        position: static;
+    }
+
+    .my-harvests-achievements {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .my-harvests-side-card {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 899px) {
+    .my-harvests-stats {
+        --my-harvests-stat-columns: 2;
+    }
+}
+
+@media (max-width: 759px) {
+    .my-harvests-container {
+        width: min(calc(100% - 1.75rem),
+                var(--my-harvests-container-width));
+
+        --my-harvests-container-padding-block: 1.5rem;
+    }
+
+    .my-harvests-achievements {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 599px) {
+    .my-harvests-stats {
+        --my-harvests-stat-columns: 1;
+    }
+
+    .my-harvests-header {
+        --my-harvests-header-margin: 1.25rem;
+    }
+
+    .my-harvests-empty {
+        min-height: 18rem;
+        padding-block: 3rem;
+    }
+
+    .my-harvests-empty__button {
+        width: 100%;
+    }
+
+    .my-harvests-history__header {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 399px) {
+    .my-harvests-history-card__meta {
+        align-items: flex-start;
+    }
+
+    .my-harvests-history-card__image {
+        margin-left: 0;
+    }
+
+    .my-harvests-level-list {
+        overflow-x: auto;
+        padding-bottom: 0.375rem;
+    }
+
+    .my-harvests-level-item {
+        min-width: 3.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .my-harvests-stat-card,
+    .my-harvests-row,
+    .harvest-progress-bar__fill,
+    .my-harvests-status-button,
+    .my-harvests-save-button,
+    .my-harvests-health-card,
+    .my-harvests-health-option,
+    .my-harvests-chip,
+    .my-harvests-level-progress__fill {
+        transition: none;
+    }
+
+    .my-harvests-stat-card:hover,
+    .my-harvests-status-button:hover:not(:disabled),
+    .my-harvests-save-button:hover:not(:disabled),
+    .my-harvests-status-button:active:not(:disabled),
+    .my-harvests-save-button:active:not(:disabled) {
+        transform: none;
+    }
+}

@@ -1,0 +1,73 @@
+.info-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    min-height: 2.25rem;
+    margin-bottom: 1.375rem;
+    padding: 0;
+
+    background: none;
+    border: none;
+
+    color: var(--text-muted);
+    font-family: var(--font-main);
+    font-size: 0.875rem;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.info-back-btn:hover {
+    color: var(--text-primary);
+}
+
+.info-back-btn:active {
+    transform: translateX(-0.125rem);
+}
+
+.info-back-btn:focus-visible {
+    outline: 2px solid var(--green-main);
+    outline-offset: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+.info-cultivo-nombre {
+    margin: 0 0 0.125rem;
+
+    color: var(--text-primary);
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.info-cultivo-cientifico {
+    margin: 0 0 0.625rem;
+
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.info-cultivo-categoria {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+    max-width: 100%;
+
+    padding: 0.1875rem 0.75rem;
+
+    background-color: var(--crop-info-accent-bg);
+    border: 1px solid var(--crop-info-accent-border);
+    border-radius: 999px;
+
+    color: var(--green-main);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.5;
+}

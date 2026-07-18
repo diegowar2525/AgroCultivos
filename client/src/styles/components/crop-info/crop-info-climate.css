@@ -1,0 +1,47 @@
+.clima-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.5rem;
+}
+
+.clima-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    min-width: 0;
+    padding-block: 0.5rem;
+
+    border-bottom: 1px solid var(--crop-info-divider);
+}
+
+.clima-fila:last-child {
+    border-bottom: none;
+}
+
+.clima-fila-label {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+
+    min-width: 0;
+
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+.clima-fila-label svg {
+    flex-shrink: 0;
+}
+
+.clima-fila-valor {
+    flex-shrink: 0;
+
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: right;
+}

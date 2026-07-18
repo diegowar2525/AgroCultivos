@@ -1,0 +1,126 @@
+.crud-table-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    min-width: 0;
+}
+
+.crud-table-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+
+    width: 100%;
+}
+
+.crud-search-wrapper {
+    position: relative;
+
+    flex: 1 1 16rem;
+    min-width: 14.375rem;
+}
+
+.crud-search-icon {
+    position: absolute;
+    top: 50%;
+    left: 0.9rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--crud-text-muted);
+    font-size: 0.9rem;
+
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.crud-search-input,
+.crud-filter-select {
+    min-height: var(--crud-control-height);
+
+    background-color: var(--crud-surface-soft);
+    border: 1px solid var(--crud-border);
+    border-radius: var(--crud-radius-medium);
+
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.9rem;
+
+    outline: none;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.crud-search-input {
+    width: 100%;
+    padding: 0.7rem 1rem 0.7rem 2.7rem;
+}
+
+.crud-search-input::placeholder {
+    color: var(--crud-text-subtle);
+}
+
+.crud-filter-select {
+    min-width: 10.625rem;
+    padding: 0.7rem 2.2rem 0.7rem 0.9rem;
+
+    cursor: pointer;
+}
+
+.crud-filter-select option {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.crud-search-input:focus,
+.crud-filter-select:focus {
+    background-color: var(--crud-surface-focus);
+    border-color: var(--green-main);
+    box-shadow: 0 0 0 3px var(--green-glow);
+}
+
+.crud-clear-filters {
+    min-height: var(--crud-control-height);
+    padding: 0.7rem 1rem;
+
+    background-color: transparent;
+    border: 1px solid var(--crud-border);
+    border-radius: var(--crud-radius-medium);
+
+    color: var(--crud-text-muted);
+    font-family: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.crud-clear-filters:hover {
+    background-color: var(--crud-surface-hover);
+    border-color: var(--crud-border-strong);
+    color: var(--text-primary);
+}
+
+.crud-clear-filters:focus-visible {
+    outline: 2px solid var(--green-main);
+    outline-offset: 3px;
+}
+
+.crud-results-count {
+    margin-left: auto;
+
+    color: var(--crud-text-muted);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}

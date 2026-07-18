@@ -1,0 +1,25 @@
+.cuidados-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.cuidado-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+}
+
+.cuidado-check {
+    flex-shrink: 0;
+
+    color: var(--green-main);
+    font-weight: 700;
+    line-height: 1.7;
+}
+
+.cuidado-item span:last-child {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.7;
+}

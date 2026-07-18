@@ -1,0 +1,94 @@
+.my-harvests-table-card {
+    width: 100%;
+
+    overflow: hidden;
+
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 0.75rem;
+
+    box-shadow: var(--my-harvests-card-shadow);
+}
+
+.my-harvests-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.my-harvests-table {
+    width: 100%;
+    min-width: 56rem;
+
+    border-collapse: collapse;
+}
+
+.my-harvests-table thead tr {
+    border-bottom: 1px solid var(--my-harvests-divider);
+}
+
+.my-harvests-table th {
+    padding: 0.75rem 1rem;
+
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.my-harvests-row {
+    border-bottom: 1px solid var(--my-harvests-divider-soft);
+
+    cursor: pointer;
+
+    transition: background-color 0.15s ease;
+}
+
+.my-harvests-row:last-child {
+    border-bottom: none;
+}
+
+.my-harvests-row:hover {
+    background-color: var(--glass-bg);
+}
+
+.my-harvests-row:focus-within {
+    background-color: var(--green-glow);
+}
+
+.my-harvests-row td {
+    padding: 0.875rem 1rem;
+    vertical-align: middle;
+}
+
+.my-harvests-crop-name {
+    color: var(--green-main);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.my-harvests-muted-cell {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.my-harvests-date-cell {
+    color: var(--text-primary);
+    font-size: 0.85rem;
+}
+
+.my-harvests-progress-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    min-width: 7.5rem;
+}
+
+.my-harvests-progress-cell > span {
+    min-width: 2rem;
+
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+}

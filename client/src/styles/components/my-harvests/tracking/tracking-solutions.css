@@ -1,0 +1,131 @@
+.my-harvests-health-notice,
+.my-harvests-solution {
+    padding: 0.5rem 0.6875rem;
+
+    border-radius: 0.5rem;
+}
+
+.my-harvests-health-notice--bien {
+    background-color: var(--my-harvests-success-bg);
+    border: 1px solid var(--my-harvests-success-border);
+}
+
+.my-harvests-health-notice--observacion,
+.my-harvests-solution--warning {
+    background-color: var(--my-harvests-warning-bg);
+    border: 1px solid var(--my-harvests-warning-border);
+}
+
+.my-harvests-health-notice--amenaza,
+.my-harvests-solution--danger {
+    background-color: var(--my-harvests-danger-bg);
+    border: 1px solid var(--my-harvests-danger-border);
+}
+
+.my-harvests-health-notice p,
+.my-harvests-solution p {
+    display: flex;
+    align-items: center;
+    gap: 0.3125rem;
+
+    margin: 0 0 0.1875rem;
+
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.my-harvests-health-notice--bien p {
+    color: var(--success-text);
+}
+
+.my-harvests-health-notice--observacion p,
+.my-harvests-solution--warning p,
+.my-harvests-solution--warning
+    .my-harvests-solution-step span:first-child {
+    color: var(--warning-text);
+}
+
+.my-harvests-health-notice--amenaza p,
+.my-harvests-solution--danger p,
+.my-harvests-solution--danger
+    .my-harvests-solution-step span:first-child {
+    color: var(--my-harvests-danger-text-light);
+}
+
+.my-harvests-health-notice span,
+.my-harvests-solution-step span:last-child {
+    color: var(--my-harvests-secondary-text);
+    font-size: 0.72rem;
+    line-height: 1.5;
+}
+
+.my-harvests-chip-title {
+    margin: 0 0 0.375rem;
+
+    color: var(--text-muted);
+    font-size: 0.72rem;
+}
+
+.my-harvests-chip-title span {
+    color: var(--green-main);
+    font-weight: 600;
+}
+
+.my-harvests-chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3125rem;
+}
+
+.my-harvests-chip {
+    padding: 0.25rem 0.6875rem;
+
+    background-color: transparent;
+    border: 1px solid var(--green-border-sm);
+    border-radius: 999px;
+
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.72rem;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.my-harvests-chip--warning.is-active {
+    background-color: var(--my-harvests-warning-bg-chip);
+    border-color: var(--my-harvests-warning-border-strong);
+    color: var(--warning-text);
+}
+
+.my-harvests-chip--danger.is-active {
+    background-color: var(--my-harvests-danger-bg-chip);
+    border-color: var(--my-harvests-danger-border-strong);
+    color: var(--my-harvests-danger-text-light);
+}
+
+.my-harvests-solution {
+    padding: 0.625rem 0.75rem;
+}
+
+.my-harvests-solution p {
+    margin-bottom: 0.4375rem;
+}
+
+.my-harvests-solution-step {
+    display: flex;
+    gap: 0.375rem;
+
+    margin-bottom: 0.3125rem;
+}
+
+.my-harvests-solution-step span:first-child {
+    flex-shrink: 0;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+}

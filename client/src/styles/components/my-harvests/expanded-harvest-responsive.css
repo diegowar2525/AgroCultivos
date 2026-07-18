@@ -1,0 +1,43 @@
+@media (max-width: 899px) {
+    .my-harvests-expanded-grid {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 44rem;
+    }
+}
+
+@media (max-width: 599px) {
+    .my-harvests-expanded-grid {
+        width: 100%;
+        max-width: 100%;
+        gap: 0.75rem;
+        padding: 0.75rem;
+    }
+
+    .my-harvests-expanded-card {
+        padding: 0.875rem;
+    }
+
+    .my-harvests-expanded-dates {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 419px) {
+    .my-harvests-expanded-grid {
+        padding: 0.5rem;
+    }
+
+    .my-harvests-expanded-card {
+        padding: 0.75rem;
+    }
+
+    .my-harvests-expanded-progress {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.375rem;
+    }
+
+    .my-harvests-expanded-percent {
+        justify-self: end;
+    }
+}

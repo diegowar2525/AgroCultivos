@@ -1,0 +1,86 @@
+.tags-enfermedades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag-enfermedad {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 2rem;
+    padding: 0.375rem 0.875rem;
+
+    background-color: var(--bg-dark);
+    border: 1px solid var(--crop-info-accent-border);
+    border-radius: 999px;
+
+    color: var(--text-muted);
+    font-family: var(--font-main);
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.4;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.tag-enfermedad:hover {
+    border-color: var(--green-main);
+    color: var(--text-primary);
+}
+
+.tag-enfermedad:active {
+    transform: scale(0.98);
+}
+
+.tag-enfermedad:focus-visible {
+    outline: 2px solid var(--green-main);
+    outline-offset: 0.1875rem;
+}
+
+.tag-enfermedad--activa {
+    background-color: var(--crop-info-accent-active-bg);
+    border-color: var(--green-main);
+    color: var(--green-main);
+}
+
+.enfermedad-detalle {
+    margin-top: 0.875rem;
+    padding: 0.875rem 1rem;
+
+    background-color: var(--bg-dark);
+    border: 1px solid var(--crop-info-danger-border);
+    border-radius: 0.625rem;
+}
+
+.enfermedad-detalle-titulo {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+
+    margin: 0 0 0.375rem;
+
+    color: var(--crop-info-danger-title);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.enfermedad-detalle-titulo svg {
+    flex-shrink: 0;
+}
+
+.enfermedad-detalle-texto {
+    margin: 0;
+
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.7;
+}

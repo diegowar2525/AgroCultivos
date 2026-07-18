@@ -1,0 +1,69 @@
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8125rem;
+
+    width: 100%;
+}
+
+.register-form .form-group {
+    margin-bottom: 0;
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.625rem;
+}
+
+/* Elección: ¿eres agrónomo? */
+.choice-group {
+    display: flex;
+    gap: 0.625rem;
+
+    width: 100%;
+}
+
+.choice-btn {
+    flex: 1;
+
+    min-height: 2.625rem;
+    padding: 0.625rem;
+
+    background-color: var(--bg-card);
+    border: 1px solid var(--auth-card-border, rgba(217, 198, 107, 0.3));
+    border-radius: 0.625rem;
+
+    color: var(--text-muted);
+    font-family: var(--font-main);
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.choice-btn:hover {
+    border-color: var(--green-border);
+    color: var(--text-primary);
+}
+
+.choice-btn--active {
+    background-color: var(--green-glow);
+    border-color: var(--green-main);
+    color: var(--green-main);
+}
+
+.choice-btn:focus-visible {
+    outline: 2px solid var(--green-main);
+    outline-offset: 3px;
+}
+
+.choice-btn:active:not(:disabled) {
+    transform: scale(0.98);
+}

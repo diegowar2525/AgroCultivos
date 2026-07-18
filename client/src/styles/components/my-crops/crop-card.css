@@ -1,0 +1,102 @@
+.cultivo-card {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    height: 100%;
+
+    overflow: hidden;
+
+    background-color: var(--bg-card);
+    border: 1px solid var(--my-crops-card-border);
+    border-radius: var(--my-crops-card-radius);
+
+    box-shadow: var(--my-crops-card-shadow);
+
+    transition:
+        border-color 0.2s ease,
+        opacity 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.cultivo-card:hover {
+    border-color: var(--green-border);
+    box-shadow: var(--my-crops-card-shadow-hover);
+    transform: translateY(-0.125rem);
+}
+
+.cultivo-card--desvanecida {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.cultivo-card-imagen {
+    height: var(--my-crops-card-image-height);
+
+    overflow: hidden;
+
+    background-color: var(--bg-card);
+}
+
+.cultivo-card-imagen img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    opacity: 0.85;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.3s ease;
+}
+
+.cultivo-card:hover .cultivo-card-imagen img {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.cultivo-card-imagen-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    color: var(--text-muted);
+}
+
+.cultivo-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    min-width: 0;
+    padding: var(--my-crops-card-padding);
+}
+
+.cultivo-card-body h3 {
+    margin: 0 0 0.125rem;
+
+    overflow-wrap: anywhere;
+
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.cultivo-card-fecha {
+    margin: 0 0 1rem;
+
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.cultivo-card-datos {
+    margin-bottom: 1.25rem;
+}

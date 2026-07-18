@@ -1,0 +1,47 @@
+.user-dash-card {
+    min-width: 0;
+    height: 100%;
+    padding: var(--user-dash-card-padding);
+
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--user-dash-card-radius);
+
+    box-shadow: var(--user-dash-card-shadow);
+}
+
+.user-dash-card--gauge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.user-dash-card-titulo {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.4375rem;
+
+    margin: 0 0 1.125rem;
+
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.user-dash-card-titulo svg {
+    flex-shrink: 0;
+    color: var(--green-main);
+}
+
+.user-dash-vacio-texto {
+    margin: 0;
+
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}

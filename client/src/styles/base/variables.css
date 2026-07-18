@@ -2,7 +2,7 @@
     /* Base */
     --font-main: 'Plus Jakarta Sans', sans-serif;
 
-    /* Fondos — verde oliva (oscurecido para mejor contraste con el texto) */
+    /* Fondos */
     --bg-dark: #2f3a22;
     --background: var(--bg-dark);
     --card: #3d4b2c;
@@ -10,13 +10,13 @@
     --bg-card: #3d4b2c;
     --glass-bg: rgba(251, 250, 243, 0.05);
 
-    /* Texto — crema claro (más contraste que antes) */
+    /* Texto */
     --text-light: #fbfaf3;
     --text-primary: #fbfaf3;
     --text: var(--text-primary);
     --text-muted: #c9d4b8;
 
-    /* Marca — acento dorado (el verde oliva de fondo no da contraste suficiente para botones) */
+    /* Marca */
     --green-main: #d9c66b;
     --green: var(--green-main);
     --green-hover: #c9b65a;
@@ -30,11 +30,245 @@
     --border-card: rgba(251, 250, 243, 0.2);
     --border-main: rgba(251, 250, 243, 0.15);
 
-    /* Estados (sin cambios: deben seguir siendo reconocibles sin importar el tema) */
+    /* Estados */
     --red-main: #d4183d;
     --red-border: rgba(212, 24, 61, 0.3);
     --danger-text: #f87171;
     --success-text: #4ade80;
     --warning-text: #fbbf24;
     --info-text: #60a5fa;
+
+    /* =========================================================
+       AUTH
+       ========================================================= */
+
+    /* Dimensiones */
+    --auth-container-width: 22.5rem;
+    --auth-page-padding: 1rem;
+    --auth-section-gap: 1.125rem;
+    --auth-card-padding: 1.5rem;
+    --auth-card-gap: 1rem;
+    --auth-card-radius: 1rem;
+
+    /* Superficies */
+    --auth-card-border: rgba(217, 198, 107, 0.3);
+    --auth-card-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.16);
+
+    /* Validación exitosa */
+    --auth-success-text: var(--success-text);
+    --auth-success-bg: rgba(74, 222, 128, 0.1);
+    --auth-success-border: rgba(74, 222, 128, 0.5);
+    --auth-success-border-soft: rgba(74, 222, 128, 0.25);
+
+    /* Validación con error */
+    --auth-error-text: #fca5a5;
+    --auth-error-bg: rgba(212, 24, 61, 0.1);
+    --auth-error-border: rgba(212, 24, 61, 0.5);
+
+    /* =========================================================
+       CROP INFO
+       ========================================================= */
+
+    /* Layout */
+    --crop-info-container-width: 68.75rem;
+    --crop-info-page-padding: 1.5rem;
+    --crop-info-container-padding-block: 1.75rem;
+
+    --crop-info-sidebar-width: 18.75rem;
+    --crop-info-layout-gap: 1.25rem;
+    --crop-info-column-gap: 0.875rem;
+
+    /* Tarjetas */
+    --crop-info-card-padding: 1.25rem 1.375rem;
+    --crop-info-card-radius: 0.875rem;
+    --crop-info-card-border: rgba(217, 198, 107, 0.2);
+    --crop-info-card-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.08);
+
+    /* Imagen */
+    --crop-info-image-height: 11.875rem;
+
+    /* Acentos */
+    --crop-info-accent-bg: rgba(217, 198, 107, 0.1);
+    --crop-info-accent-active-bg: rgba(217, 198, 107, 0.15);
+    --crop-info-accent-border: rgba(217, 198, 107, 0.25);
+
+    /* Separadores */
+    --crop-info-divider: rgba(217, 198, 107, 0.08);
+
+    /* Amenazas o enfermedades */
+    --crop-info-danger-border: rgba(248, 113, 113, 0.2);
+    --crop-info-danger-title: #fca5a5;
+
+    /* =========================================================
+       MY CROPS
+       ========================================================= */
+
+    /* Layout */
+    --my-crops-container-width: 72rem;
+    --my-crops-page-padding: 1.5rem;
+    --my-crops-container-padding-block: 2rem;
+    --my-crops-header-margin-bottom: 2rem;
+
+    /* Grid */
+    --my-crops-grid-columns: 3;
+    --my-crops-grid-gap: 1.25rem;
+
+    /* Tarjetas */
+    --my-crops-card-padding: 1.25rem;
+    --my-crops-card-radius: 0.875rem;
+    --my-crops-card-image-height: 8.75rem;
+    --my-crops-card-border: rgba(217, 198, 107, 0.3);
+    --my-crops-card-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.08);
+    --my-crops-card-shadow-hover: 0 1rem 2.5rem rgba(0, 0, 0, 0.14);
+
+    /* Filas internas */
+    --my-crops-row-divider: rgba(217, 198, 107, 0.12);
+
+    /* Botones */
+    --my-crops-button-radius: 0.5rem;
+    --my-crops-button-sent-bg: rgba(217, 198, 107, 0.4);
+
+    /* Acciones peligrosas */
+    --my-crops-danger-bg: rgba(248, 113, 113, 0.08);
+    --my-crops-danger-border: rgba(248, 113, 113, 0.3);
+
+    /* Registro */
+    --my-crops-registry-margin-top: 2.5rem;
+    --my-crops-registry-radius: 0.75rem;
+    --my-crops-registry-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.06);
+    --my-crops-registry-completed-hover: rgba(217, 198, 107, 0.2);
+
+    /* =========================================================
+       USER DASHBOARD
+       ========================================================= */
+
+    /* Layout */
+    --user-dash-panel-gap: 1.125rem;
+    --user-dash-panel-margin-bottom: 2.25rem;
+    --user-dash-grid-gap: 0.875rem;
+
+    /* Columnas */
+    --user-dash-stat-columns: 4;
+    --user-dash-gauge-columns: 3;
+
+    /* Tarjetas */
+    --user-dash-card-padding: 1.375rem;
+    --user-dash-stat-padding: 1.25rem;
+    --user-dash-card-radius: 0.75rem;
+
+    --user-dash-card-shadow:
+        0 0.75rem 2rem rgba(0, 0, 0, 0.06);
+
+    --user-dash-card-shadow-hover:
+        0 1rem 2.5rem rgba(0, 0, 0, 0.12);
+
+    /* Gráficos */
+    --user-dash-donut-center-height: 6.75rem;
+
+    /* Colores de estadísticas */
+    --user-dash-violet: #a78bfa;
+
+    --user-dashboard-container-width: 72rem;
+    --user-dashboard-container-padding-block: 2rem;
+
+    /* =========================================================
+       MY HARVESTS
+       ========================================================= */
+
+    /* Layout */
+    --my-harvests-container-width: 84.375rem;
+    --my-harvests-page-padding: 1.5rem;
+    --my-harvests-container-padding-block: 2rem;
+
+    --my-harvests-layout-gap: 1.25rem;
+    --my-harvests-aside-width: 18.75rem;
+    --my-harvests-aside-top: 1.25rem;
+    --my-harvests-header-margin: 1.5rem;
+
+    /* Estadísticas */
+    --my-harvests-stat-columns: 4;
+    --my-harvests-stat-gap: 0.75rem;
+
+    /* Tarjetas */
+    --my-harvests-card-border: rgba(217, 198, 107, 0.25);
+    --my-harvests-card-shadow:
+        0 0.75rem 2rem rgba(0, 0, 0, 0.06);
+    --my-harvests-card-shadow-hover:
+        0 1rem 2.5rem rgba(0, 0, 0, 0.12);
+
+    /* Acentos */
+    --my-harvests-accent-bg: rgba(217, 198, 107, 0.15);
+    --my-harvests-accent-bg-soft: rgba(217, 198, 107, 0.08);
+    --my-harvests-accent-bg-subtle: rgba(217, 198, 107, 0.05);
+    --my-harvests-accent-muted: rgba(217, 198, 107, 0.4);
+
+    /* Divisores */
+    --my-harvests-divider: rgba(217, 198, 107, 0.15);
+    --my-harvests-divider-soft: rgba(217, 198, 107, 0.07);
+
+    /* Éxito */
+    --my-harvests-success-bg: rgba(74, 222, 128, 0.08);
+    --my-harvests-success-bg-strong: rgba(74, 222, 128, 0.12);
+    --my-harvests-success-border: rgba(74, 222, 128, 0.3);
+    --my-harvests-success-border-strong: rgba(74, 222, 128, 0.4);
+    --my-harvests-success-text-light: rgba(187, 247, 208, 0.9);
+
+    /* Advertencia */
+    --my-harvests-warning-bg: rgba(251, 191, 36, 0.08);
+    --my-harvests-warning-bg-strong: rgba(251, 191, 36, 0.12);
+    --my-harvests-warning-bg-chip: rgba(251, 191, 36, 0.15);
+    --my-harvests-warning-border: rgba(251, 191, 36, 0.3);
+    --my-harvests-warning-border-strong: rgba(251, 191, 36, 0.5);
+
+    /* Información */
+    --my-harvests-info-bg: rgba(96, 165, 250, 0.08);
+    --my-harvests-info-bg-strong: rgba(96, 165, 250, 0.12);
+    --my-harvests-info-border: rgba(96, 165, 250, 0.3);
+    --my-harvests-info-border-strong: rgba(96, 165, 250, 0.4);
+    --my-harvests-info-text-light: rgba(191, 219, 254, 0.9);
+
+    /* Peligro */
+    --my-harvests-danger-bg: rgba(248, 113, 113, 0.08);
+    --my-harvests-danger-bg-strong: rgba(248, 113, 113, 0.12);
+    --my-harvests-danger-bg-chip: rgba(248, 113, 113, 0.15);
+    --my-harvests-danger-border: rgba(248, 113, 113, 0.3);
+    --my-harvests-danger-border-strong: rgba(248, 113, 113, 0.5);
+    --my-harvests-danger-text-light: #fca5a5;
+
+    /* Neutral */
+    --my-harvests-neutral-bg: rgba(148, 163, 184, 0.12);
+    --my-harvests-neutral-border: rgba(148, 163, 184, 0.3);
+    --my-harvests-neutral-text: #cbd5e1;
+    --my-harvests-neutral-button-bg: #4b5563;
+    --my-harvests-neutral-button-hover: #374151;
+
+    /* Texto secundario interno */
+    --my-harvests-secondary-text: rgba(255, 255, 255, 0.6);
+
+    /* =========================================================
+       ADMIN CRUD
+       ========================================================= */
+
+    /* Dimensiones */
+    --crud-control-height: 2.875rem;
+    --crud-table-image-size: 4.5rem;
+    --crud-table-image-size-mobile: 3.5rem;
+
+    --crud-preview-width: 8.125rem;
+    --crud-preview-height: 6.25rem;
+    --crud-preview-width-mobile: 13rem;
+
+    /* Bordes y radios */
+    --crud-radius-medium: 0.625rem;
+    --crud-border: rgba(251, 250, 243, 0.14);
+    --crud-border-strong: rgba(251, 250, 243, 0.28);
+
+    /* Superficies */
+    --crud-surface-soft: rgba(251, 250, 243, 0.06);
+    --crud-surface-hover: rgba(251, 250, 243, 0.11);
+    --crud-surface-focus: rgba(251, 250, 243, 0.09);
+
+    /* Texto */
+    --crud-text-muted: rgba(251, 250, 243, 0.65);
+    --crud-text-subtle: rgba(251, 250, 243, 0.42);
 }

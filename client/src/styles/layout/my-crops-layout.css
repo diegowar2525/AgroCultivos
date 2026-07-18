@@ -1,0 +1,28 @@
+.mis-cultivos-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    background-color: var(--bg-dark);
+    font-family: var(--font-main);
+}
+
+.mis-cultivos-container {
+    width: min(
+        calc(100% - (var(--my-crops-page-padding) * 2)),
+        var(--my-crops-container-width)
+    );
+
+    margin-inline: auto;
+    padding-block: var(--my-crops-container-padding-block);
+}
+
+.mis-cultivos-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        var(--my-crops-grid-columns),
+        minmax(0, 1fr)
+    );
+
+    gap: var(--my-crops-grid-gap);
+    align-items: stretch;
+}

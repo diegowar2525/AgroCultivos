@@ -1,0 +1,8 @@
+/* User Dashboard */
+@import '../components/user-dashboard/user-dashboard-layout.css';
+@import '../components/user-dashboard/user-dashboard-stats.css';
+@import '../components/user-dashboard/user-dashboard-cards.css';
+@import '../components/user-dashboard/user-dashboard-gauge.css';
+@import '../components/user-dashboard/user-dashboard-donut.css';
+@import '../components/user-dashboard/user-dashboard-activity.css';
+@import '../components/user-dashboard/user-dashboard-responsive.css';

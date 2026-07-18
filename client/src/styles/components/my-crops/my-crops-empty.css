@@ -1,0 +1,60 @@
+.mis-cultivos-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+
+    min-height: 18rem;
+    padding: 3.75rem 1rem;
+
+    text-align: center;
+}
+
+.mis-cultivos-empty p {
+    max-width: 30rem;
+    margin: 0;
+
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.mis-cultivos-empty-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+
+    min-height: 2.625rem;
+    padding: 0.625rem 1.25rem;
+
+    background-color: var(--green-main);
+    border: none;
+    border-radius: var(--my-crops-button-radius);
+
+    color: var(--bg-dark);
+    font-family: var(--font-main);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.mis-cultivos-empty-btn:hover {
+    background-color: var(--green-hover);
+}
+
+.mis-cultivos-empty-btn:active {
+    transform: scale(0.98);
+}
+
+.mis-cultivos-empty-btn:focus-visible {
+    outline: 2px solid var(--green-light);
+    outline-offset: 3px;
+}

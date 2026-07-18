@@ -1,0 +1,61 @@
+.user-dash-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--user-dash-panel-gap);
+
+    margin-bottom: var(--user-dash-panel-margin-bottom);
+}
+
+.user-dash-saludo-nombre {
+    margin: 0;
+
+    color: var(--text-primary);
+    font-size: clamp(1.15rem, 3vw, 1.3rem);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.user-dash-saludo-sub {
+    margin: 0.25rem 0 0;
+
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.user-dash-stats {
+    display: grid;
+    grid-template-columns: repeat(var(--user-dash-stat-columns),
+            minmax(0, 1fr));
+
+    gap: var(--user-dash-grid-gap);
+}
+
+.user-dash-gauges {
+    display: grid;
+    grid-template-columns: repeat(var(--user-dash-gauge-columns),
+            minmax(0, 1fr));
+
+    gap: var(--user-dash-grid-gap);
+    align-items: stretch;
+}
+
+.dashboard-user-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    background-color: var(--bg-dark);
+    font-family: var(--font-main);
+}
+
+.dashboard-user-container {
+    width: min(calc(100% - 3rem),
+            var(--user-dashboard-container-width));
+
+    margin-inline: auto;
+    padding-block: var(--user-dashboard-container-padding-block);
+}
+
+.dashboard-user-container .user-dash-panel {
+    margin-bottom: 0;
+}

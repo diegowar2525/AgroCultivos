@@ -1,0 +1,92 @@
+.my-harvests-model-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4375rem;
+
+    margin-bottom: 0.5625rem;
+    padding: 0.5rem 0.6875rem;
+
+    background-color: var(--my-harvests-info-bg);
+    border: 1px solid var(--my-harvests-info-border);
+    border-radius: 0.5rem;
+
+    color: var(--my-harvests-info-text-light);
+    font-size: 0.76rem;
+    line-height: 1.5;
+}
+
+.my-harvests-model-notice svg {
+    flex-shrink: 0;
+
+    margin-top: 0.125rem;
+
+    color: var(--info-text);
+}
+
+.my-harvests-model-notice p {
+    margin: 0;
+}
+
+.my-harvests-model-notice strong {
+    color: var(--info-text);
+    font-weight: 700;
+}
+
+.my-harvests-model-notice span {
+    color: var(--my-harvests-info-text-light);
+    font-weight: 600;
+}
+
+.my-harvests-model-notice--danger {
+    background-color: var(--my-harvests-danger-bg);
+    border-color: var(--my-harvests-danger-border);
+    color: var(--my-harvests-danger-text-light);
+}
+
+.my-harvests-model-notice--danger svg,
+.my-harvests-model-notice--danger strong {
+    color: var(--warning-text);
+}
+
+.my-harvests-diagnosis-card {
+    padding: 0.5625rem 0.6875rem;
+
+    border-radius: 0.5rem;
+
+    font-size: 0.76rem;
+    line-height: 1.5;
+}
+
+.my-harvests-diagnosis-card__title {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+
+    margin-bottom: 0.375rem;
+}
+
+.my-harvests-diagnosis-card p {
+    margin: 0.25rem 0;
+}
+
+.my-harvests-diagnosis-card--good {
+    background-color: var(--my-harvests-success-bg);
+    border: 1px solid var(--my-harvests-success-border);
+    color: var(--my-harvests-success-text-light);
+}
+
+.my-harvests-diagnosis-card--good strong,
+.my-harvests-diagnosis-card--good svg {
+    color: var(--success-text);
+}
+
+.my-harvests-diagnosis-card--danger {
+    background-color: var(--my-harvests-danger-bg);
+    border: 1px solid var(--my-harvests-danger-border);
+    color: var(--my-harvests-danger-text-light);
+}
+
+.my-harvests-diagnosis-card--danger strong,
+.my-harvests-diagnosis-card--danger svg {
+    color: var(--danger-text);
+}

@@ -1,0 +1,16 @@
+.crud-table-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    min-width: 0;
+}
+
+.crud-table-empty {
+    padding: 2rem;
+
+    color: var(--crud-text-subtle);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    text-align: center;
+}

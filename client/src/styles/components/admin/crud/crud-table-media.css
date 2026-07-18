@@ -1,0 +1,25 @@
+.crud-table-image {
+    display: block;
+
+    width: var(--crud-table-image-size);
+    height: var(--crud-table-image-size);
+
+    object-fit: cover;
+    object-position: center;
+
+    background-color: var(--crud-surface-soft);
+    border: 1px solid var(--crud-border);
+    border-radius: var(--crud-radius-medium);
+}
+
+.crud-table-empty-image {
+    color: var(--crud-text-muted);
+    font-size: 0.85rem;
+}
+
+.crud-table-empty {
+    padding: 2rem;
+
+    color: var(--crud-text-subtle);
+    text-align: center;
+}

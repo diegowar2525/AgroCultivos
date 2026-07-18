@@ -1,0 +1,11 @@
+@import '../layout/my-crops-layout.css';
+
+@import '../components/my-crops/my-crops-header.css';
+@import '../components/my-crops/my-crops-empty.css';
+@import '../components/my-crops/crop-card.css';
+@import '../components/my-crops/crop-card-data.css';
+@import '../components/my-crops/crop-card-actions.css';
+@import '../components/my-crops/crop-registry.css';
+
+/* Responsive general de My Crops */
+@import '../components/my-crops/my-crops-responsive.css';
