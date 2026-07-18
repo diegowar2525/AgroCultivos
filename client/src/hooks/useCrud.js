@@ -77,44 +77,47 @@ export const useCrud = (modelName, config) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            // Si se eligió un archivo nuevo (un objeto File real, no la URL
-            // de texto de una imagen ya existente), hay que mandar el
-            // formulario como multipart/form-data en vez de JSON.
-            const hayArchivoNuevo = camposArchivo.some(
-                nombre => formData[nombre] instanceof File
-            );
+        const estaEditando = Boolean(formData.id);
+        const payload = new FormData();
 
-            let payload = formData;
+        config.fields?.forEach(field => {
+            const valor = formData[field.name];
 
-            if (hayArchivoNuevo) {
-                const datosFormulario = new FormData();
+            if (field.type === 'file') {
+                // Solo enviar el campo si el usuario seleccionó un archivo nuevo.
+                // La URL de una imagen existente no se vuelve a enviar.
+                if (valor instanceof File) {
+                    payload.append(field.name, valor);
+                }
 
-                Object.entries(formData).forEach(([campo, valor]) => {
-                    if (camposArchivo.includes(campo)) {
-                        // Solo se reenvía si es un archivo NUEVO. Si sigue
-                        // siendo la URL de la imagen existente (string), se
-                        // omite para no romper el campo en el backend.
-                        if (valor instanceof File) {
-                            datosFormulario.append(campo, valor);
-                        }
-                    } else if (valor !== null && valor !== undefined) {
-                        datosFormulario.append(campo, valor);
-                    }
-                });
-
-                payload = datosFormulario;
+                return;
             }
 
-            if (formData.id) {
+            if (field.type === 'checkbox') {
+                payload.append(
+                    field.name,
+                    String(Boolean(valor))
+                );
 
-                await api.put(
+                return;
+            }
+
+            if (
+                valor !== null &&
+                valor !== undefined &&
+                valor !== ''
+            ) {
+                payload.append(field.name, valor);
+            }
+        });
+
+        try {
+            if (estaEditando) {
+                await api.patch(
                     `${config.endpoint}${formData.id}/`,
                     payload
                 );
-
             } else {
-
                 await api.post(
                     config.endpoint,
                     payload
@@ -126,8 +129,46 @@ export const useCrud = (modelName, config) => {
             setFormData({});
             setIsEditing(false);
 
+            toast.success(
+                estaEditando
+                    ? 'Registro actualizado correctamente'
+                    : 'Registro creado correctamente',
+                {
+                    autoClose: 3000,
+                    theme: 'dark'
+                }
+            );
         } catch (error) {
-            console.error(error);
+            console.error(
+                'Error al guardar:',
+                error.response?.data || error
+            );
+
+            const erroresBackend = error.response?.data;
+
+            let mensaje =
+                estaEditando
+                    ? 'No se pudo actualizar el registro.'
+                    : 'No se pudo crear el registro.';
+
+            if (
+                erroresBackend &&
+                typeof erroresBackend === 'object'
+            ) {
+                const primerError = Object.values(
+                    erroresBackend
+                )
+                    .flat()
+                    .find(Boolean);
+
+                if (primerError) {
+                    mensaje = String(primerError);
+                }
+            }
+
+            toast.error(mensaje, {
+                theme: 'dark'
+            });
         }
     };
 
